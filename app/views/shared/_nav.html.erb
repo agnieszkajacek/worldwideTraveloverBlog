@@ -1,5 +1,22 @@
-<% Category.all.each do |category| %>
-  <li>
-  <%= link_to category.name, posts_path(category: category.name) %>
-  </li>
-<% end %>
+<div class="container-fluid">
+  <header class="blog-header">
+    <div class="first-nav">
+      <div class="col-4">
+        <a class="subscribe">Subscribe</a>
+      </div>
+      <div class="col-4 text-center">
+        <a class="main-title">Worldwide Travelover</a>
+      </div>
+      <div class="col-4 right-items">
+        <a class="btn btn-sm btn-outline-secondary">Sign up<a>
+      </div>
+    </div>
+  </header>
+  <div class="menu-category">
+    <% Category.all.each do |category| %>
+      <a class="categories">
+        <%= link_to category.name, posts_path(category: category.name) %>
+      </a>
+    <% end %>
+  </div>
+</div>
