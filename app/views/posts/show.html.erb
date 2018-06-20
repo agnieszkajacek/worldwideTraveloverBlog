@@ -12,8 +12,10 @@
            </h1>
            <div class="article-time"><%= @post.created_at.to_date.strftime("%d %B %Y") %></div>
           <div class="card-body"><%= @post.content %></div>
+          <div class="disqus">
+            <%= render 'shared/disqus' %>
+          </div>
         </div>
     </article>
-    <%= render 'shared/disqus' %>
   </div>
 </div>
