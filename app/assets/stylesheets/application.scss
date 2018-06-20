@@ -17,6 +17,9 @@
     .text-center {
       text-align: center;
     }
+    a {
+      text-decoration: none;
+    }
     a.subscribe {
       color: #6c757d;
     }
@@ -38,7 +41,7 @@
   }
 }
 
-// nav menu //
+// nmenu with categories //
 .menu-category {
   display: flex;
   min-height: 60px;
@@ -48,5 +51,62 @@
   a {
     padding: 8px;
     color: #6c757d;
+  }
+}
+
+// articles on the main page //
+.article-container {
+  border: 1px solid #e5e5e5;
+  padding: 30px 40px;
+  width: auto;
+  margin-bottom: 16px;
+  border-radius: 5px;
+  box-shadow: 0 0.25rem 0.75rem rgba(0, 0, 0, .05);
+
+  position: relative;
+  display: flex;
+  word-wrap: break-word;
+
+  .article-card {
+    flex-direction: column;
+    flex: 1 1 auto;
+    padding: 0 20px 20px 20px;
+    position: relative;
+
+    .post-title {
+      font-size: 34px;
+      font-weight: 500;
+      cursor: pointer;
+      color: #1d2124;
+      text-align: left;
+      text-decoration: none;
+    }
+    .article-time {
+      color: #6c757d;
+      margin-bottom: 4px;
+      font-size: 13px;
+    }
+    .card-body {
+      padding: 0;
+      margin-top: 25px;
+    }
+    a.read-more {
+      color: #007bff;
+      text-decoration: none;
+      position: absolute;
+      bottom: 0px;
+      left: 20px;
+
+      &:hover {
+        color: #0056b3;
+        text-decoration: underline;
+      }
+    }
+  }
+
+  .article-image {
+    width: 200px;
+    height: 250px;
+    display: block;
   }
 }
