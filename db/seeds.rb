@@ -1,2 +1,13 @@
 Category.create(name: "Europe")
 Category.create(name: "Asia")
+
+Category.create(name: "Europe")
+Category.create(name: "Asia")
+Category.create(name: "Europe")
+Category.create(name: "Asia")
+Category.create(name: "Europe")
+Category.create(name: "Asia")
+Category.create(name: "Europe")
+Category.create(name: "Asia")
+Category.create(name: "Europe")
+Category.create(name: "Asia")

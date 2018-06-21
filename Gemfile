@@ -33,6 +33,11 @@ gem 'jbuilder', '~> 2.5'
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
 gem 'simple_form'
+gem 'bootstrap', '~> 4.1.1'
+gem 'jquery-rails'
+gem 'disqus_rails'
+gem 'popper_js', '~> 1.12.9'
+gem "font-awesome-rails"
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
