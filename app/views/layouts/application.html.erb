@@ -13,6 +13,13 @@
   </head>
 
   <body>
+    <% if notice %>
+      <p class="alert alert-success"><%= notice %></p>
+    <% end %>
+    <% if alert %>
+      <p class="alert alert-danger"><%= alert %></p>
+    <% end %>
+
     <%= render 'shared/nav' %>
     <%= yield %>
     <script id="dsq-count-scr" src="//worldwide-travelover-new.disqus.com/count.js" async></script>

@@ -55,7 +55,7 @@
   }
 }
 
-// articles on the main page //
+// articles //
 .article-container {
   border: 1px solid #e5e5e5;
   padding: 30px 40px;
@@ -74,6 +74,9 @@
     padding: 0 20px 20px 20px;
     position: relative;
 
+    .admin-options {
+      text-align: right;
+    }
     .post-title {
       font-size: 34px;
       font-weight: 500;
