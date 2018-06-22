@@ -4,8 +4,8 @@
         <div class="article-card">
           <% if user_signed_in? %>
             <div class="admin-options">
-              <%= link_to "Edit", edit_post_path(@post), class: "btn btn-outline-warning edit-option" %>
-              <%= link_to "Delete", @post, method: :delete, data: { confirm: "Are you sure?" }, class: "btn btn-outline-warning edit-option" %>
+              <%= link_to "Edit", edit_post_path(@post), class: "btn btn-sm btn-outline-warning edit-option" %>
+              <%= link_to "Delete", @post, method: :delete, data: { confirm: "Are you sure?" }, class: "btn btn-sm btn-outline-warning edit-option" %>
             </div>
             <h1 class="post-title">
              <%= @post.title %>

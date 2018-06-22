@@ -3,7 +3,7 @@
     <div class="first-nav">
       <div class="col-4">
         <% if user_signed_in? %>
-          <a href="/posts/new" class="btn btn-sm btn-outline-secondary">New post</a>
+          <a href="/posts/new" class="btn btn-sm btn-outline-warning">New post</a>
         <% else %>
         <a class="subscribe">Subscribe</a>
         <% end %>
@@ -13,9 +13,9 @@
       </div>
       <div class="col-4 right-items">
         <% if user_signed_in? %>
-          <a><%= link_to "Sign out", destroy_user_session_path, method: :delete, class: "btn btn-sm btn-outline-secondary" %></a>
-        <% else %>
-          <a href="/users/sign_in" class="btn btn-sm btn-outline-secondary">Log up<a>
+          <a><%= link_to "Log out", destroy_user_session_path, method: :delete, class: "btn btn-sm btn-outline-secondary" %></a>
+        <% elsif cookies[:username] == "agnieszka" %>
+          <a><%= link_to "Log in", new_user_session_path, class: "btn btn-sm btn-outline-secondary" %></a>
         <% end %>
       </div>
     </div>
