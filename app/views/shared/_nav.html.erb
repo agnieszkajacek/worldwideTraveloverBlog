@@ -2,13 +2,21 @@
   <header class="blog-header">
     <div class="first-nav">
       <div class="col-4">
+        <% if user_signed_in? %>
+          <a href="/posts/new" class="btn btn-sm btn-outline-warning">New post</a>
+        <% else %>
         <a class="subscribe">Subscribe</a>
+        <% end %>
       </div>
       <div class="col-4 text-center">
         <a href="/" class="main-title">Worldwide Travelover</a>
       </div>
       <div class="col-4 right-items">
-        <a class="btn btn-sm btn-outline-secondary">Sign up<a>
+        <% if user_signed_in? %>
+          <a><%= link_to "Log out", destroy_user_session_path, method: :delete, class: "btn btn-sm btn-outline-secondary" %></a>
+        <% elsif cookies[:username] == "agnieszka" %>
+          <a><%= link_to "Log in", new_user_session_path, class: "btn btn-sm btn-outline-secondary" %></a>
+        <% end %>
       </div>
     </div>
   </header>

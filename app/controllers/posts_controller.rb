@@ -1,5 +1,6 @@
 class PostsController < ApplicationController
   before_action :find_post, only: [:show, :edit, :update, :destroy]
+  before_action :authenticate_user!, only: [:new, :create, :edit, :update, :destroy]
 
   def index
     if params[:category].blank?
@@ -8,6 +9,7 @@ class PostsController < ApplicationController
       @category_id = Category.find_by(name: params[:category])
       @posts = Post.where(category_id: @category_id).order("created_at DESC")
     end
+
   end
 
   def show
