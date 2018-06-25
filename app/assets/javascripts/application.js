@@ -4,6 +4,7 @@
 //= require bootstrap-sprockets
 //= require turbolinks
 //= require_tree .
+//= require md_simple_editor
 
 function showShareIcons(title) {
   $("#shareIconsCount").jsSocials({

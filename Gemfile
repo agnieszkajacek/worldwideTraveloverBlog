@@ -39,6 +39,8 @@ gem 'disqus_rails'
 gem 'popper_js', '~> 1.12.9'
 gem "font-awesome-rails"
 gem 'devise', '~> 4.4'
+gem 'redcarpet'
+gem 'md_simple_editor'
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
