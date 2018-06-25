@@ -126,3 +126,25 @@
 .btn-outline-warning:hover {
   color: white;
 }
+
+// markdown editor //
+.big-textarea {
+  height: 400px;
+}
+
+.md_h5,
+.md_minus,
+.md_camera-retro {
+  margin-right: 10px;
+}
+
+.preview_md {
+  color: #ffc107;
+  background-color: white;
+  border-color: #ffc107;
+  &:hover {
+    background-color: #ffc107;
+    color: white;
+    border-color: #ffc107;
+  }
+}
