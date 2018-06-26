@@ -44,7 +44,6 @@
 
 // nmenu with categories //
 .menu-category {
-  display: flex;
   min-height: 60px;
   padding-top: 4px;
   padding-bottom: 4px;
@@ -146,5 +145,27 @@
     background-color: #ffc107;
     color: white;
     border-color: #ffc107;
+  }
+}
+
+//category-header//
+.category-header {
+  margin: 15px;
+  border-radius: 2px;
+
+  .category {
+    color: #6c757d;
+    text-align: center;
+    font-style: italic;
+    margin-top: 15px;
+    margin-bottom: 10px;
+    font-size: 22px;
+  }
+  .category-name {
+    color: #6c757d;
+    text-align: center;
+    font-weight: bold;
+    margin-bottom: 30px;
+    font-size: 24px;
   }
 }
