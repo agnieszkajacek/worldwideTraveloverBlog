@@ -20,11 +20,27 @@
       </div>
     </div>
   </header>
-  <div class="menu-category">
-    <% Category.all.each do |category| %>
-      <a class="categories">
-        <%= link_to category.name, posts_path(category: category.name) %>
-      </a>
-    <% end %>
-  </div>
+
+  <nav class="navbar navbar-expand-lg navbar-light menu-category">
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav mr-auto">
+        <% Category.all.each do |category| %>
+          <% if category.has_children? %>
+            <li class="nav-item dropdown">
+              <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                <%= category.name %></a>
+              </a>
+              <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                <% category.children.each do |c| %>
+                  <a class="dropdown-item" href="#">
+                    <%= c.name %>
+                  </a>
+                <% end %>
+              </div>
+            </li>
+          <% end %>
+        <% end %>
+      </ul>
+    </div>
+  </nav>
 </div>

@@ -41,6 +41,7 @@ gem "font-awesome-rails"
 gem 'devise', '~> 4.4'
 gem 'redcarpet'
 gem 'md_simple_editor'
+gem 'ancestry'
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
