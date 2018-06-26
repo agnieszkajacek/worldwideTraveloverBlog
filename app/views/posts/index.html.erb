@@ -1,17 +1,1 @@
-<div class="container">
-  <div class="articles">
-    <% @posts.each do |post| %>
-      <article class="article-container">
-        <div class="article-card">
-           <h1>
-             <%= link_to "#{post.title}", post, class: "post-title" %>
-           </h1>
-           <div class="article-time"><%= post.created_at.to_date.strftime("%d %B %Y") %></div>
-          <div class="card-body"><%= truncate(strip_tags(markdown(post.content)), length: 450) %></div>
-          <%= link_to "Czytaj więcej", post, class: "read-more" %>
-        </div>
-        <img class="article-image" src="https://images.pexels.com/photos/242236/pexels-photo-242236.jpeg?auto=compress&cs=tinysrgb&h=350">
-      </article>
-    <% end %>
-  </div>
-</div>
+<%= render "shared/articles" %>
