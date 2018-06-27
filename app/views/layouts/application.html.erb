@@ -21,9 +21,20 @@
     <% end %>
 
     <%= render 'shared/nav' %>
-    <div class="container-fluid">
-      <%= yield %>
+
+    <div class="holygrail-body">
+      <div class="container-fluid">
+        <%= yield %>
+      </div>
     </div>
+
+    <footer class="footer">
+      <p class="made">made with love by</p>
+      <%= image_tag "travel-icon.png", class: "footer-image" %>
+      <p>&copy; 2017 Worldwide-Travelover</p>
+    </footer>
+
     <script id="dsq-count-scr" src="//worldwide-travelover-new.disqus.com/count.js" async></script>
   </body>
+
 </html>
