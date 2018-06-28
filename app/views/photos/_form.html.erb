@@ -1,0 +1,9 @@
+<%= simple_form_for @photo do |f| %>
+  <div class="form-group row">
+    <label class="col-sm-1 col-form-label col-form-label-sm">Attach photos</label>
+    <div class="col-sm-8">
+      <%= f.file_field :file, multiple: false, label: false %>
+    </div>
+  </div>
+  <%= f.submit "Save", class: "btn btn-sm btn-outline-success" %>
+<% end %>
