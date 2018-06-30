@@ -44,6 +44,7 @@ gem 'md_simple_editor'
 gem 'ancestry'
 gem 'friendly_id', '~> 5.2.4'
 gem 'mini_magick'
+gem "aws-sdk-s3", require: false
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
