@@ -16,7 +16,6 @@ class PhotosController < ApplicationController
     @photo = Photo.new(photo_params)
 
     if @photo.save!
-      @photo.file.attach(params[:photo][:file])
       redirect_to @photo, notice: "The photo was created!"
     else
       render "new"
