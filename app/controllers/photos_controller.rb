@@ -14,10 +14,9 @@ class PhotosController < ApplicationController
 
   def create
     @photo = Photo.new(photo_params)
-    #@photo.image = params[:photo][:image].tempfile if params[:photo][:image]
 
     if @photo.save!
-      redirect_to @photo, notice: "The photo was created!"
+      redirect_to photos_path, notice: "The photo was created!"
     else
       render "new"
     end
@@ -28,7 +27,7 @@ class PhotosController < ApplicationController
 
   def update
     if @photo.update(photo_params)
-      redirect_to @photo, notice: "Update successful!"
+      redirect_to photos_path, notice: "Update successful!"
     else
       render "edit"
     end
