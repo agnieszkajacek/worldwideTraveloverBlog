@@ -2,7 +2,7 @@ class PhotosController < ApplicationController
   before_action :find_photo, only: [:show, :edit, :update, :destroy]
 
   def index
-    @photos = Photo.all.order("created_at DESC")
+    @photos = Photo.all
   end
 
   def show
@@ -14,6 +14,7 @@ class PhotosController < ApplicationController
 
   def create
     @photo = Photo.new(photo_params)
+    #@photo.image = params[:photo][:image].tempfile if params[:photo][:image]
 
     if @photo.save!
       redirect_to @photo, notice: "The photo was created!"
@@ -40,7 +41,7 @@ class PhotosController < ApplicationController
 
   private
   def photo_params
-    params.require(:photo).permit(:name, :description)
+    params.require(:photo).permit(:name, :description, :image)
   end
 
   def find_photo

@@ -1,9 +1,29 @@
-<%= simple_form_for @photo do |f| %>
+<%= simple_form_for @photo, html: {multipart: true} do |f| %>
   <div class="form-group row">
-    <label class="col-sm-1 col-form-label col-form-label-sm">Attach photos</label>
+    <label class="col-sm-1 col-form-label col-form-label-sm">Name</label>
     <div class="col-sm-8">
-      <%= f.file_field :file, multiple: false, label: false %>
+      <%= f.input :name, label: false %>
     </div>
   </div>
+  <div class="form-group row">
+    <label class="col-sm-1 col-form-label col-form-label-sm">Description</label>
+    <div class="col-sm-8">
+      <%= f.input :description, label: false %>
+    </div>
+  </div>
+  <div class="form-group row">
+    <label class="col-sm-1 col-form-label col-form-label-sm">Image</label>
+    <div class="col-sm-8">
+      <%= f.file_field :image, label: false %>
+    </div>
+  </div>
+  <% if @photo.image_data? %>
+    <div class="field">
+      <%= image_tag @photo.image_url(:thumb) %>
+    </div>
+    <div class="field">
+      Remove attachment: <%= f.check_box :remove_image %>
+    </div>
+  <% end %>
   <%= f.submit "Save", class: "btn btn-sm btn-outline-success" %>
 <% end %>
