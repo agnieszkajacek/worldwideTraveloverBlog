@@ -10,6 +10,7 @@ class PhotosController < ApplicationController
 
   def new
     @photo = Photo.new
+    find_category
   end
 
   def create
@@ -23,6 +24,7 @@ class PhotosController < ApplicationController
   end
 
   def edit
+    find_category
   end
 
   def update
@@ -38,9 +40,21 @@ class PhotosController < ApplicationController
      redirect_to root_path, notice: "Photo destroyed"
   end
 
+  def find_category
+    @category = []
+
+    Category.all.each do |category|
+      if category.has_children?
+        category.children.each do |c|
+          @category << c
+        end
+      end
+    end
+  end
+
   private
   def photo_params
-    params.require(:photo).permit(:name, :description, :image)
+    params.require(:photo).permit(:name, :description, :image, :category_id)
   end
 
   def find_photo

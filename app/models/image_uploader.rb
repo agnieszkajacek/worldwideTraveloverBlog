@@ -6,6 +6,7 @@ class ImageUploader < Shrine
   plugin :delete_raw # delete processed files after uploading
   plugin :determine_mime_type
   plugin :validation_helpers
+  plugin :pretty_location
 
   Attacher.validate do
     validate_max_size 2.megabytes, message: 'is too large (max is 2 MB)'
@@ -22,5 +23,14 @@ class ImageUploader < Shrine
     original.close!
 
     { original: io, thumbnail: thumbnail }
+  end
+
+  def generate_location(io, context = {})
+    type  = context[:record].class.name.downcase if context[:record]
+    style = context[:version] == :original ? "originals" : "thumbs" if context[:version]
+    category_name = context[:record].category.name if context[:record].category_id
+    name = context[:record].name
+
+    [type, style, category_name, name].compact.join("/")
   end
 end
