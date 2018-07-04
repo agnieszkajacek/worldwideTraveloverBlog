@@ -1,5 +1,6 @@
 require "shrine"
 require "shrine/storage/s3"
+require "shrine/storage/file_system"
 
 
 s3_options = {
@@ -10,7 +11,8 @@ s3_options = {
 }
 
 Shrine.storages = {
-  cache: Shrine::Storage::S3.new(prefix: "cache", upload_options: { acl: 'public-read' }, **s3_options),
+  cache: Shrine::Storage::FileSystem.new("public", prefix: "uploads/cache"),
+  #cache: Shrine::Storage::S3.new(prefix: "cache", upload_options: { acl: 'public-read' }, **s3_options),
   store: Shrine::Storage::S3.new(prefix: "store", upload_options: { acl: 'public-read' }, **s3_options),
 }
 
