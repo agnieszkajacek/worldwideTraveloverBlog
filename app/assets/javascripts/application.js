@@ -4,7 +4,6 @@
 //= require bootstrap-sprockets
 //= require turbolinks
 //= require_tree .
-//= require md_simple_editor
 
 function showShareIcons(title) {
   $("#shareIconsCount").jsSocials({
@@ -21,3 +20,8 @@ function showShareIcons(title) {
     ]
   });
 }
+
+$(document).on('click', '[data-toggle="lightbox"]', function(event) {
+  event.preventDefault();
+  $(this).ekkoLightbox();
+});
