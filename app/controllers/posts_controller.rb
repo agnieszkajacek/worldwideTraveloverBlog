@@ -11,11 +11,11 @@ class PostsController < ApplicationController
 
   def new
     @post = Post.new
+    find_category
   end
 
   def create
     @post = Post.new(post_params)
-
     if @post.save!
       redirect_to @post, notice: "The post was created!"
     else
@@ -24,6 +24,7 @@ class PostsController < ApplicationController
   end
 
   def edit
+    find_category
   end
 
   def update
@@ -39,6 +40,18 @@ class PostsController < ApplicationController
      redirect_to root_path, notice: "Post destroyed"
   end
 
+  def find_category
+    @category = []
+
+    Category.all.each do |category|
+      if category.has_children?
+        category.children.each do |c|
+          @category << c
+        end
+      end
+    end
+  end
+
   private
   def post_params
     params.require(:post).permit(:title, :content, :category_id)
@@ -47,4 +60,5 @@ class PostsController < ApplicationController
   def find_post
     @post = Post.find(params[:id])
   end
+
 end

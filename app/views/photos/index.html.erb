@@ -1,1 +1,5 @@
-
+<% @photos.each do |photo| %>
+  <tr>
+    <td><%= image_tag photo.image_url(:thumbnail) %></td>
+  </tr>
+<% end %>

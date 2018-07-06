@@ -2,7 +2,7 @@ class PhotosController < ApplicationController
   before_action :find_photo, only: [:show, :edit, :update, :destroy]
 
   def index
-    @photos = Photo.all.order("created_at DESC")
+    @photos = Photo.all
   end
 
   def show
@@ -10,24 +10,26 @@ class PhotosController < ApplicationController
 
   def new
     @photo = Photo.new
+    find_category
   end
 
   def create
     @photo = Photo.new(photo_params)
 
     if @photo.save!
-      redirect_to @photo, notice: "The photo was created!"
+      redirect_to photos_path, notice: "The photo was created!"
     else
       render "new"
     end
   end
 
   def edit
+    find_category
   end
 
   def update
     if @photo.update(photo_params)
-      redirect_to @photo, notice: "Update successful!"
+      redirect_to photos_path, notice: "Update successful!"
     else
       render "edit"
     end
@@ -38,9 +40,21 @@ class PhotosController < ApplicationController
      redirect_to root_path, notice: "Photo destroyed"
   end
 
+  def find_category
+    @category = []
+
+    Category.all.each do |category|
+      if category.has_children?
+        category.children.each do |c|
+          @category << c
+        end
+      end
+    end
+  end
+
   private
   def photo_params
-    params.require(:photo).permit(:name, :description)
+    params.require(:photo).permit(:name, :description, :image, :category_id)
   end
 
   def find_photo

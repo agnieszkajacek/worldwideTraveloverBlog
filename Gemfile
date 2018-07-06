@@ -5,7 +5,6 @@ git_source(:github) do |repo_name|
   "https://github.com/#{repo_name}.git"
 end
 
-gem 'dotenv-rails'
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '~> 5.2'
 # Use sqlite3 as the database for Active Record
@@ -43,6 +42,10 @@ gem 'redcarpet'
 gem 'md_simple_editor'
 gem 'ancestry'
 gem 'friendly_id', '~> 5.2.4'
+gem 'shrine', '~> 2.8'
+gem 'fastimage', '~> 2.1'
+gem "image_processing", "~> 1.4.0"
+gem 'aws-sdk', '~> 3'
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
@@ -50,7 +53,8 @@ group :development, :test do
   # Adds support for Capybara system testing and selenium driver
   gem 'capybara', '~> 2.13'
   gem 'selenium-webdriver'
-  gem 'byebug'
+  gem 'pry'
+  gem 'dotenv-rails'
 end
 
 group :development do
