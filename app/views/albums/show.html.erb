@@ -1,0 +1,11 @@
+<div id="pagewrap">
+  <div class="gallery">
+    <% @photos.each do |photo| %>
+      <div class="image">
+        <a href="<%= photo.image_url(:original) %>" data-gallery="gallery-name" data-toggle="lightbox" data-footer="<%= photo.description %>">
+          <img src="<%= photo.image_url(:thumbnail) %>" class="img-fluid">
+        </a>
+      </div>
+    <% end %>
+  </div>
+</div>

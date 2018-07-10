@@ -3,6 +3,7 @@ Rails.application.routes.draw do
   root "posts#index"
 
   resources :posts
+  resources :albums, only: [:show]
   resources :categories
   resources :photos
 end
