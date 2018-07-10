@@ -18,7 +18,7 @@ class ImageUploader < Shrine
 
     thumbnail = ImageProcessing::MiniMagick
       .source(original)
-      .resize_to_limit!(250, 250)
+      .resize_to_fill!(250, 250)
 
     original.close!
 

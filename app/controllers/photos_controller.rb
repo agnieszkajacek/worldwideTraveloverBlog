@@ -2,7 +2,7 @@ class PhotosController < ApplicationController
   before_action :find_photo, only: [:show, :edit, :update, :destroy]
 
   def index
-    @photos = Photo.all
+    find_category
   end
 
   def show
