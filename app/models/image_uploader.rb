@@ -29,14 +29,14 @@ class ImageUploader < Shrine
     type  = context[:record].class.name.downcase if context[:record]
     style = context[:version] == :original ? "originals" : "thumbs" if context[:version]
 
-    if context[:record].is_a?(Photo) && context[:record].category_id
+    if (context[:record].is_a?(Photo) || context[:record].is_a?(Post) ) && context[:record].category_id
       category_name = context[:record].category.name
     end
 
     if context[:record].is_a?(Category)
       category_name = context[:record].name
     end
-    
+
     name = context[:metadata]["filename"]
 
     [type, style, category_name, name].compact.join("/")
