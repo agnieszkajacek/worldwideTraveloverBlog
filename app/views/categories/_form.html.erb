@@ -11,6 +11,12 @@
       <%= f.input :parent_id, collection: @parent_category, required: false, input_html: {class: "form-control form-control-sm"}, label: false %>
     </div>
   </div>
+  <div class="form-group row">
+    <label class="col-sm-1 col-form-label col-form-label-sm">Cover</label>
+    <div class="col-sm-8">
+      <%= f.file_field :cover, label: false %>
+    </div>
+  </div>
 
   <%= f.submit "Save", class: "btn btn-sm btn-outline-success" %>
 <% end %>
