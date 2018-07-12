@@ -7,7 +7,7 @@
 <div class="container">
   <div class="articles">
     <% @posts.each do |post| %>
-      <article class="article-container">
+      <article class="article-container shadow-5">
         <div class="article-card">
            <h1>
              <%= link_to "#{post.title}", post, class: "post-title" %>
