@@ -12,7 +12,7 @@
               <div class="card-body"><%= truncate(strip_tags(markdown(post.content)), length: 450) %></div>
               <%= link_to "Czytaj więcej", post, class: "read-more" %>
             </div>
-            <img class="article-image" src="https://images.pexels.com/photos/242236/pexels-photo-242236.jpeg?auto=compress&cs=tinysrgb&h=350">
+            <img class="article-image" src="<%= post.cover_url(:thumbnail) %>">
           </article>
         <% end %>
       </div>
