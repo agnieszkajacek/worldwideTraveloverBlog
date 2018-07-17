@@ -4,7 +4,7 @@ class SubscribersController < ApplicationController
   end
   def create
     @subscriber = Subscriber.new(subscriber_params)
-    if @subscriber.save
+    if @subscriber.save!
       cookies[:saved_subscriber] = true
       redirect_to root_path, notice: 'Saved successfully!'
     else

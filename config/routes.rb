@@ -1,5 +1,4 @@
 Rails.application.routes.draw do
-  get 'subscribers/index'
   devise_for :users, controllers: {sessions: 'users/sessions'}
   root "posts#index"
 
