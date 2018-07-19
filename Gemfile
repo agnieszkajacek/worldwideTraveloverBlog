@@ -46,6 +46,9 @@ gem 'shrine', '~> 2.8'
 gem 'fastimage', '~> 2.1'
 gem "image_processing", "~> 1.4.0"
 gem 'aws-sdk', '~> 3'
+gem 'sendgrid-actionmailer'
+gem 'rake'
+gem 'font-awesome-sass'
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console

@@ -6,6 +6,7 @@ class SubscribersController < ApplicationController
     @subscriber = Subscriber.new(subscriber_params)
     if @subscriber.save!
       cookies[:saved_subscriber] = true
+      NotificationMailer.with(subscriber: @subscriber).welcome_email.deliver_now
       redirect_to root_path, notice: 'Saved successfully!'
     else
       redirect_to root_path, notice: 'Failed to save'
