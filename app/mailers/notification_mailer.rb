@@ -4,7 +4,11 @@ class NotificationMailer < ApplicationMailer
 
   def welcome_email
     @subscriber = params[:subscriber]
-    @url  = 'http://example.com/login'
-    mail(to: @subscriber.email, subject: 'Welcome to My Awesome Site')
+    mail(to: @subscriber.email, subject: 'Welcome to Worldwide Travelover')
+  end
+
+  def post_email(subscriber, post)
+    @post = post
+    mail(to: subscriber, subject: 'New post')
   end
 end

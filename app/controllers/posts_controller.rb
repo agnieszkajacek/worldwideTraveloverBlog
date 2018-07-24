@@ -16,7 +16,12 @@ class PostsController < ApplicationController
 
   def create
     @post = Post.new(post_params)
+    @subscribers = Subscriber.all
+
     if @post.save!
+      #@subscribers.each do |subscriber|
+      #  NotificationMailer.post_email(subscriber.email, @post).deliver_now
+      #end
       redirect_to @post, notice: "The post was created!"
     else
       render "new"
@@ -28,7 +33,12 @@ class PostsController < ApplicationController
   end
 
   def update
+    @subscribers = Subscriber.all
+
     if @post.update(post_params)
+      #@subscribers.each do |subscriber|
+      #  NotificationMailer.post_email(subscriber.email, @post).deliver_now
+      #end
       redirect_to @post, notice: "Update successful!"
     else
       render "edit"
