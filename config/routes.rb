@@ -6,4 +6,5 @@ Rails.application.routes.draw do
   resources :albums, only: [:show]
   resources :categories
   resources :photos
+  resources :subscribers
 end
