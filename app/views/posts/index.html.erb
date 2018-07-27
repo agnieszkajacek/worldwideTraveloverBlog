@@ -1,9 +1,10 @@
-<div class="">
+<div class="container-fluid margin">
   <div class="articles">
     <div class="row">
-      <div class="col-md-9">
+      <div style="
+      padding-right: 35px;" class="col-md-9">
         <% @posts.each do |post| %>
-          <article class="article-container shadow-5">
+          <article class="article-container">
             <div class="article-card">
                <h1>
                  <%= link_to "#{post.title}", post, class: "post-title" %>

@@ -1,6 +1,6 @@
 <div class="container">
   <div class="articles">
-    <article class="article-container shadow-5">
+    <article class="article-container">
         <div class="article-card">
           <% if user_signed_in? %>
             <div class="admin-options">
@@ -15,7 +15,11 @@
              <%= @post.title %>
             </h1>
           <% end %>
-           <div class="article-time"><%= @post.created_at.to_date.strftime("%d %B %Y") %></div>
+          <div class="fancy-line">
+            <span class="article-time">
+              <%= @post.created_at.to_date.strftime("%d %B %Y") %>
+            </span>
+          </div>
           <div class="card-body"><%= markdown(@post.content) %></div>
           <div id="shareIconsCount"></div>
           <div class="disqus">
