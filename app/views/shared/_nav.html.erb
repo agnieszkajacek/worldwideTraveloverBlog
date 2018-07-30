@@ -1,29 +1,29 @@
-<div class="container-fluid no-padding">
+<div class="container-fluid">
   <header class="blog-header">
-    <div class="first-nav">
-      <div class="col-4">
-        <% if user_signed_in? %>
-          <a href="/posts/new" class="btn btn-sm btn-outline-warning">New post</a>
-          <a href="/photos/new" class="btn btn-sm btn-outline-warning">Add photo</a>
-          <a href="/categories/new" class="btn btn-sm btn-outline-warning">New category</a>
-        <% else %>
-        <a href="/subscribers/new" class="subscribe">Subscribe</a>
-        <% end %>
+      <div class="first-nav">
+        <div class="col-4">
+          <% if user_signed_in? %>
+            <a href="/posts/new" class="btn btn-sm btn-outline-warning">New post</a>
+            <a href="/photos/new" class="btn btn-sm btn-outline-warning">Add photo</a>
+            <a href="/categories/new" class="btn btn-sm btn-outline-warning">New category</a>
+          <% else %>
+
+          <% end %>
+        </div>
+        <div class="col-4 text-center">
+          <a href="/" class="main-title">Worldwide Travelover</a>
+        </div>
+        <div class="col-4 right-items">
+          <% if user_signed_in? %>
+            <a><%= link_to "Log out", destroy_user_session_path, method: :delete, class: "btn btn-sm btn-outline-secondary" %></a>
+          <% elsif cookies[:username] == "agnieszka" %>
+            <a><%= link_to "Log in", new_user_session_path, class: "btn btn-sm btn-outline-secondary" %></a>
+          <% end %>
+        </div>
       </div>
-      <div class="col-4 text-center">
-        <a href="/" class="main-title">Worldwide Travelover</a>
-      </div>
-      <div class="col-4 right-items">
-        <% if user_signed_in? %>
-          <a><%= link_to "Log out", destroy_user_session_path, method: :delete, class: "btn btn-sm btn-outline-secondary" %></a>
-        <% elsif cookies[:username] == "agnieszka" %>
-          <a><%= link_to "Log in", new_user_session_path, class: "btn btn-sm btn-outline-secondary" %></a>
-        <% end %>
-      </div>
-    </div>
   </header>
 
-  <nav class="navbar navbar-expand-lg navbar-light menu-category">
+  <nav class="row navbar navbar-expand-lg navbar-light menu-category">
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
       <ul class="navbar-nav mr-auto">
         <% Category.where(ancestry: nil).each do |category| %>
@@ -42,6 +42,7 @@
         <% end %>
         <%= link_to "Gallery", photos_url %></a>
       </ul>
+      <a href="/subscribers/new" class="subscribe">Subscribe</a>
     </div>
   </nav>
 </div>
