@@ -1,26 +1,26 @@
 <div class="container-fluid">
-  <header class="blog-header">
-      <div class="first-nav">
-        <div class="col-4">
-          <% if user_signed_in? %>
-            <a href="/posts/new" class="btn btn-sm btn-outline-warning">New post</a>
-            <a href="/photos/new" class="btn btn-sm btn-outline-warning">Add photo</a>
-            <a href="/categories/new" class="btn btn-sm btn-outline-warning">New category</a>
-          <% else %>
+  <header class=" blog-header">
+    <div class="first-nav">
+      <div class="col-4">
+        <% if user_signed_in? %>
+          <a href="/posts/new" class="btn btn-sm btn-outline-warning">New post</a>
+          <a href="/photos/new" class="btn btn-sm btn-outline-warning">Add photo</a>
+          <a href="/categories/new" class="btn btn-sm btn-outline-warning">New category</a>
+        <% else %>
 
-          <% end %>
-        </div>
-        <div class="col-4 text-center">
-          <a href="/" class="main-title">Worldwide Travelover</a>
-        </div>
-        <div class="col-4 right-items">
-          <% if user_signed_in? %>
-            <a><%= link_to "Log out", destroy_user_session_path, method: :delete, class: "btn btn-sm btn-outline-secondary" %></a>
-          <% elsif cookies[:username] == "agnieszka" %>
-            <a><%= link_to "Log in", new_user_session_path, class: "btn btn-sm btn-outline-secondary" %></a>
-          <% end %>
-        </div>
+        <% end %>
       </div>
+      <div class="col-4 text-center">
+        <a href="/" class="main-title">Worldwide Travelover</a>
+      </div>
+      <div class="col-4 right-items">
+        <% if user_signed_in? %>
+          <a><%= link_to "Log out", destroy_user_session_path, method: :delete, class: "btn btn-sm btn-outline-secondary" %></a>
+        <% elsif cookies[:username] == "agnieszka" %>
+          <a><%= link_to "Log in", new_user_session_path, class: "btn btn-sm btn-outline-secondary" %></a>
+        <% end %>
+      </div>
+    </div>
   </header>
 
   <nav class="row navbar navbar-expand-lg navbar-light menu-category">
@@ -42,7 +42,10 @@
         <% end %>
         <%= link_to "Gallery", photos_url %></a>
       </ul>
-      <a href="/subscribers/new" class="subscribe">Subscribe</a>
+      <div class="subscribe">
+        <a data-toggle="modal" data-target="#exampleModal">Subscription</a>
+          <%= render "shared/new_subscriber" %>
+      </div>
     </div>
   </nav>
 </div>
