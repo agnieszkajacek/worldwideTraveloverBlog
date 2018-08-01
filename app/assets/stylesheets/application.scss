@@ -32,9 +32,8 @@ body{
   font-weight: 400;
   color: var(--main-font-color);
 
-  .holygrail-body{
+  .holygrail-body {
     flex: 1 0 auto;
-    display: flex;
     background-color: var(--main-bg-color);
     padding-top: 80px;
   }
@@ -98,12 +97,14 @@ body{
   padding-top: 4px;
   padding-bottom: 4px;
   a {
-    padding: 8px;
     color: white !important;
     font-family: 'Montserrat', sans-serif;
     font-size: 16px;
     font-weight: 400;
   }
+}
+.navbar-dark .navbar-toggler {
+  border-color: rgba(255, 255, 255, 0.9);
 }
 
 // articles index with sidebar //
@@ -255,8 +256,6 @@ body{
 
 //category-header//
 .category-header {
-  margin: 15px;
-  border-radius: 2px;
   padding-bottom: 15px;
 
   .category {

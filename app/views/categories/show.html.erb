@@ -4,20 +4,39 @@
     <p class="category-name"><%= @category.name %></p>
   </div>
 </div>
-<div class="container">
+<div class="container-fluid margin">
   <div class="articles">
-    <% @posts.each do |post| %>
-      <article class="article-container shadow-5">
-        <div class="article-card">
-           <h1>
-             <%= link_to "#{post.title}", post, class: "post-title" %>
-           </h1>
-           <div class="article-time"><%= post.created_at.to_date.strftime("%d %B %Y") %></div>
-          <div class="card-body"><%= truncate(strip_tags(markdown(post.content)), length: 450) %></div>
-          <%= link_to "Czytaj więcej", post, class: "read-more" %>
+    <div class="row">
+      <div style="
+      padding-right: 35px;" class="col-md-9">
+        <% @posts.each do |post| %>
+          <article class="article-container shadow-5">
+            <div class="article-card">
+               <h1  class="center-title">
+                 <%= link_to "#{post.title}", post, class: "post-title" %>
+               </h1>
+               <div class="fancy-line">
+                 <span class="article-time">
+                   <%= post.created_at.to_date.strftime("%d %B %Y") %>
+                 </span>
+               </div>
+              <div class="card-body"><%= truncate(strip_tags(markdown(post.content)), length: 450) %></div>
+              <%= link_to "Czytaj więcej", post, class: "read-more" %>
+            </div>
+            <img class="article-image" src="<%= post.cover_url(:thumbnail) %>">
+          </article>
+        <% end %>
+      </div>
+      <div class="col-md-3">
+        <div class="sidebar">
+          <%= render"shared/about_me" %>
         </div>
-        <img class="article-image" src="<%= post.cover_url(:thumbnail) %>">
-      </article>
-    <% end %>
+        <div class="sidebar">
+          <%= render"shared/badges" %>
+          <%= render"shared/instagram_feed" %>
+          <%= render"shared/facebook" %>
+        </div>
+      </div>
+    </div>
   </div>
 </div>
