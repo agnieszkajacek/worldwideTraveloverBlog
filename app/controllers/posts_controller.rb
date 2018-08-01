@@ -4,6 +4,9 @@ class PostsController < ApplicationController
 
   def index
     @posts = Post.all.order("created_at DESC")
+    if params[:search]
+      @posts = @posts.search(params[:search])
+    end
   end
 
   def show
@@ -70,5 +73,4 @@ class PostsController < ApplicationController
   def find_post
     @post = Post.find(params[:id])
   end
-
 end

@@ -47,7 +47,10 @@ body{
   margin-right: auto;
   margin-left: auto;
 }
-
+.subscribe {
+  margin-right: 15px;
+  cursor: pointer;
+}
 .navbar {
   background-color: var(--nav-footer);
 }
@@ -70,9 +73,6 @@ body{
     }
     a {
       text-decoration: none;
-    }
-    a.subscribe {
-      color: #6c757d;
     }
     a.main-title {
       font-family: 'Pattaya', sans-serif;
