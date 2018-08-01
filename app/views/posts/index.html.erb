@@ -5,28 +5,26 @@
 <div class="container-fluid margin">
   <div class="articles">
     <div class="row">
-      <div style="
-      padding-right: 35px;" class="col-md-9">
+      <div class="col-lg-9 col-12">
         <% @posts.each do |post| %>
           <article class="article-container">
+            <img class="card-img-top article-image img-thumbnail" src="<%= post.cover_url(:medium) %>">
             <div class="article-card">
-               <h1 class="center-title">
-                 <%= link_to "#{post.title}", post, class: "post-title" %>
-               </h1>
-               <div class="fancy-line">
-                 <span class="article-time">
-                   <%= post.created_at.to_date.strftime("%d %B %Y") %>
-                 </span>
-               </div>
-              <div class="card-body"><%= (strip_tags(markdown(post.content)).truncate_words(55, omission: '... (continued)')) %></div>
-              <%= link_to "Czytaj więcej", post, class: "read-more" %>
-
+              <h1 class="center-title">
+                <%= link_to "#{post.title}", post, class: "post-title" %>
+              </h1>
+              <div class="fancy-line">
+                <span class="article-time">
+                  <%= post.created_at.to_date.strftime("%d %B %Y") %>
+                </span>
+              </div>
+             <div class="card-body"><%= (strip_tags(markdown(post.content)).truncate_words(95, omission: '... (continued)')) %></div>
+             <%= link_to "Czytaj więcej", post, class: "read-more" %>
             </div>
-            <img class="article-image" src="<%= post.cover_url(:thumbnail) %>">
           </article>
         <% end %>
       </div>
-      <div class="col-md-3">
+      <div class="col-lg-3 col-12">
         <div class="sidebar">
           <%= render"shared/about_me" %>
         </div>

@@ -19,9 +19,13 @@ class ImageUploader < Shrine
     thumbnail = ImageProcessing::MiniMagick
       .source(original)
       .resize_to_fill!(250, 250)
+
+    medium = ImageProcessing::MiniMagick
+      .source(original)
+      .resize_to_fill!(750, 550)
     original.close!
 
-    { original: io, thumbnail: thumbnail }
+    { original: io, thumbnail: thumbnail, medium: medium }
   end
 
   def generate_location(io, context = {})
