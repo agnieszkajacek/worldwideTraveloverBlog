@@ -38,7 +38,7 @@
               </a>
               <div class="dropdown-menu" aria-labelledby="navbarDropdown">
                 <% category.children.each do |c| %>
-                  <%= link_to c.name, c, class:"dropdown-item" %>
+                  <%= link_to c.name, c, class:"dropdown-item" %><hr>
                 <% end %>
               </div>
             </li>
@@ -54,10 +54,8 @@
       </div>
       <form class="form-inline my-2 my-lg-0">
         <%= form_tag(posts_path, :method => "get", id: "search-form") do %>
-          <%= text_field_tag :search, params[:search], id: "search", placeholder: "Search", type: "search", class: "form-control mr-sm-2" %>
+          <%= text_field_tag :search, params[:search], id: "search", placeholder: "Search posts", type: "search", class: "form-control mr-sm-2" %>
         <% end %>
     </div>
   </nav>
-
-
 </div>
