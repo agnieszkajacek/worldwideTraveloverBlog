@@ -1,5 +1,5 @@
 <div class="container-fluid">
-  <header class="blog-header">
+  <header class=" blog-header">
     <div class="first-nav">
       <div class="col-4">
         <% if user_signed_in? %>
@@ -7,7 +7,7 @@
           <a href="/photos/new" class="btn btn-sm btn-outline-warning">Add photo</a>
           <a href="/categories/new" class="btn btn-sm btn-outline-warning">New category</a>
         <% else %>
-        <a href="/subscribers/new" class="subscribe">Subscribe</a>
+
         <% end %>
       </div>
       <div class="col-4 text-center">
@@ -23,25 +23,39 @@
     </div>
   </header>
 
-  <nav class="navbar navbar-expand-lg navbar-light menu-category">
+  <nav class="row navbar navbar-expand-lg navbar-dark menu-category">
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
       <ul class="navbar-nav mr-auto">
         <% Category.where(ancestry: nil).each do |category| %>
           <% if true %>
             <li class="nav-item dropdown">
               <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                <%= category.name %></a>
+                <%= category.name %>
               </a>
               <div class="dropdown-menu" aria-labelledby="navbarDropdown">
                 <% category.children.each do |c| %>
-                  <%= link_to c.name, c, class:"dropdown-item" %>
+                  <%= link_to c.name, c, class:"dropdown-item" %><hr>
                 <% end %>
               </div>
             </li>
           <% end %>
+          <li class="nav-item">
+            <%= link_to "Gallery", photos_url, class: "nav-link" %></a>
+          </li>
         <% end %>
-        <%= link_to "Gallery", photos_url %></a>
       </ul>
+      <div class="nav-item subscribe">
+        <a data-toggle="modal" data-target="#exampleModal">Subscription</a>
+        <%= render "shared/new_subscriber" %>
+      </div>
+      <form class="form-inline my-2 my-lg-0">
+        <%= form_tag(posts_path, :method => "get", id: "search-form") do %>
+          <%= text_field_tag :search, params[:search], id: "search", placeholder: "Search posts", type: "search", class: "form-control mr-sm-2" %>
+        <% end %>
     </div>
   </nav>
 </div>
