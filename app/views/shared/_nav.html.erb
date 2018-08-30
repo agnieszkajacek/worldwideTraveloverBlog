@@ -44,17 +44,17 @@
             </li>
           <% end %>
           <li class="nav-item">
-            <%= link_to "Gallery", photos_url, class: "nav-link" %></a>
+            <%= link_to "Galeria", photos_url, class: "nav-link" %></a>
           </li>
         <% end %>
       </ul>
       <div class="nav-item subscribe">
-        <a data-toggle="modal" data-target="#exampleModal">Subscription</a>
+        <a data-toggle="modal" data-target="#exampleModal">Newsletter</a>
         <%= render "shared/new_subscriber" %>
       </div>
       <form class="form-inline my-2 my-lg-0">
         <%= form_tag(posts_path, :method => "get", id: "search-form") do %>
-          <%= text_field_tag :search, params[:search], id: "search", placeholder: "Search posts", type: "search", class: "form-control mr-sm-2" %>
+          <%= text_field_tag :search, params[:search], id: "search", placeholder: "Szukaj postów...", type: "search", class: "form-control mr-sm-2" %>
         <% end %>
     </div>
   </nav>
