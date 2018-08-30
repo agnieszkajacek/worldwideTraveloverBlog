@@ -293,6 +293,18 @@ body{
   }
 }
 
+.edit-link {
+  a:hover{
+    text-decoration: none;
+  }
+  a.main-cat {
+    color: darkgreen;
+  }
+  a.sub-cat{
+    color: cornflowerblue
+  }
+}
+
 .footer {
   text-align: center;
   color: white;
