@@ -16,7 +16,7 @@
       <div class="col-4 right-items">
         <% if user_signed_in? %>
           <a><%= link_to "Log out", destroy_user_session_path, method: :delete, class: "btn btn-sm btn-outline-secondary" %></a>
-        <% elsif cookies[:username] == "agnieszka" %>
+        <% elsif cookies[:username] == ENV["COOKIES"] %>
           <a><%= link_to "Log in", new_user_session_path, class: "btn btn-sm btn-outline-secondary" %></a>
         <% end %>
       </div>
