@@ -7,7 +7,6 @@
     </div>
   </header>
 
-
   <% if user_signed_in? %>
     <a><%= link_to "Log out", destroy_user_session_path, method: :delete, class: "btn btn-outline-info" %></a>
   <% elsif cookies[:username] == ENV["COOKIES"] %>
@@ -21,8 +20,6 @@
   <% else %>
 
   <% end %>
-
-
 
   <nav class="row navbar navbar-expand-lg navbar-dark menu-category">
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
