@@ -15,10 +15,10 @@
               </h1>
               <div class="fancy-line">
                 <span class="article-time">
-                  <%= post.created_at.to_date.strftime("%d %B %Y") %>
+                  <%= post.published.to_date.strftime("%d %B %Y") %>
                 </span>
               </div>
-             <div class="card-body"><%= (strip_tags(markdown(post.content)).truncate_words(95, omission: '... (continued)')) %></div>
+             <div class="card-body"><%= post.introduction %></div>
              <%= link_to "Czytaj więcej", post, class: "read-more" %>
             </div>
           </article>

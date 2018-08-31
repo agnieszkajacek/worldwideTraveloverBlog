@@ -3,7 +3,7 @@ class PostsController < ApplicationController
   before_action :authenticate_user!, only: [:new, :create, :edit, :update, :destroy]
 
   def index
-    @posts = Post.all.order("created_at DESC")
+    @posts = Post.where("published <= ?", Date.today).order("published DESC")
     if params[:search]
       @posts = @posts.search(params[:search])
     end
@@ -68,7 +68,7 @@ class PostsController < ApplicationController
 
   private
   def post_params
-    params.require(:post).permit(:title, :content, :category_id, :cover)
+    params.require(:post).permit(:title, :content, :category_id, :cover, :published, :introduction)
   end
 
   def find_post
