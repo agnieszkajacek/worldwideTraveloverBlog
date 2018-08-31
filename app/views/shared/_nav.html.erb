@@ -8,6 +8,22 @@
   </header>
 
 
+  <% if user_signed_in? %>
+    <a><%= link_to "Log out", destroy_user_session_path, method: :delete, class: "btn btn-outline-info" %></a>
+  <% elsif cookies[:username] == ENV["COOKIES"] %>
+    <a><%= link_to "Log in", new_user_session_path, class: "btn btn-outline-info" %></a>
+  <% end %>
+
+  <% if user_signed_in? %>
+      <%= link_to "Nowy post", new_post_url, class: "btn btn-outline-info" %>
+      <%= link_to "Nowe zdjęcie", new_photo_url, class: "btn btn-outline-info" %>
+      <%= link_to "Nowa kategoria", new_category_url, class: "btn btn-outline-info" %>
+  <% else %>
+
+  <% end %>
+
+
+
   <nav class="row navbar navbar-expand-lg navbar-dark menu-category">
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
@@ -31,36 +47,16 @@
           <li class="nav-item">
             <%= link_to "Galeria", photos_url, class: "nav-link" %>
           </li>
-            <% if user_signed_in? %>
-              <li class="nav-item">
-                <%= link_to "Nowy post", new_post_url, class: "nav-link" %>
-              </li>
-              <li class="nav-item">
-                <%= link_to "Nowe zdjęcie", new_photo_url, class: "nav-link" %>
-              </li>
-              <li class="nav-item">
-                <%= link_to "Nowa kategoria", new_category_url, class: "nav-link" %>
-              </li>
-            <% else %>
-
-            <% end %>
-          <li class="nav-item">
-            <% if user_signed_in? %>
-              <a><%= link_to "Log out", destroy_user_session_path, method: :delete, class: "nav-link" %></a>
-            <% elsif cookies[:username] == ENV["COOKIES"] %>
-              <a><%= link_to "Log in", new_user_session_path, class: "nav-link" %></a>
-            <% end %>
-          </li>
         <% end %>
       </ul>
       <div class="nav-item subscribe">
         <a data-toggle="modal" data-target="#exampleModal">Newsletter</a>
         <%= render "shared/new_subscriber" %>
       </div>
-      <form class="form-inline my-2 my-lg-0">
-        <%= form_tag(posts_path, :method => "get", id: "search-form") do %>
-          <%= text_field_tag :search, params[:search], id: "search", placeholder: "Szukaj postów...", type: "search", class: "form-control mr-sm-2" %>
-        <% end %>
+    </div>
+    <div class="nav-item subscribe">
+      <a data-toggle="modal" data-target="#searchModal"><i class="fas fa-search"></i></a>
+      <%= render "shared/searchbox" %>
     </div>
   </nav>
 </div>
