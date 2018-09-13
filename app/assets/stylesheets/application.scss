@@ -7,22 +7,19 @@
     width: 30%;
   }
 }
-//color palete //
-/*
-  #dee3d2
-  #2c2820
-  #abccd2
-  #40544f
-  #c0afa3
-  #87736a
-  #79928c
-*/
+
+@font-face {
+  font-family: 'PlaylistScript';
+  src: font-url('Playlist-Script.eot');
+  src: font-url('Playlist-Script.eot#iefix') format('embedded-opentype'),
+      font-url('Playlist-Script.woff') format("woff"),
+      font-url('Playlist-Script.svg#icofonts') format("svg");
+} 
 
 :root {
   --main-bg-color: #dee3d2;
-  --main-font-color: #2c2820;
-  --headers: #79928c;
-  --nav-footer: #40544f;
+  --main-font-color: #626262;
+  --nav-footer: #405448;
   --blog-title: #abccd2;
 }
 
@@ -48,10 +45,6 @@ body{
   background: white;
   padding: 35px;
 }
-.container-fluid.margin {
-  padding-right: 50px;
-  padding-left: 50px;
-}
 .subscribe {
   margin-right: 15px;
   cursor: pointer;
@@ -74,7 +67,7 @@ body{
       text-decoration: none;
     }
     a.main-title {
-      font-family: 'Pattaya', sans-serif;
+      font-family: 'PlaylistScript';
       font-size: 65px;
       color: var(--blog-title);
       font-weight: 400;
@@ -242,23 +235,6 @@ body{
 // markdown editor //
 .big-textarea {
   height: 400px;
-}
-
-.md_h5,
-.md_minus,
-.md_camera-retro {
-  margin-right: 10px;
-}
-
-.preview_md {
-  color: #ffc107;
-  background-color: white;
-  border-color: #ffc107;
-  &:hover {
-    background-color: #ffc107;
-    color: white;
-    border-color: #ffc107;
-  }
 }
 
 //category-header//
