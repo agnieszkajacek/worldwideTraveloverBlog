@@ -21,7 +21,7 @@
   --main-font-color: #626262;
   --nav-footer: #405448;
   --blog-title: #abccd2;
-  --white: #ffffff;
+  --white:#f9f9f6;
 }
 
 body{
@@ -42,6 +42,24 @@ body{
   }
 }
 
+.arrow {
+  width: 60px;
+  height: 44px;
+}
+.arrow.right {
+  margin-left: 25px;
+}
+.arrow.left {
+  transform: rotate(180deg);
+  margin-right: 25px
+}
+
+.white-icon {
+  color: var(--white);
+}
+.right-side-menu {
+  display: flex;
+}
 .coco-image {
   background-image: url("coco.jpg");
   background-size: cover;
@@ -53,11 +71,27 @@ body{
   padding: 35px;
 }
 .subscribe {
-  margin-right: 15px;
   cursor: pointer;
 }
+
+//navbar 
 .navbar {
   background-color: var(--nav-footer);
+}
+.navbar-nav .nav-item {
+  //margin-right: 10px;
+  //margin-left: 10px;
+}
+.sticky.is-sticky {
+  position: fixed;
+  left: 0;
+  right: 0;
+  top: 0;
+  z-index: 1000;
+}
+
+.navbar-dark .navbar-toggler {
+  border-color: transparent !important;
 }
 // header //
 
@@ -92,13 +126,11 @@ body{
 
 // menu with categories //
 .menu-category {
-  min-height: 60px;
-  padding-top: 4px;
-  padding-bottom: 4px;
+
   a {
     color: white !important;
     font-family: 'Montserrat', sans-serif;
-    font-size: 15px;
+    font-size: 14px;
     font-weight: 400;
   }
 }

@@ -22,39 +22,58 @@
 
   <% end %>
 
-  <nav class="row navbar navbar-expand-lg navbar-dark menu-category">
-    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-      <span class="navbar-toggler-icon"></span>
-    </button>
+  <nav data-toggle="sticky-onscroll" class="row navbar navbar-expand-lg navbar-dark menu-category">
+    <div class="container">
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
 
-    <div class="collapse navbar-collapse" id="navbarSupportedContent">
-      <ul class="navbar-nav mr-auto">
-        <% Category.where(ancestry: nil).each do |category| %>
-          <% if true %>
-            <li class="nav-item dropdown">
-              <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                <%= category.name %>
-              </a>
-              <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                <% category.children.each do |c| %>
-                  <%= link_to c.name, c, class:"dropdown-item" %><hr>
-                <% end %>
-              </div>
-            </li>
+      <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <div class="nav-item">
+          <%= image_tag ("arrow-left.png"), class: "arrow left" %>
+        </div>
+        <div>
+          <a href="/" class="nav-link">Strona główna</a>
+        </div>
+        <ul class="navbar-nav">
+          <% Category.where(ancestry: nil).each do |category| %>
+            <% if true %>
+              <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                  <%= category.name %>
+                </a>
+                <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                  <% category.children.each do |c| %>
+                    <%= link_to c.name, c, class:"dropdown-item" %><hr>
+                  <% end %>
+                </div>
+              </li>
+            <% end %>
           <% end %>
           <li class="nav-item">
             <%= link_to "Galeria", photos_url, class: "nav-link" %>
           </li>
-        <% end %>
-      </ul>
-      <div class="nav-item subscribe">
-        <a data-toggle="modal" data-target="#exampleModal">Newsletter</a>
-        <%= render "shared/new_subscriber" %>
+        </ul>
       </div>
-    </div>
-    <div class="nav-item subscribe">
-      <a data-toggle="modal" data-target="#searchModal"><i class="fas fa-search"></i></a>
-      <%= render "shared/searchbox" %>
+      <div class="right-side-menu">
+        <div>
+          <a href="https://www.instagram.com/worldwide_travelover" class="nav-link"><i class="fab fa-instagram white-icon"></i></a>
+        </div>
+        <div>
+          <a href="https://www.facebook.com/worldwide.travelover" class="nav-link"><i class="fab fa-facebook-square white-icon"></i></a>
+        </div>
+        <div class="nav-item subscribe">
+          <a data-toggle="modal" data-target="#exampleModal" class="nav-link">Newsletter</a>
+          <%= render "shared/new_subscriber" %>
+        </div>
+        <div class="nav-item">
+          <a data-toggle="modal" data-target="#searchModal" class="nav-link"><i class="fas fa-search"></i></a>
+          <%= render "shared/searchbox" %>
+        </div>
+        <div class="nav-item">
+        <%= image_tag ("arrow-left.png"), class: "arrow right" %>
+        </div>
+      </div>
     </div>
   </nav>
 </div>
