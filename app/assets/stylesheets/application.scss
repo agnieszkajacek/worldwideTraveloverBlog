@@ -2,13 +2,10 @@
 @import "font-awesome-sprockets";
 @import "font-awesome";
 
-@media(max-width: 1200px) {
+@media(max-width: 991px) {
   .badge-img {
     width: 30%;
   }
-}
-
-@media(max-width: 991px) {
   .arrow.left, .arrow.right {
     display: none;
   }
@@ -35,8 +32,8 @@ body{
   flex-direction: column;
   min-height: 100vh;
   font-family: 'Roboto', sans-serif;
-  font-size: 16px;
-  line-height: 28px;
+  font-size: 15px;
+  line-height: 26px;
   font-weight: 400;
   color: var(--main-font-color);
 
@@ -46,18 +43,6 @@ body{
     padding-top: 50px;
     padding-bottom: 30px;
   }
-}
-
-.arrow {
-  width: 60px;
-  height: 44px;
-}
-.arrow.right {
-  margin-left: 25px;
-}
-.arrow.left {
-  transform: rotate(180deg);
-  margin-right: 25px
 }
 
 .white-icon {
@@ -81,6 +66,9 @@ body{
   cursor: pointer;
 }
 
+iframe {
+  width: 100%;
+}
 //navbar 
 .navbar-collapse {
   margin-left: 15px;
@@ -166,14 +154,14 @@ body{
       padding-top: 40px;
 
       .badges,
-      .about,
       .instagram,
-      .facebook {
+      .facebook,
+      .about {
         margin-bottom: 15px;
         text-transform: uppercase;
         font-weight: bold;
         font-family: 'Montserrat', sans-serif;
-        font-size: 14px;
+        font-size: 16px;
         color: var(--headers);
       }
       .instagram,
@@ -189,11 +177,20 @@ body{
         width: 100%;
       }
       .about-me {
+        padding-top: 10px;
         padding-left: 10px;
         padding-right: 10px;
+        .owner-title {
+          padding-top: 10px;
+          padding-bottom: 10px;
+          font-size: 14px;
+          color:  var(--orange);
+          font-weight: bold;
+          text-transform: uppercase;
+        }
       }
       .badge-img {
-        width: 100%;
+        max-width: 100%;
         border: 0;
         overflow: hidden;
       }
@@ -206,8 +203,8 @@ body{
 
 .article-container {
   border: 1px solid #FEFCF1;
-  padding-top: 30px;
-  padding-bottom: 30px;
+  padding-top: 20px;
+  padding-bottom: 20px;
   padding-left: 20px;
   padding-right: 40px;
   width: auto;
@@ -219,7 +216,8 @@ body{
 
   .article-card.flex {
     display: flex;
-
+  }
+  .article-card {
     .admin-options {
       text-align: right;
     }
@@ -232,10 +230,10 @@ body{
       color: var(--headers);
       line-height: 40px;
       word-spacing: 0px;
-      margin-bottom: 20px;
-      padding-bottom: 15px;
     }
-
+    .post-title.center {
+      text-align: center;
+    }
     .card-body {
       padding: 0;
       margin-top: 20px !important;
@@ -258,7 +256,7 @@ body{
   }
   span.article-time {
     font-family: 'Montserrat', sans-serif;
-    font-size: 12px;
+    font-size: 11px;
     font-weight: bold;
     color: var(--orange);
   }

@@ -4,24 +4,30 @@
     <p class="category-name"><%= @category.name %></p>
   </div>
 </div>
-<div class="container-fluid">
+<div class="container">
   <div class="articles">
     <div class="row">
       <div class="col-lg-9 col-12">
         <% @posts.each do |post| %>
           <article class="article-container">
-            <img class="card-img-top article-image img-thumbnail" src="<%= post.cover_url(:medium) %>">
-            <div class="article-card">
-              <h1 class="center-title">
-                <%= link_to "#{post.title}", post, class: "post-title" %>
-              </h1>
-              <div class="fancy-line">
-                <span class="article-time">
-                  <%= post.published.to_date.strftime("%d %B %Y") %>
-                </span>
+            <div class="article-card flex">
+              <div class="article-image">
+                <img class=" img-thumbnail" src="<%= post.cover_url(:thumbnail) %>">
               </div>
-             <div class="card-body"><%= post.introduction %></div>
-             <%= link_to "Czytaj więcej", post, class: "read-more" %>
+              <div class="article-body">
+                <h1 style="margin: 0;">
+                  <%= link_to "#{post.title}", post, class: "post-title" %>
+                </h1>
+                <div>
+                  <span class="article-time">
+                    <%= post.published.to_date.strftime("%d %B %Y") %>
+                  </span>
+                </div>
+                <div class="card-body">
+                  <%= post.introduction %>
+                </div>
+                  <%= link_to "Czytaj więcej...", post, class: "read-more" %>
+              </div>
             </div>
           </article>
         <% end %>
