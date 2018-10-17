@@ -2,14 +2,12 @@
 @import "font-awesome-sprockets";
 @import "font-awesome";
 
-@media(max-width: 991px) {
+@media (max-width: 991px) {
   .badge-img {
     width: 30%;
   }
-  .arrow.left, .arrow.right {
-    display: none;
-  }
 }
+
 @font-face {
   font-family: 'PlaylistScript';
   src: font-url('Playlist-Script.eot');
@@ -214,10 +212,14 @@ iframe {
   position: relative;
   word-wrap: break-word;
 
-  .article-card.flex {
-    display: flex;
-  }
   .article-card {
+    display: flex;
+    flex-direction: column;
+
+    @media (min-width: 768px) {
+      flex-direction: row;
+    }
+ 
     .admin-options {
       text-align: right;
     }
@@ -254,23 +256,47 @@ iframe {
       }
     }
   }
+  .center-date {
+    text-align: center;
+    
+    @media (min-width: 768px) {
+      text-align: left;
+    }
+  }
   span.article-time {
     font-family: 'Montserrat', sans-serif;
     font-size: 11px;
     font-weight: bold;
     color: var(--orange);
+
   }
   .article-image {
-    flex-basis: 45%;
+    margin-bottom: 20px;
+
+    @media (min-width: 768px) {
+      margin-right: 20px;
+    }
   }
   .article-body {
     flex: 1;
+
+    h1 {
+      text-align: center;
+      @media (min-width: 768px) {
+        text-align: left;
+      }
+    }
   }
   .article-image img {
-    width: 300px;
-    height: 100%;
+    min-width: 0;
+    height: auto;
     display: block;
-    flex: 0 0 auto;
+    margin-left: auto;
+    margin-right: auto;
+
+    @media (min-width: 768px) {
+      min-width: 100%;
+    }
   }
 }
 

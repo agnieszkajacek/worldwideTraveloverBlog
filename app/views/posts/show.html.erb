@@ -1,31 +1,31 @@
 <div class="container">
   <div class="articles">
     <article class="article-container">
-        <div class="article-card">
-          <% if user_signed_in? %>
-            <div class="admin-options">
-              <%= link_to "Edit", edit_post_path(@post), class: "btn btn-sm btn-outline-warning edit-option" %>
-              <%= link_to "Delete", @post, method: :delete, data: { confirm: "Are you sure?" }, class: "btn btn-sm btn-outline-warning edit-option" %>
-            </div>
-            <h1 class="post-title center">
-             <%= @post.title %>
-            </h1>
-          <% else %>
-            <h1 class="post-title center">
-             <%= @post.title %>
-            </h1>
-          <% end %>
-          <div class="fancy-line">
-            <span class="article-time">
-              <%= @post.created_at.to_date.strftime("%d %B %Y") %>
-            </span>
+      <div class="article-card">
+        <% if user_signed_in? %>
+          <div class="admin-options">
+            <%= link_to "Edit", edit_post_path(@post), class: "btn btn-sm btn-outline-warning edit-option" %>
+            <%= link_to "Delete", @post, method: :delete, data: { confirm: "Are you sure?" }, class: "btn btn-sm btn-outline-warning edit-option" %>
           </div>
-          <div class="card-body"><%= markdown(@post.content) %></div>
-          <div id="shareIconsCount"></div>
-          <div class="disqus">
-            <%= render 'shared/disqus' %>
-          </div>
+          <h1 class="post-title center">
+            <%= @post.title %>
+          </h1>
+        <% else %>
+          <h1 class="post-title center">
+            <%= @post.title %>
+          </h1>
+        <% end %>
+        <div class="fancy-line">
+          <span class="article-time">
+            <%= @post.created_at.to_date.strftime("%d %B %Y") %>
+          </span>
         </div>
+        <div class="card-body"><%= markdown(@post.content) %></div>
+        <div id="shareIconsCount"></div>
+        <div class="disqus">
+          <%= render 'shared/disqus' %>
+        </div>
+      </div>
     </article>
   </div>
 </div>
