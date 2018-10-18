@@ -39,7 +39,6 @@ gem 'popper_js', '~> 1.12.9'
 gem "font-awesome-rails"
 gem 'devise', '~> 4.4'
 gem 'redcarpet'
-gem 'md_simple_editor'
 gem 'ancestry'
 gem 'friendly_id', '~> 5.2.4'
 gem 'shrine', '~> 2.8'

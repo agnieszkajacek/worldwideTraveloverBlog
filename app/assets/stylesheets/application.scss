@@ -219,7 +219,16 @@ iframe {
     @media (min-width: 768px) {
       flex-direction: row;
     }
- 
+  }
+  .article-card.column {
+    display: flex;
+
+    @media (min-width: 768px) {
+      flex-direction: column;
+    }
+  }
+
+  .article-card {
     .admin-options {
       text-align: right;
     }

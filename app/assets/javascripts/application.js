@@ -74,4 +74,7 @@ $(document).ready(function () {
       // On page load
       stickyToggle(sticky, stickyWrapper, $(window));
   });
+
+  var simplemde = new SimpleMDE({ element: $("#editor")[0] });
+  simplemde.value();
 });

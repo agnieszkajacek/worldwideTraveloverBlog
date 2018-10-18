@@ -10,6 +10,8 @@ Rails.application.config.assets.paths << Rails.root.join('node_modules')
 Rails.application.config.assets.precompile += %w( jssocials.css )
 Rails.application.config.assets.precompile += %w( jssocials-theme-plain.css )
 Rails.application.config.assets.precompile += %w( jssocials.min.js )
+Rails.application.config.assets.precompile += %w( tui-editor.css )
+Rails.application.config.assets.precompile += %w( tui-editor-contents.css )
 
 # Precompile additional assets.
 # application.js, application.css, and all non-JS/CSS in the app/assets

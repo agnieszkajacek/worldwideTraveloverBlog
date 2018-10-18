@@ -31,9 +31,7 @@
       </div>
     </div>
     <div class="form-group">
-      <%= md_simple_editor  do %>
-        <%= f.input :content, input_html: {class: "form-control form-control-lg big-textarea"}, label: false, as: :text %>
-      <% end %>
+      <%= f.input :content, input_html: {id: "editor", class: "form-control form-control-lg big-textarea"}, label: false, as: :text %>
     </div>
     <%= f.submit "Save", class: "btn btn-success btn-block" %>
   <% end %>
