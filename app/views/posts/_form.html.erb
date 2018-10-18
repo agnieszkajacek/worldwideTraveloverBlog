@@ -36,3 +36,8 @@
     <%= f.submit "Save", class: "btn btn-success btn-block" %>
   <% end %>
 </div>
+
+<script>
+  var simplemde = new SimpleMDE({ element: $("#editor")[0] });
+  simplemde.value();
+</script>

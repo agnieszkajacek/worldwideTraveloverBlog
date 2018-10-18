@@ -249,6 +249,12 @@ iframe {
       padding: 0;
       margin-top: 20px !important;
       margin-bottom: 20px !important;
+
+      p img {
+        margin-left: auto;
+        margin-right: auto;
+        display: block;
+      }
     }
     a.read-more {
       color: var(--orange);
