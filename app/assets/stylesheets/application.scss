@@ -6,6 +6,7 @@
   .badge-img {
     width: 30%;
   }
+
 }
 
 @font-face {
@@ -64,9 +65,6 @@ body{
   cursor: pointer;
 }
 
-iframe {
-  width: 100%;
-}
 //navbar 
 .navbar-collapse {
   margin-left: 15px;
@@ -204,7 +202,7 @@ iframe {
   padding-top: 20px;
   padding-bottom: 20px;
   padding-left: 20px;
-  padding-right: 40px;
+  padding-right: 20px;
   width: auto;
   margin-bottom: 50px;
   box-shadow: 0 0.25rem 0.75rem rgba(0, 0, 0, .05);
@@ -234,9 +232,8 @@ iframe {
     }
     .post-title {
       font-family: 'Montserrat', sans-serif;
-      font-size: 30px;
+      font-size: 25px;
       font-weight: 700;
-      text-transform: uppercase;
       text-decoration: none;
       color: var(--headers);
       line-height: 40px;
@@ -677,4 +674,14 @@ $drop-shadow-color: rgba(0,0,0,0.4);
 }
 .text-align {
   text-align: center;
+}
+
+iframe {
+  width: 100%;
+  margin: 0 auto;
+  display: block;
+
+  @media (min-width: 768px) {
+    width: 60%;
+  }
 }
