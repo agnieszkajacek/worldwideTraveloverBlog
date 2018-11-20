@@ -20,6 +20,7 @@
 
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/simplemde/latest/simplemde.min.css">
     <script src="https://cdn.jsdelivr.net/simplemde/latest/simplemde.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.0/clipboard.min.js"></script>
 
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag "jssocials.min" %>
@@ -35,6 +36,8 @@
         js.src = 'https://connect.facebook.net/pl_PL/sdk.js#xfbml=1&version=v3.1&appId=723160231162405&autoLogAppEvents=1';
         fjs.parentNode.insertBefore(js, fjs);
       }(document, 'script', 'facebook-jssdk'));
+
+      new ClipboardJS('.btn');
     </script>
 
     <% if notice %>

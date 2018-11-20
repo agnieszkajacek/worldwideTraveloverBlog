@@ -7,6 +7,7 @@ class PhotosController < ApplicationController
   end
 
   def show
+    find_photo
   end
 
   def new

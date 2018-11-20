@@ -12,4 +12,9 @@ module ApplicationHelper
     )
     return markdown.render(text).html_safe
   end
+
+  def render_source args={}
+    @html_encoder ||= HTMLEntities.new
+    raw(@html_encoder.encode(render args))
+  end
 end
