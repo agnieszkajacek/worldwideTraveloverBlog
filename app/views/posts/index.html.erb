@@ -1,6 +1,8 @@
-<% if @posts.blank? %>
-  <h4>Nie ma postów pasujących do tego zapytania <%= params[:search] %>.</h4>
-<% end %>
+<div class="category-header">
+  <% if @posts.blank? %>
+    <h6 class="padding">Nie ma postów pasujących do tego zapytania <%= params[:search].upcase %>.</h6>
+  <% end %>
+</div>
 
 <div class="container">
   <div class="articles">
@@ -30,16 +32,7 @@
           </article>
         <% end %>
       </div>
-      <div class="col-lg-3 col-12">
-        <div class="sidebar">
-          <%= render"shared/about_me" %>
-        </div>
-        <div class="sidebar">
-          <%= render"shared/badges" %>
-          <%= render"shared/instagram_feed" %>
-          <%= render"shared/facebook" %>
-        </div>
-      </div>
+      <%= render 'shared/sidebar'%>
     </div>
   </div>
 </div>

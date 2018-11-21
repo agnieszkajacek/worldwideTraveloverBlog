@@ -1,38 +1,43 @@
 <div class="container">
   <div class="articles">
-    <article class="article-container">
-      <div class="article-card column">
-        <div>
-          <% if user_signed_in? %>
-            <div class="admin-options">
-              <%= link_to "Edit", edit_post_path(@post), class: "btn btn-sm btn-outline-warning edit-option" %>
-              <%= link_to "Delete", @post, method: :delete, data: { confirm: "Are you sure?" }, class: "btn btn-sm btn-outline-warning edit-option" %>
+    <div class="row">
+      <div class="col-lg-9 col-12">
+        <article class="article-container">
+          <div class="article-card column">
+            <div>
+              <% if user_signed_in? %>
+                <div class="admin-options">
+                  <%= link_to "Edit", edit_post_path(@post), class: "btn btn-sm btn-outline-warning edit-option" %>
+                  <%= link_to "Delete", @post, method: :delete, data: { confirm: "Are you sure?" }, class: "btn btn-sm btn-outline-warning edit-option" %>
+                </div>
+                <h1 class="post-title center">
+                  <%= @post.title %>
+                </h1>
+              <% else %>
+                <h1 class="post-title center">
+                  <%= @post.title %>
+                </h1>
+              <% end %>
+              <div class="fancy-line">
+                <span class="article-time">
+                  <%= I18n.l(@post.published.to_date, format: :long) %>
+                </span>
+              </div>
             </div>
-            <h1 class="post-title center">
-              <%= @post.title %>
-            </h1>
-          <% else %>
-            <h1 class="post-title center">
-              <%= @post.title %>
-            </h1>
-          <% end %>
-          <div class="fancy-line">
-            <span class="article-time">
-              <%= I18n.l(@post.published.to_date, format: :long) %>
-            </span>
+            <div>
+              <div class="card-body"><%= markdown(@post.content) %></div>
+            </div>
+            <div>
+              <div id="shareIconsCount"></div>
+              <div class="disqus">
+                <%= render 'shared/disqus' %>
+              </div>
+            </div>
           </div>
-        </div>
-        <div>
-          <div class="card-body"><%= markdown(@post.content) %></div>
-        </div>
-        <div>
-          <div id="shareIconsCount"></div>
-          <div class="disqus">
-            <%= render 'shared/disqus' %>
-          </div>
-        </div>
+        </article>
       </div>
-    </article>
+      <%= render 'shared/sidebar'%>
+    </div>
   </div>
 </div>
 
