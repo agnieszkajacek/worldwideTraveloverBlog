@@ -22,7 +22,7 @@ class ImageUploader < Shrine
 
     medium = ImageProcessing::MiniMagick
       .source(original)
-      .resize_to_fill!(450, 550)
+      .resize_to_fill!(500, 500)
     original.close!
 
     { original: io, thumbnail: thumbnail, medium: medium }
