@@ -31,6 +31,9 @@
             </div>
           </article>
         <% end %>
+        <div class="apple_pagination">
+          <%= will_paginate @posts, :container => false %>
+        </div>
       </div>
       <%= render 'shared/sidebar'%>
     </div>

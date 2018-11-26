@@ -18,20 +18,7 @@
         <%= f.input :category_id, collection: @category, input_html: {class: "form-control form-control-sm"}, label: false %>
       </div>
     </div>
-    <div class="form-group row">
-      <div class="col-lg-8">
-        <%= f.input :crop_x, input_html: {class: "form-control form-control-sm"} %>
-      </div>
-      <div class="col-lg-8">
-        <%= f.input :crop_y, input_html: {class: "form-control form-control-sm"} %>
-      </div>
-      <div class="col-lg-8">
-        <%= f.input :crop_width, input_html: {class: "form-control form-control-sm"} %>
-      </div>
-      <div class="col-lg-8">
-        <%= f.input :crop_height, input_html: {class: "form-control form-control-sm"} %>
-      </div>
-    </div>
+
     <div class="form-group row">
       <label class="col-lg-1 col-form-label col-form-label-sm">Image</label>
       <div class="col-lg-8">
@@ -39,6 +26,28 @@
       </div>
     </div>
     <img id="preview" src=""/>
+    <div class="form-group row">
+      <div class="col-lg-6">
+        <%= f.input :crop_x, input_html: {class: "form-control form-control-sm"} %>
+      </div>
+      <div class="col-lg-6">
+        <%= f.input :crop_y, input_html: {class: "form-control form-control-sm"} %>
+      </div>
+    </div>
+    <div class="form-group row">
+      <div class="col-lg-6">
+        <%= f.input :crop_width, input_html: {class: "form-control form-control-sm"} %>
+      </div>
+      <div class="col-lg-6">
+        <%= f.input :crop_height, input_html: {class: "form-control form-control-sm"} %>
+      </div>
+    </div>
+    <div class="form-group row">
+      <label class="col-lg-1 col-form-label col-form-label-sm">Tag</label>
+      <div class="col-lg-8">
+        <%= f.input :tag, label: false, input_html: {class: "form-control form-control-sm"} %>
+      </div>
+    </div>
     <%= f.submit "Save", class: "btn btn-success btn-block" %>
   <% end %>
 </div>
