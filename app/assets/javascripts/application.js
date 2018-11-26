@@ -75,5 +75,28 @@ $(document).ready(function () {
       stickyToggle(sticky, stickyWrapper, $(window));
   });
 
+  var output = document.getElementById('preview');
 
+
+  $('#upload-file').on('change', function(event) {
+    output.src = URL.createObjectURL(event.target.files[0]);
+
+    output.addEventListener('crop', function(event) {
+      console.log('crop', event.detail);
+
+      $('#photo_crop_x').val(event.detail.x.toFixed());
+      $('#photo_crop_y').val(event.detail.y.toFixed());
+      $('#photo_crop_width').val(event.detail.width.toFixed());
+      $('#photo_crop_height').val(event.detail.height.toFixed());
+    });
+
+    var cropper = new Cropper(output, {
+      viewMode: 2,
+      initialAspectRatio: 1,
+      aspectRatio: 1,
+      zoomable: false,
+      minCropBoxHeight: 500,
+      minCropBoxWidth: 500
+    });
+  });
 });

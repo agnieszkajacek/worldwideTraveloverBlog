@@ -17,7 +17,7 @@ class PhotosController < ApplicationController
 
   def create
     @photo = Photo.new(photo_params)
-
+    
     if @photo.save!
       redirect_to photos_path, notice: "The photo was created!"
     else
@@ -56,7 +56,7 @@ class PhotosController < ApplicationController
 
   private
   def photo_params
-    params.require(:photo).permit(:name, :description, :image, :category_id)
+    params.require(:photo).permit(:name, :description, :image, :category_id, :crop_x, :crop_y, :crop_width, :crop_height)
   end
 
   def find_photo

@@ -17,14 +17,18 @@ class ImageUploader < Shrine
     original = io.download
 
     thumbnail = ImageProcessing::MiniMagick
-      .source(original)
-      .resize_to_fill!(250, 250)
+      .quality(100)
+      .crop("#{context[:record].crop_width}x#{context[:record].crop_height}+#{context[:record].crop_x}+#{context[:record].crop_y}")
+      .scale('250x250')
+      .call(original)
 
     medium = ImageProcessing::MiniMagick
-      .source(original)
-      .resize_to_fill!(500, 500)
-    original.close!
+      .quality(100)
+      .crop("#{context[:record].crop_width}x#{context[:record].crop_height}+#{context[:record].crop_x}+#{context[:record].crop_y}")
+      .scale('500x500')
+      .call(original)
 
+    original.close
     { original: io, thumbnail: thumbnail, medium: medium }
   end
 
