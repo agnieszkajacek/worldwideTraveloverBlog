@@ -41,7 +41,7 @@
                 </a>
                 <div class="dropdown-menu" aria-labelledby="navbarDropdown">
                   <% category.children.each do |c| %>
-                    <%= link_to c.name, c, class:"dropdown-item" %><hr>
+                    <%= link_to c.name, c, class:"dropdown-item" %>
                   <% end %>
                 </div>
               </li>
@@ -59,10 +59,14 @@
         <div class="nav-item">
           <a href="https://www.facebook.com/worldwide.travelover" class="nav-link"><i class="fab fa-facebook-square white-icon"></i></a>
         </div>
+
+        <!-- NEWSLETTER
         <div class="nav-item subscribe">
           <a data-toggle="modal" data-target="#exampleModal" class="nav-link">Newsletter</a>
           <%= render "shared/new_subscriber" %>
         </div>
+        -->
+        
         <div class="nav-item">
           <a data-toggle="modal" data-target="#searchModal" class="nav-link"><i class="fas fa-search"></i></a>
           <%= render "shared/searchbox" %>
