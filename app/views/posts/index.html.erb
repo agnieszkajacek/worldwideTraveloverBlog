@@ -31,9 +31,7 @@
             </div>
           </article>
         <% end %>
-        <div class="apple_pagination">
-          <%= will_paginate @posts, :container => false %>
-        </div>
+        <%= will_paginate @posts, previous_label: '&laquo;', next_label: '&raquo;', renderer: WillPaginate::ActionView::BootstrapLinkRenderer %>
       </div>
       <%= render 'shared/sidebar'%>
     </div>

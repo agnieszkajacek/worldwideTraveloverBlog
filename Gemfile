@@ -51,6 +51,7 @@ gem 'rake'
 gem 'font-awesome-sass'
 gem 'rails-i18n', '~> 5.1.2'
 gem 'will_paginate', '~> 3.1.6'
+gem 'will_paginate-bootstrap4'
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
