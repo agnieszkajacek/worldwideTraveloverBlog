@@ -16,7 +16,7 @@ class ImageUploader < Shrine
   process(:store) do |io, context|
     original = io.download
 
-    thumbnail = ImageProcessing::MiniMagick
+   thumbnail = ImageProcessing::MiniMagick
       .quality(100)
       .crop("#{context[:record].crop_width}x#{context[:record].crop_height}+#{context[:record].crop_x}+#{context[:record].crop_y}")
       .scale('250x250')
