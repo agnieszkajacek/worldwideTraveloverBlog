@@ -3,7 +3,7 @@ class PostsController < ApplicationController
   before_action :authenticate_user!, only: [:new, :create, :edit, :update, :destroy]
 
   def index
-    @posts = Post.where("published <= ?", Date.today).order("published DESC").paginate(:page => params[:page], :per_page => 10)
+    @posts = Post.where("published <= ?", Date.today).order("published DESC").paginate(:page => params[:page], :per_page => 5)
 
     if params[:search]
       @posts = @posts.search(params[:search])
