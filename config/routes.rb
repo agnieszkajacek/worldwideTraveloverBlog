@@ -7,4 +7,7 @@ Rails.application.routes.draw do
   resources :categories
   resources :photos
   resources :subscribers
+
+  get '/kontakt', to: 'pages#kontakt'
+  get '/wspolpraca', to: 'pages#wspolpraca'
 end

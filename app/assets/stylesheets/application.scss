@@ -185,9 +185,8 @@ body{
         margin-top: 55px;
       }
       .about-img .me {
-        width: 160px;
-        height: 170px;
-        border-radius: 100%;
+        width: 100%;
+        height: auto;
       }
       .about-img img {
         width: 100%;
@@ -741,4 +740,31 @@ iframe {
   color: white;
   background-color: var(--main-font-color);
   border-color: var(--main-font-color);
+}
+
+.pages {
+  .contant-title,
+  .cooperation-title{
+    font-family: 'Montserrat', sans-serif;
+    font-size: 25px;
+    font-weight: 700;
+    text-decoration: none;
+    color: var(--headers);
+    line-height: 40px;
+    word-spacing: 0px;
+    text-align: center;
+    padding-bottom: 15px;
+  }
+  .contact-email,
+  .cooperation-email {
+    p {
+      font-weight: bold;
+      text-align: center;
+      padding-top: 15px;
+      color: var(--orange)
+    }
+  }
+  ul.options {
+    
+  }
 }
