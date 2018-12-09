@@ -31,7 +31,7 @@ body{
   flex-direction: column;
   min-height: 100vh;
   font-family: 'Roboto', sans-serif;
-  font-size: 15px;
+  font-size: 16px;
   line-height: 26px;
   font-weight: 400;
   color: var(--main-font-color);
@@ -145,7 +145,7 @@ body{
   a {
     color: white !important;
     font-family: 'Montserrat', sans-serif;
-    font-size: 14px;
+    font-size: 16px;
     font-weight: 400;
   }
 }
@@ -263,7 +263,6 @@ body{
       text-align: center;
     }
     .card-body {
-      padding: 0;
       margin-top: 20px !important;
       margin-bottom: 20px !important;
 
@@ -271,6 +270,10 @@ body{
         margin-left: auto;
         margin-right: auto;
         display: block;
+      }
+
+      &.with-padding {
+        padding: 0;
       }
     }
     a.read-more {
@@ -297,7 +300,7 @@ body{
   }
   span.article-time {
     font-family: 'Montserrat', sans-serif;
-    font-size: 11px;
+    font-size: 12.5px;
     font-weight: bold;
     color: var(--orange);
 
@@ -336,7 +339,7 @@ body{
   font-size: 12px;
   text-align: center;
   margin-bottom: 30px;
-  margin-top: 150px;
+  margin-top: 100px;
 }
 
 //yellow buttons //

@@ -15,15 +15,13 @@
                 <img class="img-thumbnail" src="<%= post.cover_url(:thumbnail) %>">
               </div>
               <div class="article-body">
-                <h1 style="margin: 0;">
-                  <%= link_to "#{post.title}", post, class: "post-title" %>
-                </h1>
+                <%= link_to "#{post.title}", post, class: "post-title" %>
                 <div class="center-date">
                   <span class="article-time">
                     <%= I18n.l(post.published.to_date, format: :long) %>
                   </span>
                 </div>
-                <div class="card-body">
+                <div class="card-body with-padding">
                   <%= post.introduction %>
                 </div>
                   <%= link_to "Czytaj więcej...", post, class: "read-more" %>
