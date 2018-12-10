@@ -43,10 +43,25 @@ body{
     padding-bottom: 30px;
   }
 }
-
-.social-media-footer {
+p.made {
+  font-family: 'Montserrat', sans-serif;
+}
+.social-media-footer,
+.pages-link {
   display: flex;
   justify-content: center;
+}
+.pages-link {
+  padding-bottom: 10px;
+  padding-top: 15px;
+  div a {
+    color: white;
+    font-family: 'Montserrat', sans-serif;
+    font-size: 16px;
+    font-weight: 400;
+    padding-left: 8px;
+    padding-right: 8px;
+  }
 }
 .white-icon {
   color: var(--white);
