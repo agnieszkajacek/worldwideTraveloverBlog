@@ -1,3 +1,9 @@
+<% content_for(:meta_og) do %>
+  <meta property="og:title" content="<%= @category.name %>" />
+  <meta property="og:type" content="article" />
+  <meta property="og:image" content="https://s3.eu-central-1.amazonaws.com/photos-worldwide/small-coco.jpg" />
+<% end %>
+
 <div class="category-header">
   <div class="category-header">
     <p class="category">Kategoria: </p>

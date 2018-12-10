@@ -1,3 +1,11 @@
+<% content_for(:meta_og) do %>
+  <meta property="og:title" content="<%= @post.title %>" />
+  <meta property="og:type" content="article" />
+  <meta property="og:published_time" content="<%= I18n.l(@post.published.to_date, format: :long) %>" />
+  <meta property="og:description" content="<%= @post.introduction %>" />
+  <meta property="og:image" content="<%= @post.cover_url(:thumbnail) %>" />
+<% end %>
+
 <div class="container">
   <div class="articles">
     <div class="row">

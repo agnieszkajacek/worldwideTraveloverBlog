@@ -1,3 +1,9 @@
+<% content_for(:meta_og) do %>
+  <meta property="og:title" content="Worldwide-Travelover" />
+  <meta property="og:type" content="article" />
+  <meta property="og:image" content="https://s3.eu-central-1.amazonaws.com/photos-worldwide/small-coco.jpg" />
+<% end %>
+
 <div class="category-header">
   <% if @posts.blank? %>
     <h6 style="padding-left: 220px">Nie ma postów pasujących do tego zapytania <%= params[:search].upcase %>.</h6>
