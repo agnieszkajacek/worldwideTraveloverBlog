@@ -3,11 +3,17 @@ class SubscribersController < ApplicationController
     @subscriber = Subscriber.new
   end
   def create
-    @subscriber = Subscriber.find_or_create_by(subscriber_params)
-    if @subscriber.save!
-      cookies[:saved_subscriber] = true
-      NotificationMailer.with(subscriber: @subscriber).welcome_email.deliver_now
-      redirect_to root_path
+    subscriber = Subscriber.where(email: params[:subscriber][:email])
+    
+    if subscriber.exists?
+      redirect_to root_path, notice: 'Wygląda na to, że już się zapisałeś do otrzymywania newsletterów :)'
+    else
+      @subscriber = Subscriber.create(subscriber_params)
+      if @subscriber.save!
+        cookies[:saved_subscriber] = true
+        NotificationMailer.with(subscriber: @subscriber).welcome_email.deliver_now
+        redirect_to root_path, notice: 'Hura! Udało Ci się zapisać do newslettera!'
+      end
     end
   end
 
@@ -15,7 +21,7 @@ class SubscribersController < ApplicationController
     subscriber = Subscriber.find_by_unsubscribe_hash(params[:unsubscribe_hash])
     subscriber.update_attribute(:subscription, false)
     cookies.delete :saved_subscriber
-    redirect_to root_path, notice: 'Nie będziesz otrzymywać już powiadomień'
+    redirect_to root_path, notice: 'Szkoda, że uciekasz :( Wróć tu kiedyś ponownie :)'
   end
 
   private
