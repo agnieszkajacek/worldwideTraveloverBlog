@@ -7,9 +7,7 @@ class SubscribersController < ApplicationController
     if @subscriber.save!
       cookies[:saved_subscriber] = true
       NotificationMailer.with(subscriber: @subscriber).welcome_email.deliver_now
-      redirect_to root_path, notice: 'Super! Teraz nic Cię nie ominie :)'
-    else
-      redirect_to root_path, notice: 'Ups, coś poszło nie tak :('
+      redirect_to root_path
     end
   end
 

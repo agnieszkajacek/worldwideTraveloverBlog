@@ -12,7 +12,6 @@
 <% if cookies[:saved_subscriber] %>
   <div class="form-group text-align">
     <span>Wygląda na to, że już się zapisałeś!</span>
-    <span>Super, że jesteś z nami na bieżąco</span>
   </div>
 <% else %>
   <%= simple_form_for(Subscriber.new) do |f| %>

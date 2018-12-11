@@ -29,7 +29,7 @@ class PostsController < ApplicationController
           NotificationMailer.post_email(subscriber, @post).deliver_now
         end
       end
-      redirect_to @post, notice: "Post został utworzony!"
+      redirect_to @post
     else
       render "new"
     end
