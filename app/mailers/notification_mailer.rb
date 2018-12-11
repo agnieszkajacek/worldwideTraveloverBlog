@@ -4,11 +4,11 @@ class NotificationMailer < ApplicationMailer
 
   def welcome_email
     @subscriber = params[:subscriber]
-    mail(to: @subscriber.email, subject: 'Welcome to Worldwide Travelover')
+    mail(to: @subscriber.email, subject: 'Worldwide Travelover wita!')
   end
 
   def post_email(subscriber, post)
     @post = post
-    mail(to: subscriber, subject: 'New post')
+    mail(to: subscriber, subject: 'Nowy post')
   end
 end

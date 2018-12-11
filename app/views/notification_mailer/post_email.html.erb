@@ -2,7 +2,7 @@
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
     <meta name="viewport" content="width=device-width">
-    <title>New Post</title>
+    <title>Nowy post na Worldwide Travelover</title>
 
     <style>
       table.center {
@@ -10,7 +10,7 @@
         margin-right:auto;
       }
       .welcome-email .hero-image {
-        background-image: url("https://s3.eu-central-1.amazonaws.com/photos-worldwide/IMG_20180304_165109_249.jpg");
+        background-image: url("https://s3.eu-central-1.amazonaws.com/photos-worldwide/small-coco.jpg");
         background-position: center;
         background-repeat: no-repeat;
         background-size: cover;
@@ -94,7 +94,7 @@
         background-image: url("https://s3.eu-central-1.amazonaws.com/photos-worldwide/facebook.jpg");
       }
       .article-image {
-        width: 300px;
+        width: 250px;
         height: 250px;
         display: block;
       }
@@ -137,7 +137,7 @@
           <tbody>
             <tr>
               <td class="main-text">
-                <p class="uppercase">We have for you new post on blog.</p>
+                <p class="uppercase">Mamy dla Ciebie coś nowego - czeka na Ciebie nowy post :)</p>
               </td>
             </tr>
           </tbody>
@@ -147,7 +147,7 @@
           <tbody>
             <tr>
               <td>
-                <img class="article-image" src="<%= @post.cover_url(:thumbnail) %>">
+                <img class="article-image" src="<%= @post.cover_url(:thumbnail, public: true) %>">
               </td>
             </tr>
             <tr>
@@ -160,7 +160,7 @@
               <td class="main-text">
                 <p class="uppercase"><%= @post.title %></p>
                 <p>
-                  <%= @post.content.truncate_words(55, omission: '... (continued)') %>
+                  <%= @post.introduction %>
                 </p>
               </td>
             </tr>
@@ -173,7 +173,7 @@
               <td style="display: flex; justify-content: center">
                 <div class="read-more">
                   <div class="continue">
-                    <%= link_to "Read more", @post %>
+                    <%= link_to "Czytaj więcej...", @post %>
                   </div>
                 </div>
               </td>
@@ -186,7 +186,7 @@
             <tr>
               <td style="border-top: 1px solid gray; width: 650px">
                 <p class="follow-text">
-                  Follow Worldwide Travelover
+                  Śledź Worldwide Travelover
                 </p>
               <td>
             </tr>

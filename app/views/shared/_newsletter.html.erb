@@ -1,0 +1,27 @@
+<div class="about fancy-line">
+  <span class="article-time">
+    Newsletter
+  </span>
+</div>
+
+<!-- MODAL NEWSLETTER
+  <a data-toggle="modal" data-target="#exampleModal" class="nav-link">Nie przegap żadnych nowości, bądź na bieżąco</a>
+  <%= render "shared/new_subscriber" %>
+-->
+
+<% if cookies[:saved_subscriber] %>
+  <div class="form-group text-align">
+    <span>Wygląda na to, że już się zapisałeś!</span>
+    <span>Super, że jesteś z nami na bieżąco</span>
+  </div>
+<% else %>
+  <%= simple_form_for(Subscriber.new) do |f| %>
+    <div class="form-group">
+      <label for="message-text" class="col-form-label">Email:</label>
+      <%= f.input :email, input_html: {class: "form-control"}, label: false %>
+    </div>
+    <div class="">
+      <%= f.submit "Zapisz", class: "btn btn-sm btn-outline-success" %>
+    </div>
+  <% end %>
+<% end %>

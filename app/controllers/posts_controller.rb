@@ -24,10 +24,10 @@ class PostsController < ApplicationController
     @subscribers = Subscriber.all
 
     if @post.save!
-      #@subscribers.each do |subscriber|
-      #  NotificationMailer.post_email(subscriber.email, @post).deliver_now
-      #end
-      redirect_to @post, notice: "The post was created!"
+      @subscribers.each do |subscriber|
+        NotificationMailer.post_email(subscriber.email, @post).deliver_now
+      end
+      redirect_to @post, notice: "Post został utworzony!"
     else
       render "new"
     end
