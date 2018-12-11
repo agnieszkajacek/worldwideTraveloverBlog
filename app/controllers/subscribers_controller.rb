@@ -6,7 +6,7 @@ class SubscribersController < ApplicationController
     subscriber = Subscriber.where(email: params[:subscriber][:email])
     
     if subscriber.exists?
-      redirect_to root_path, notice: 'Wygląda na to, że już się zapisałeś do otrzymywania newsletterów :)'
+      redirect_to root_path, notice: 'Wygląda na to, że już ze mną jesteś na bieżąco :)'
     else
       @subscriber = Subscriber.create(subscriber_params)
       if @subscriber.save!
