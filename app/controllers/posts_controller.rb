@@ -25,7 +25,9 @@ class PostsController < ApplicationController
 
     if @post.save!
       @subscribers.each do |subscriber|
-        NotificationMailer.post_email(subscriber.email, @post).deliver_now
+        if subscriber.subscription
+          NotificationMailer.post_email(subscriber, @post).deliver_now
+        end
       end
       redirect_to @post, notice: "Post został utworzony!"
     else

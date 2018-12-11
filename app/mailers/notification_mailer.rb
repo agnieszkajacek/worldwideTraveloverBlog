@@ -9,6 +9,7 @@ class NotificationMailer < ApplicationMailer
 
   def post_email(subscriber, post)
     @post = post
-    mail(to: subscriber, subject: 'Nowy post')
+    @subscriber = subscriber
+    mail(to: @subscriber.email, subject: 'Nowy post')
   end
 end

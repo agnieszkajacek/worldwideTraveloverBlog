@@ -13,8 +13,15 @@ class SubscribersController < ApplicationController
     end
   end
 
+  def unsubscribe
+    subscriber = Subscriber.find_by_unsubscribe_hash(params[:unsubscribe_hash])
+    subscriber.update_attribute(:subscription, false)
+    cookies.delete :saved_subscriber
+    redirect_to root_path, notice: 'Nie będziesz otrzymywać już powiadomień'
+  end
+
   private
   def subscriber_params
-    params.require(:subscriber).permit(:email)
+    params.require(:subscriber).permit(:email, :subscription)
   end
 end
