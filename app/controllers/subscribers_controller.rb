@@ -3,7 +3,7 @@ class SubscribersController < ApplicationController
     @subscriber = Subscriber.new
   end
   def create
-    @subscriber = Subscriber.new(subscriber_params)
+    @subscriber = Subscriber.find_or_create_by(subscriber_params)
     if @subscriber.save!
       cookies[:saved_subscriber] = true
       NotificationMailer.with(subscriber: @subscriber).welcome_email.deliver_now
@@ -20,6 +20,6 @@ class SubscribersController < ApplicationController
 
   private
   def subscriber_params
-    params.require(:subscriber).permit(:email, :subscription)
+    params.require(:subscriber).permit(:email)
   end
 end
