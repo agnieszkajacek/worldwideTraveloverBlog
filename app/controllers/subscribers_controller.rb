@@ -3,10 +3,16 @@ class SubscribersController < ApplicationController
     @subscriber = Subscriber.new
   end
   def create
-    subscriber = Subscriber.where(email: params[:subscriber][:email])
-    
-    if subscriber.exists?
+    active_subscriber = Subscriber.where("email = ? AND subscription = ?", params[:subscriber][:email], true)
+    unactive_subscriber = Subscriber.where("email = ? AND subscription = ?", params[:subscriber][:email], false)
+
+    if active_subscriber.exists?
       redirect_to root_path, notice: 'Wygląda na to, że już ze mną jesteś na bieżąco :)'
+    elsif unactive_subscriber.exists?
+      subscriber = unactive_subscriber.first
+      subscriber.subscription = true
+      subscriber.save!
+      redirect_to root_path, notice: 'Witamy ponownie! :)'
     else
       @subscriber = Subscriber.create(subscriber_params)
       if @subscriber.save!
