@@ -1,7 +1,7 @@
 <div class="text-center image-style">
   <div class="image">
     <a href="<%= photo.image_url(:original, public: true) %>" data-gallery="gallery-name" data-toggle="lightbox" data-footer="<%= photo.name %>">
-      <img src="<%= photo.image_url(:medium, public: true) %>" style="max-width:80%; max-height:500px">
+      <img src="<%= photo.image_url(:medium, public: true) %>" style="max-width:80%; max-height:500px" title="Kliknij, aby zobaczyć większe zdjęcie">
     </a>
   </div>
 </div>
