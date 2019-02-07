@@ -75,7 +75,7 @@ p.made {
   margin-right: 15px;
 }
 .coco-image {
-  background-image: url("https://s3.eu-central-1.amazonaws.com/photos-worldwide/coco.jpg");
+  background-image: image-url("coco-cropped.jpg");
   background-size: cover;
   background-position: center center;
 }
