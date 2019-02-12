@@ -75,6 +75,7 @@ p.made {
   margin-right: 15px;
 }
 .coco-image {
+  background-color: #8B9B9B;
   background-image: image-url("coco-cropped.jpg");
   background-size: cover;
   background-position: center center;
@@ -176,58 +177,57 @@ p.made {
   .row {
     margin-left: -15px;
     margin-right: -15px;
-
-    .sidebar {
-      background-color: white;
-      text-align: center;
-      padding: 10px;
-      box-shadow: 0 0.25rem 0.75rem rgba(0, 0, 0, .05);
-      margin-bottom: 40px;
-      padding-top: 40px;
-
-      .badges,
-      .instagram,
-      .facebook,
-      .about {
-        margin-bottom: 15px;
-        text-transform: uppercase;
-        font-weight: bold;
-        font-family: 'Montserrat', sans-serif;
-        font-size: 16px;
-        color: var(--headers);
-      }
-      .facebook {
-        margin-top: 55px;
-      }
-      .about-img .me {
-        width: 100%;
-        height: auto;
-      }
-      .about-img img {
-        width: 100%;
-      }
-      .about-me {
-        padding-top: 10px;
-        padding-left: 10px;
-        padding-right: 10px;
-        .owner-title {
-          padding-top: 10px;
-          padding-bottom: 10px;
-          font-size: 14px;
-          color:  var(--orange);
-          font-weight: bold;
-          text-transform: uppercase;
-        }
-      }
-      .badge-img {
-        max-width: 100%;
-        border: 0;
-        overflow: hidden;
-      }
-    }
   }
 }
 
+.sidebar {
+  background-color: white;
+  text-align: center;
+  padding: 10px;
+  box-shadow: 0 0.25rem 0.75rem rgba(0, 0, 0, .05);
+  margin-bottom: 40px;
+  padding-top: 40px;
+
+  .badges,
+  .instagram,
+  .facebook,
+  .about {
+    margin-bottom: 15px;
+    text-transform: uppercase;
+    font-weight: bold;
+    font-family: 'Montserrat', sans-serif;
+    font-size: 16px;
+    color: var(--headers);
+  }
+  .facebook {
+    margin-top: 55px;
+  }
+  .about-img .me {
+    width: 100%;
+    height: auto;
+  }
+  .about-img img {
+    width: 100%;
+  }
+  .about-me {
+    padding-top: 10px;
+    padding-left: 10px;
+    padding-right: 10px;
+    .owner-title {
+      padding-top: 10px;
+      padding-bottom: 10px;
+      font-size: 14px;
+      color:  var(--orange);
+      font-weight: bold;
+      text-transform: uppercase;
+    }
+  }
+  .badge-img {
+    max-width: 100%;
+    border: 0;
+    overflow: hidden;
+  }
+}
 
 // articles //
 
@@ -552,7 +552,10 @@ p.made {
 }
 
 // ## Gallery - with categories ## //
-#photography-index-page, #gallery-page{
+#photography-index-page {
+  background-color: white;
+  box-shadow: 0 0.25rem 0.75rem rgba(0,0,0,.05);
+  
 	.album {
 		position: relative;
 		float: none;
@@ -643,11 +646,13 @@ $drop-shadow-color: rgba(0,0,0,0.4);
  .gallery {
    width: 100%;
    margin: 0 auto;
+   background-color: white;
    padding: 10vh 5vh;
    display: flex;
    flex-wrap: wrap;
    justify-content: center;
    align-items: center;
+   box-shadow: 0 0.25rem 0.75rem rgba(0,0,0,.05);
  }
   .image {
    border: 1.5px solid #ccc;
@@ -779,11 +784,109 @@ iframe {
       color: var(--orange)
     }
   }
-  ul.options {
-    
-  }
 }
 
 p.alert {
   margin-bottom: 0;
+}
+
+// TagCloud //
+.tag-cloud {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+}
+.tag-cloud ul {
+	margin: 0;
+	padding: 0;
+	list-style: none;
+}
+.tag-cloud ul li {
+	position: relative;
+	display: inline-block;
+	margin: 0 .75em .5em 0;
+	padding: 0;
+}
+.tag-cloud ul li a {
+	position: relative;
+	display: inline-block;
+	max-width: 100px;
+	height: 28px;
+	padding: 0 1em;
+	background: #fff;
+	border: 1px solid #aaa;
+	border-radius: 3px;
+	word-wrap: normal;
+	white-space: nowrap;
+	text-overflow: ellipsis;
+	overflow: hidden;
+	color: var(--main-font-color);
+	font-size: 16px;
+	text-decoration: none;
+	-webkit-transition: .2s;
+	transition: .2s;
+}
+.tag-cloud ul li span {
+	position: absolute;
+	top: 0;
+	right: -10px;
+	z-index: 2;
+	width: 28px;
+	height: 28px;
+	line-height: 28px;
+	background-color: var(--orange);
+	border: 1px solid var(--orange);
+	border-radius: 100%;
+	color: #fff;
+	font-size: 13px;
+	text-align: center;
+	opacity: 0;
+	-webkit-transition: .2s;
+	transition: .2s;
+	-webkit-transform: scale(.4);
+	transform: scale(.4);
+}
+.tag-cloud ul li span::after {
+	position: absolute;
+	top: 50%;
+	left: -8px;
+	content: '';
+	width: 0;
+	height: 0;
+	margin-top: -7px;
+	border-color: transparent var(--orange) transparent transparent;
+	border-style: solid;
+	border-width: 7px 14px 7px 0;
+}
+.tag-cloud ul li a:hover {
+	border: 1px solid var(--orange);
+	color: var(--orange);
+}
+.tag-cloud ul li:hover span {
+	right: -26px;
+	opacity: 1;
+	-webkit-transform: scale(1);
+	transform: scale(1);
+}
+
+.active-tag {
+  display: flex;
+
+  .tag-title,
+  .tag-name {
+    color: var(--nav-footer);
+    font-size: 18px;
+    font-weight: 700;
+    margin-right: 8px;
+  }
+  .tag-title {
+    font-family: 'Montserrat', sans-serif;
+  }
+  a {
+    text-decoration: none;
+    margin-top: 1px;
+    i {
+      color: var(--orange);
+    }
+  }
 }

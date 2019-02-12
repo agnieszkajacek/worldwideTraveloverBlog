@@ -1,30 +1,28 @@
 <div class="container-fluid">
-  <div class="shadow-5">
-    <div id="photography-index-page">
-      <br>
-      <div class="row multi-columns-row">
-        <% @category.each do |c| %>
-          <div class="col-xs-12 col-sm-6 col-md-4 col-lg-4">
-            <%= link_to album_path(c) do %>
-              <span class="album block">
+  <div id="photography-index-page">
+    <br>
+    <div class="row multi-columns-row">
+      <% @category.each do |c| %>
+        <div class="col-xs-12 col-sm-6 col-md-4 col-lg-4">
+          <%= link_to show_albums_path(c) do %>
+            <span class="album block">
+              <span class="thumb">
+                <span class="polaroid shadow-5">
+                  <img src="<%= c.cover_url(:thumbnail) %>" class="img-fluid">
+                </span>
+              </span>
+              <% c.photos.limit(3).each do |p| %>
                 <span class="thumb">
                   <span class="polaroid shadow-5">
-                    <img src="<%= c.cover_url(:thumbnail) %>" class="img-fluid">
+                    <img src="<%= p.image_url(:thumbnail) %>" class="img-fluid">
                   </span>
                 </span>
-                <% c.photos.limit(3).each do |p| %>
-                  <span class="thumb">
-                    <span class="polaroid shadow-5">
-                      <img src="<%= p.image_url(:thumbnail) %>" class="img-fluid">
-                    </span>
-                  </span>
-                <% end %>
-                <div class="link"><%= c.name %></div>
-              </span>
-            <% end %>
-          </div>
-        <% end %>
-      </div>
+              <% end %>
+              <div class="link"><%= c.name %></div>
+            </span>
+          <% end %>
+        </div>
+      <% end %>
     </div>
   </div>
 </div>

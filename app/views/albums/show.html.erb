@@ -1,22 +1,49 @@
 <div class="container-fluid">
   <div id="pagewrap">
-    <div class="gallery shadow-5">
-      <% @photos.each do |photo| %>
-        <div class="text-align">
-          <div class="image">
-            <a href="<%= photo.image_url(:original, public: true) %>" data-gallery="gallery-name" data-toggle="lightbox" data-footer="<%= photo.description %>">
-              <img src="<%= photo.image_url(:thumbnail, public: true) %>" class="img-fluid">
-            </a>
+    <% if params[:tag] %>
+      <div class="active-tag">
+        <p class="tag-title">Tag: </p>
+        <p class="tag-name"><%= params[:tag] %></p>
+        <a href="<%= show_albums_path(@category)%>"><i class="far fa-times-circle"></i></a>
+      </div>
+    <% end %>
+    <div class="row">
+      <div class="col-lg-9 col-12">
+        <div class="gallery">
+          <% @photos.each do |photo| %>
+            <div class="text-align">
+              <div class="image">
+                <a href="<%= photo.image_url(:original, public: true) %>" data-gallery="gallery-name" data-toggle="lightbox" data-footer="<%= photo.description %>">
+                  <img src="<%= photo.image_url(:thumbnail, public: true) %>" class="img-fluid">
+                </a>
+              </div>
+              <div>
+                <% if user_signed_in? %>
+                  <button class="btn" data-clipboard-action="copy" data-clipboard-text="<%= render_source(partial: "photos/snippet", locals: {photo: photo}) %>">
+                    Copy - <%= photo.tag %>
+                  </button>
+                <% end %>
+              </div>
+            </div>
+          <% end %>
+        </div>
+      </div>
+      <div class="col-lg-3 col-12">
+        <div class="sidebar">
+          <div class="about fancy-line">
+            <span class="article-time">
+              Tagi
+            </span>
           </div>
-          <div>
-            <% if user_signed_in? %>
-              <button class="btn" data-clipboard-action="copy" data-clipboard-text="<%= render_source(partial: "photos/snippet", locals: {photo: photo}) %>">
-                Copy
-              </button>
+          <div class="tag-cloud">
+            <% @tags.each do |tag| %>
+              <ul>
+                <li><a href="<%= show_albums_path(@category, tag[:tag_name])%>"><%= tag[:tag_name] %></a><span><%= tag[:number] %></span></li>
+              </ul>
             <% end %>
           </div>
         </div>
-      <% end %>
+      </div>
     </div>
   </div>
 </div>

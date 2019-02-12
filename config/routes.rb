@@ -3,7 +3,11 @@ Rails.application.routes.draw do
   root "posts#index"
 
   resources :posts
-  resources :albums, only: [:show]
+  resources :albums, only: [] do
+    collection do
+      get ':id(/:tag)', to: 'albums#show', as: 'show'
+    end
+  end
   resources :categories
   resources :photos
   resources :subscribers
