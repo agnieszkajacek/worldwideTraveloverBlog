@@ -45,7 +45,7 @@ class PhotosController < ApplicationController
   def find_category
     @category = []
 
-    Category.all.each do |category|
+    Category.where(show_in_gallery: true).each do |category|
       if category.has_children?
         category.children.each do |c|
           @category << c
@@ -56,7 +56,7 @@ class PhotosController < ApplicationController
 
   private
   def photo_params
-    params.require(:photo).permit(:name, :description, :image, :category_id, :crop_x, :crop_y, :crop_width, :crop_height, :tag)
+    params.require(:photo).permit(:name, :description, :image, :category_id, :crop_x, :crop_y, :crop_width, :crop_height, :tag, :public)
   end
 
   def find_photo
