@@ -3,7 +3,7 @@ class AlbumsController < ApplicationController
   
   def show
     @category = Category.friendly.find(params[:id])
-    @photos = Photo.where(category_id: @category)
+    @photos = Photo.where(category_id: @category, public: true)
     @uniq_tags = @photos.map { |photo|  photo.tag}.uniq.reject(&:blank?)
 
     @tags = @uniq_tags.map do |tag|
