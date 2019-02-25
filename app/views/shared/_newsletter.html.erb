@@ -15,12 +15,12 @@
   </div>
 <% else %>
   <%= simple_form_for(Subscriber.new) do |f| %>
-    <div>Zapisz się na newsletter - zero spamu, tylko informacje o nowych artykułach.</div>
+    <div style="padding-bottom: 16px;">Zapisz się na newsletter - zero spamu, tylko informacje o nowych artykułach.</div>
     <div class="form-group">
       <%= f.input :email, input_html: {class: "form-control"}, placeholder: 'Email', label: false %>
     </div>
     <div class="">
-      <%= f.submit "Zapisz", class: "btn btn-sm btn-outline-success" %>
+      <%= f.submit "Zapisz", class: "newsletter-button" %>
     </div>
   <% end %>
 <% end %>

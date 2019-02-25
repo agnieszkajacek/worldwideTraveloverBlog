@@ -44,6 +44,22 @@ body{
   }
 }
 
+.newsletter-button {
+  color: var(--orange);
+  background: white;
+  border: 1px solid var(--orange);
+  cursor: pointer;
+  padding-top: 5px;
+  padding-bottom: 5px;
+  padding-left: 15px;
+  padding-right: 15px;
+}
+.newsletter-button:hover {
+  color: white;
+  background: var(--orange);
+  border: 1px solid white;
+  cursor: pointer;
+}
 .form-group  {
   ::placeholder {
     font-size: 12px;
