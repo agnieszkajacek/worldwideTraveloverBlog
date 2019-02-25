@@ -43,6 +43,13 @@ body{
     padding-bottom: 30px;
   }
 }
+
+.form-group  {
+  ::placeholder {
+    font-size: 12px;
+  }
+}
+
 p.made {
   font-family: 'Montserrat', sans-serif;
 }
@@ -97,10 +104,7 @@ p.made {
 .navbar {
   background-color: var(--nav-footer);
 }
-.navbar-nav .nav-item {
-  //margin-right: 10px;
-  //margin-left: 10px;
-}
+
 .sticky.is-sticky {
   position: fixed;
   left: 0;
@@ -181,8 +185,9 @@ p.made {
   text-align: center;
   padding: 10px;
   box-shadow: 0 0.25rem 0.75rem rgba(0, 0, 0, .05);
-  margin-bottom: 40px;
-  padding-top: 40px;
+  margin-bottom: 30px;
+  padding-top: 30px;
+  padding-bottom: 30px;
 
   .badges,
   .instagram,
@@ -225,6 +230,26 @@ p.made {
     max-width: 100%;
     border: 0;
     overflow: hidden;
+  }
+  .quote {
+    .quote-author {
+      color:  var(--orange);
+    }
+    .quote-text {
+      display: flex;
+      p {
+        margin-bottom: 0;
+      }
+      .quote-sign-end,
+      .quote-sign-start {
+        color:  var(--orange);
+        font-size: 8px;
+        font-style: italic;
+      }
+      .quote-sign-end {
+        align-self: flex-end;
+      }
+    }
   }
 }
 
