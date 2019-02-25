@@ -15,6 +15,7 @@
   </div>
 <% else %>
   <%= simple_form_for(Subscriber.new) do |f| %>
+    <div>Zapisz się na newsletter - zero spamu, tylko informacje o nowych artykułach.</div>
     <div class="form-group">
       <label for="message-text" class="col-form-label">Email:</label>
       <%= f.input :email, input_html: {class: "form-control"}, label: false %>

@@ -31,7 +31,7 @@ body{
   flex-direction: column;
   min-height: 100vh;
   font-family: 'Roboto', sans-serif;
-  font-size: 16px;
+  font-size: 15px;
   line-height: 26px;
   font-weight: 400;
   color: var(--main-font-color);
@@ -72,7 +72,6 @@ p.made {
 }
 .right-side-menu {
   display: flex;
-  margin-right: 15px;
 }
 .coco-image {
   background-color: #8B9B9B;
@@ -94,10 +93,7 @@ p.made {
 .center {
   justify-content: center
 }
-//navbar 
-.navbar-collapse {
-  margin-left: 15px;
-}
+
 .navbar {
   background-color: var(--nav-footer);
 }
@@ -161,7 +157,7 @@ p.made {
   a {
     color: white !important;
     font-family: 'Montserrat', sans-serif;
-    font-size: 16px;
+    font-size: 15px;
     font-weight: 400;
   }
 }
@@ -196,7 +192,7 @@ p.made {
     text-transform: uppercase;
     font-weight: bold;
     font-family: 'Montserrat', sans-serif;
-    font-size: 16px;
+    font-size: 14px;
     color: var(--headers);
   }
   .facebook {
@@ -221,6 +217,9 @@ p.made {
       font-weight: bold;
       text-transform: uppercase;
     }
+  }
+  .booking-img img {
+    width: 80%;
   }
   .badge-img {
     max-width: 100%;
@@ -266,11 +265,11 @@ p.made {
     }
     .post-title {
       font-family: 'Montserrat', sans-serif;
-      font-size: 25px;
+      font-size: 18px;
       font-weight: 700;
       text-decoration: none;
       color: var(--headers);
-      line-height: 40px;
+      line-height: 27px;
       word-spacing: 0px;
     }
     .post-title.center {
@@ -298,13 +297,11 @@ p.made {
       text-decoration: none;
       bottom: 0px;
       left: 20px;
-      font-weight: bold;
       float: right;
 
       &:hover {
         color: var(--headers);
         text-decoration: none;
-        font-weight: bold;
       }
     }
   }
@@ -317,7 +314,7 @@ p.made {
   }
   span.article-time {
     font-family: 'Montserrat', sans-serif;
-    font-size: 12.5px;
+    font-size: 12px;
     font-weight: bold;
     color: var(--orange);
 
@@ -331,6 +328,8 @@ p.made {
   }
   .article-body {
     flex: 1;
+    padding-top: 10px;
+    padding-bottom: 10px;
 
     h1 {
       text-align: center;
@@ -553,6 +552,7 @@ p.made {
 
 // ## Gallery - with categories ## //
 #photography-index-page {
+  padding-top: 15px;
   background-color: white;
   box-shadow: 0 0.25rem 0.75rem rgba(0,0,0,.05);
   

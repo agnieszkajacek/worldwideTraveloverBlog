@@ -44,7 +44,7 @@ class CategoriesController < ApplicationController
 
   private
   def category_params
-    params.require(:category).permit(:name, :parent_id, :cover)
+    params.require(:category).permit(:name, :parent_id, :cover, :show_in_gallery)
   end
 
   def find_category
