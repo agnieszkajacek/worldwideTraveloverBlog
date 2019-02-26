@@ -22,7 +22,9 @@
                 <img class="img-thumbnail" src="<%= post.cover_url(:thumbnail) %>">
               </div>
               <div class="article-body">
-                <%= link_to "#{post.title}", post, class: "post-title" %>
+                <div class="post-title">
+                  <%= link_to "#{post.title}", post %>
+                </div>
                 <div class="center-date">
                   <span class="article-time">
                     <%= I18n.l(post.published.to_date, format: :long) %>
