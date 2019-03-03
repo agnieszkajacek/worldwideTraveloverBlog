@@ -21,8 +21,8 @@
                 <% if user_signed_in? %>
                   <button class="btn" data-clipboard-action="copy" data-clipboard-text="<%= render_source(partial: "photos/snippet", locals: {photo: photo}) %>">
                     Copy <%= photo.tag %>
-                    Public <%= photo.public %>
                   </button>
+                  Public <%= photo.public %>
                 <% end %>
               </div>
             </div>
