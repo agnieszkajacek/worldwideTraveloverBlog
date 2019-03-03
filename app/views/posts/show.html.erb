@@ -18,13 +18,13 @@
                   <%= link_to "Edit", edit_post_path(@post), class: "btn btn-sm btn-outline-warning edit-option" %>
                   <%= link_to "Delete", @post, method: :delete, data: { confirm: "Are you sure?" }, class: "btn btn-sm btn-outline-warning edit-option" %>
                 </div>
-                <h1 class="post-title center">
+                <div class="post-title center">
                   <%= @post.title %>
-                </h1>
+                </div>
               <% else %>
-                <h1 class="post-title center">
+                <div class="post-title center">
                   <%= @post.title %>
-                </h1>
+                </div>
               <% end %>
               <div class="fancy-line">
                 <span class="article-time">
