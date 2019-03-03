@@ -3,7 +3,7 @@ class AlbumsController < ApplicationController
   
   def show
     @category = Category.friendly.find(params[:id])
-    @photos = @photos = Photo.where(category_id: @category)
+    @photos = Photo.where(category_id: @category)
 
     if (!user_signed_in?)
       @photos = Photo.where(category_id: @category, public: true)

@@ -45,7 +45,13 @@ class PhotosController < ApplicationController
   def find_category
     @category = []
 
-    Category.where(show_in_gallery: true).each do |category|
+    if (!user_signed_in?)
+      @cat = Category.where(show_in_gallery: true)
+    else
+      @cat = Category.all
+    end 
+
+    @cat.each do |category|
       if category.has_children?
         category.children.each do |c|
           @category << c
