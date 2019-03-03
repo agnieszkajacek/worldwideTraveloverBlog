@@ -31,7 +31,7 @@ body{
   flex-direction: column;
   min-height: 100vh;
   font-family: 'Roboto', sans-serif;
-  font-size: 15px;
+  font-size: 16px;
   line-height: 26px;
   font-weight: 400;
   color: var(--main-font-color);
@@ -177,7 +177,7 @@ p.made {
   a {
     color: white !important;
     font-family: 'Montserrat', sans-serif;
-    font-size: 15px;
+    font-size: 16px;
     font-weight: 400;
   }
 }
@@ -213,8 +213,8 @@ p.made {
     text-transform: uppercase;
     font-weight: bold;
     font-family: 'Montserrat', sans-serif;
-    font-size: 14px;
-    color: var(--headers);
+    font-size: 16px;
+    color: var(--main-font-color);
   }
   .facebook {
     margin-top: 55px;
@@ -233,7 +233,7 @@ p.made {
     .owner-title {
       padding-top: 10px;
       padding-bottom: 10px;
-      font-size: 14px;
+      font-size: 16px;
       color:  var(--orange);
       font-weight: bold;
       text-transform: uppercase;
@@ -305,23 +305,24 @@ p.made {
       text-align: right;
     }
     .post-title {
+      text-align: center;
+      
       a {
-        color: var(--headers);
-      }
-      a:hover {
-        color: var(--headers);
-      }
+      color: var(--main-font-color);
       font-family: 'Montserrat', sans-serif;
-      font-size: 20px;
+      font-size: 24px;
       font-weight: 700;
       text-decoration: none;
       line-height: 27px;
       word-spacing: 0px;
-      text-align: center;
-    
+        &:hover {
+          color: var(--main-font-color);
+        }
+      }
       @media (min-width: 768px) {
         text-align: left;
       }
+
     }
     .post-title.center {
       text-align: center;
@@ -351,7 +352,7 @@ p.made {
       float: right;
 
       &:hover {
-        color: var(--headers);
+        color: var(--main-font-color);
         text-decoration: none;
       }
     }
@@ -365,7 +366,7 @@ p.made {
   }
   span.article-time {
     font-family: 'Montserrat', sans-serif;
-    font-size: 12px;
+    font-size: 14px;
     font-weight: bold;
     color: var(--orange);
 
@@ -765,7 +766,7 @@ $drop-shadow-color: rgba(0,0,0,0.4);
 
 .multi-columns-row {
   a {
-    color: var(--headers);
+    color: var(--main-font-color);
     font-weight: bold;
     font-family: 'Roboto', sans-serif;
   }
@@ -815,12 +816,12 @@ iframe {
 
 .pages {
   .contant-title,
-  .cooperation-title{
+  .cooperation-title {
     font-family: 'Montserrat', sans-serif;
-    font-size: 25px;
+    font-size: 24px;
     font-weight: 700;
     text-decoration: none;
-    color: var(--headers);
+    color: var(--main-font-color);
     line-height: 40px;
     word-spacing: 0px;
     text-align: center;
@@ -925,7 +926,7 @@ p.alert {
   .tag-title,
   .tag-name {
     color: var(--nav-footer);
-    font-size: 18px;
+    font-size: 16px;
     font-weight: 700;
     margin-right: 8px;
   }

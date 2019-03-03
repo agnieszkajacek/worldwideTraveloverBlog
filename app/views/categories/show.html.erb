@@ -21,9 +21,9 @@
                 <img class=" img-thumbnail" src="<%= post.cover_url(:thumbnail) %>">
               </div>
               <div class="article-body">
-                <h1 style="margin: 0;">
-                  <%= link_to "#{post.title}", post, class: "post-title" %>
-                </h1>
+                <div class="post-title">
+                  <%= link_to "#{post.title}", post %>
+                </div>
                 <div class="center-date">
                   <span class="article-time">
                     <%= post.published.to_date.strftime("%d %B %Y") %>
