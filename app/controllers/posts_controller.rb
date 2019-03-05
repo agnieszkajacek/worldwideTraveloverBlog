@@ -26,7 +26,8 @@ class PostsController < ApplicationController
     if @post.save!
       @subscribers.each do |subscriber|
         if subscriber.subscription
-          NotificationMailer.post_email(subscriber, @post).deliver_now
+          NewPostNotifierJob.perform_later(subscriber, @post)
+          #NotificationMailer.post_email(subscriber, @post).deliver_now
         end
       end
       redirect_to @post
