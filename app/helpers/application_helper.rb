@@ -17,4 +17,8 @@ module ApplicationHelper
     @html_encoder ||= HTMLEntities.new
     raw(@html_encoder.encode(render args))
   end
+
+  def active_class(link_path)
+    current_page?(link_path) ? "nav-link active" : "nav-link"
+  end
 end

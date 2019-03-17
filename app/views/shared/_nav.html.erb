@@ -30,13 +30,13 @@
 
       <div class="collapse navbar-collapse" id="navbarSupportedContent">
         <div class="nav-item">
-          <a href="/" class="nav-link"><i class="fas fa-home"></i></a>
+          <a href="/" class="<%= active_class('/') %>"><i class="fas fa-home"></i></a>
         </div>
         <ul class="navbar-nav">
           <% Category.where(ancestry: nil).each do |category| %>
             <% if true %>
               <li class="nav-item dropdown">
-                <a class="nav-link" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                <a class="nav-link <%= category.children.any? {|c| current_page?(category_url(c))} ? 'active' : '' %>" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                   <%= category.name %>
                 </a>
                 <div class="dropdown-menu" aria-labelledby="navbarDropdown">
@@ -48,7 +48,7 @@
             <% end %>
           <% end %>
           <li class="nav-item">
-            <%= link_to "Galeria", photos_url, class: "nav-link" %>
+            <%= link_to "Galeria", photos_url, class: active_class(photos_url) %>
           </li>
         </ul>
       </div>

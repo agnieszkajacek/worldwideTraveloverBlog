@@ -120,6 +120,9 @@ p.made {
 .navbar {
   background-color: var(--nav-footer);
 }
+.nav-link.active {
+  color: var(--orange) !important;
+}
 
 .sticky.is-sticky {
   position: fixed;
@@ -225,6 +228,7 @@ p.made {
   .about-img .me {
     width: 100%;
     height: auto;
+    border-radius: 10px;
   }
   .about-img img {
     width: 100%;
