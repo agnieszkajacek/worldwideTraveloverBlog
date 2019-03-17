@@ -44,6 +44,21 @@ body{
   }
 }
 
+div.privacy-policy {
+  display: flex;
+  justify-content: center;
+  font-family: 'Montserrat', sans-serif;
+
+  div.short-cookies-info {
+    padding-right: 10px;
+  }
+  a {
+    color: var(--orange);
+    font-family: 'Montserrat', sans-serif;
+    font-size: 12px;
+    font-weight: bold;
+  }
+}
 .newsletter-button {
   color: var(--orange);
   background: white;

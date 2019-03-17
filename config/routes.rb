@@ -14,6 +14,7 @@ Rails.application.routes.draw do
 
   get '/kontakt', to: 'pages#kontakt'
   get '/wspolpraca', to: 'pages#wspolpraca'
+  get '/polityka_prywatnosci', to: 'pages#polityka_prywatnosci'
 
   get 'subscribers/unsubscribe/:unsubscribe_hash', to: 'subscribers#unsubscribe', as: 'unsubscribe'
 end
