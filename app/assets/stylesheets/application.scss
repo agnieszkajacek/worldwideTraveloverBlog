@@ -45,13 +45,13 @@ body{
 }
 
 div.grecaptcha-badge {
-  width: 0;
-  height: 0;
-  transition: unset;
-  position: unset;
-  bottom: unset;
-  right: unset;
-  box-shadow: unset;
+  width: 0 !important;
+  height: 0 !important;
+  transition: unset !important;
+  position: unset !important;
+  bottom: unset !important;
+  right: unset !important;
+  box-shadow: unset !important;
 }
 div.privacy-policy {
   display: flex;
