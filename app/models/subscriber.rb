@@ -3,7 +3,6 @@ class Subscriber < ApplicationRecord
   before_create :add_unsubscribe_hash
 
   private
-
   def add_unsubscribe_hash
     self.unsubscribe_hash = SecureRandom.hex
   end

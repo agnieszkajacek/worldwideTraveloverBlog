@@ -24,10 +24,13 @@ class PostsController < ApplicationController
     @subscribers = Subscriber.all
 
     if @post.save!
+      scheduled_time = Time.zone.now
       @subscribers.each do |subscriber|
         if subscriber.subscription
-          NotificationMailer.post_email(subscriber, @post).deliver_now
+          NotificationMailer.post_email(subscriber, @post).deliver_later(wait_until: scheduled_time)
         end
+
+        scheduled_time = scheduled_time + 15.minutes
       end
       redirect_to @post
     else
@@ -43,9 +46,6 @@ class PostsController < ApplicationController
     @subscribers = Subscriber.all
 
     if @post.update(post_params)
-      #@subscribers.each do |subscriber|
-      #  NotificationMailer.post_email(subscriber.email, @post).deliver_now
-      #end
       redirect_to @post, notice: "Update successful!"
     else
       render "edit"
