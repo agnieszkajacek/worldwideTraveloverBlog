@@ -38,6 +38,15 @@
     <!-- Pinterest -->
     <meta name="p:domain_verify" content="eb7dbf6a173708a9e81e6e5acb7e65dc"/>
     <!-- End Pinterest -->
+      <script src="https://www.google.com/recaptcha/api.js?render=<%= ENV["RECAPTCHA_PUBLIC_KEY"] %>"></script>
+      <script>
+      grecaptcha.ready(function() {
+          grecaptcha.execute('<%= ENV["RECAPTCHA_PUBLIC_KEY"] %>', {action: 'homepage'}).then(function(token) {
+            document.getElementById('recaptcha_token_field').value = token;
+
+          });
+      });
+      </script>
   </head>
 
   <body>

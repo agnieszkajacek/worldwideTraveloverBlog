@@ -670,6 +670,8 @@ GEM
       warden (~> 1.2.3)
     disqus_rails (0.0.7)
       rails
+    domain_name (0.5.20180417)
+      unf (>= 0.0.5, < 1.0.0)
     dotenv (2.4.0)
     dotenv-rails (2.4.0)
       dotenv (= 2.4.0)
@@ -690,6 +692,15 @@ GEM
     globalid (0.4.1)
       activesupport (>= 4.2.0)
     htmlentities (4.3.4)
+    http (4.1.1)
+      addressable (~> 2.3)
+      http-cookie (~> 1.0)
+      http-form_data (~> 2.0)
+      http_parser.rb (~> 0.6.0)
+    http-cookie (1.0.3)
+      domain_name (~> 0.5)
+    http-form_data (2.1.1)
+    http_parser.rb (0.6.0)
     i18n (1.0.1)
       concurrent-ruby (~> 1.0)
     image_processing (1.4.0)
@@ -835,6 +846,9 @@ GEM
       thread_safe (~> 0.1)
     uglifier (4.1.11)
       execjs (>= 0.3.0, < 3)
+    unf (0.1.4)
+      unf_ext
+    unf_ext (0.0.7.5)
     warden (1.2.7)
       rack (>= 1.0)
     web-console (3.6.2)
@@ -869,6 +883,7 @@ DEPENDENCIES
   font-awesome-sass
   friendly_id (~> 5.2.4)
   htmlentities (~> 4.3.4)
+  http (~> 4.1)
   image_processing (~> 1.4.0)
   jbuilder (~> 2.5)
   jquery-rails
