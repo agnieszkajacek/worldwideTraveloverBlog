@@ -44,6 +44,15 @@ body{
   }
 }
 
+div.grecaptcha-badge {
+  width: 0;
+  height: 0;
+  transition: unset;
+  position: unset;
+  bottom: unset;
+  right: unset;
+  box-shadow: unset;
+}
 div.privacy-policy {
   display: flex;
   justify-content: center;
