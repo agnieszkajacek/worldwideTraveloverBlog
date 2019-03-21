@@ -823,6 +823,8 @@ GEM
     simple_form (4.0.0)
       actionpack (> 4)
       activemodel (> 4)
+    sitemap_generator (5.3.1)
+      builder (~> 3.0)
     smtpapi (0.1.0)
     spring (2.0.2)
       activesupport (>= 4.2)
@@ -902,6 +904,7 @@ DEPENDENCIES
   shrine (~> 2.8)
   sidekiq (~> 5.0)
   simple_form
+  sitemap_generator (~> 5.1)
   spring
   spring-watcher-listen (~> 2.0.0)
   turbolinks (~> 5)
