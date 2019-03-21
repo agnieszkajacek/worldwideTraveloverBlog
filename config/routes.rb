@@ -4,7 +4,7 @@ Rails.application.routes.draw do
   devise_for :users, controllers: {sessions: 'users/sessions'}
   root "posts#index"
 
-  get '/sitemap.xml', to: redirect("https://s3.amazonaws.com/photos-worldwide/sitemaps/sitemap.xml.gz", status: 301)
+  get '/sitemap.xml', to: redirect("https://s3.#{ENV['AWS_REGION']}.amazonaws.com/#{ENV['AWS_BUCKET']}/sitemaps/sitemaps/sitemap.xml.gz", status: 301)
 
   resources :posts
   resources :albums, only: [] do
