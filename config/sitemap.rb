@@ -47,5 +47,5 @@ SitemapGenerator::Sitemap.adapter = SitemapGenerator::AwsSdkAdapter.new(
 )
 
 SitemapGenerator::Sitemap.public_path = 'tmp/'
-SitemapGenerator::Sitemap.sitemaps_host = "https://<%= ENV['AWS_BUCKET'] %>.s3.amazonaws.com/"
+SitemapGenerator::Sitemap.sitemaps_host = "http://s3.amazonaws.com/<%= ENV['AWS_BUCKET'] %>"
 SitemapGenerator::Sitemap.sitemaps_path = 'sitemaps/'
