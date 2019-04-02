@@ -23,7 +23,4 @@ SitemapGenerator::Sitemap.create do
   Post.find_each do |post|
     add post_path(post), :lastmod => post.updated_at
   end
-  Photo.find_each do |photo|
-    add photo_path(photo), :lastmod => photo.updated_at
-  end
 end
