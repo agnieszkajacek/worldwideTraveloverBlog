@@ -10,13 +10,14 @@ function showShareIcons(title) {
     shareIn: "popup",
     url: window.location.href,
     text: title,
-    showCount: true,
+    showCount: false,
     showLabel: false,
     shares: [
       "twitter",
       "facebook",
-      "googleplus",
-      "pinterest"
+      "pinterest",
+      "whatsapp",
+      "messenger"
     ]
   });
 }
