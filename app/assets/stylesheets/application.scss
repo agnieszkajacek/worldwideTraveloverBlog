@@ -1,3 +1,20 @@
+$grid-breakpoints: (
+  xs: 0,
+  sm: 576px,
+  md: 768px,
+  lg: 992px,
+  xl: 1200px
+  //xxl: 1500px
+);
+
+$container-max-widths: (
+  sm: 540px,
+  md: 720px,
+  lg: 960px,
+  xl: 1140px
+  //xxl: 1400px
+);
+
 @import "bootstrap";
 @import "font-awesome-sprockets";
 @import "font-awesome";
@@ -6,7 +23,6 @@
   .badge-img {
     width: 30%;
   }
-
 }
 
 @font-face {
@@ -250,9 +266,13 @@ p.made {
     margin-top: 55px;
   }
   .about-img .me {
-    width: 100%;
+    width: 50%;
     height: auto;
-    border-radius: 10px;
+    border-radius: 50%;
+
+    @media (min-width: 768px) {
+      width: 70%;
+    }
   }
   .about-img img {
     width: 100%;
@@ -446,8 +466,7 @@ p.made {
 #shareIconsCount {
   font-size: 12px;
   text-align: center;
-  margin-bottom: 30px;
-  margin-top: 100px;
+  margin-bottom: 40px;
 }
 
 //yellow buttons //
