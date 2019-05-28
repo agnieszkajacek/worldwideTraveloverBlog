@@ -1,12 +1,30 @@
+$grid-breakpoints: (
+  xs: 0,
+  sm: 576px,
+  md: 768px,
+  lg: 992px,
+  xl: 1200px
+  //xxl: 1500px
+);
+
+$container-max-widths: (
+  sm: 540px,
+  md: 720px,
+  lg: 960px,
+  xl: 1140px
+  //xxl: 1400px
+);
+
 @import "bootstrap";
 @import "font-awesome-sprockets";
 @import "font-awesome";
 
-@media (max-width: 991px) {
-  .badge-img {
-    width: 30%;
+@media (max-width: 992px) {
+  .badge-img,
+  .booking-img img  {
+    width: 40%;
   }
-
+  
 }
 
 @font-face {
@@ -250,12 +268,13 @@ p.made {
     margin-top: 55px;
   }
   .about-img .me {
-    width: 100%;
+    width: 70%;
     height: auto;
-    border-radius: 10px;
-  }
-  .about-img img {
-    width: 100%;
+    border-radius: 50%;
+
+    @media (max-width: 992px) {
+      width: 40%;
+    }
   }
   .about-me {
     padding-top: 10px;
@@ -271,10 +290,10 @@ p.made {
     }
   }
   .booking-img img {
-    width: 80%;
+    max-width: 80%;
   }
   .badge-img {
-    max-width: 100%;
+    max-width: 80%;
     border: 0;
     overflow: hidden;
   }
@@ -446,8 +465,7 @@ p.made {
 #shareIconsCount {
   font-size: 12px;
   text-align: center;
-  margin-bottom: 30px;
-  margin-top: 100px;
+  margin-bottom: 40px;
 }
 
 //yellow buttons //
