@@ -344,6 +344,7 @@ p.made {
   }
   .article-card.column {
     display: flex;
+    padding-top: 30px;
 
     @media (min-width: 768px) {
       flex-direction: column;
