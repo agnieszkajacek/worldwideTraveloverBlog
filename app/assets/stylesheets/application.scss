@@ -19,10 +19,12 @@ $container-max-widths: (
 @import "font-awesome-sprockets";
 @import "font-awesome";
 
-@media (max-width: 991px) {
-  .badge-img {
-    width: 30%;
+@media (max-width: 992px) {
+  .badge-img,
+  .booking-img img  {
+    width: 40%;
   }
+  
 }
 
 @font-face {
@@ -266,16 +268,13 @@ p.made {
     margin-top: 55px;
   }
   .about-img .me {
-    width: 50%;
+    width: 70%;
     height: auto;
     border-radius: 50%;
 
-    @media (min-width: 768px) {
-      width: 70%;
+    @media (max-width: 992px) {
+      width: 40%;
     }
-  }
-  .about-img img {
-    width: 100%;
   }
   .about-me {
     padding-top: 10px;
@@ -291,10 +290,10 @@ p.made {
     }
   }
   .booking-img img {
-    width: 80%;
+    max-width: 80%;
   }
   .badge-img {
-    max-width: 100%;
+    max-width: 80%;
     border: 0;
     overflow: hidden;
   }
