@@ -1,0 +1,85 @@
+<div class="col-lg-4 col-md-12">
+  <div class="sidebar-area">
+    <div class="sidebar-section about-author center-text">
+      <div class="author-image"><img style="width:200px; height: 200px;" src="https://s3.eu-central-1.amazonaws.com/photos-worldwide/avatar-blog.jpg" alt="Autohr Image"></div>
+
+      <h4 class="author-name"><b class="light-color">Agnieszka Jacek</b></h4>
+      <p>Z wykształcenia księgowa, na co dzień programista. Miłośniczka podróży. Fotograf amator. 
+      Uwielbia gotować, dobrze zjeść i testować nowe smaki. 
+      Obsesyjna pedantka, której żaden brud nie jest straszny. 
+      Zakochana w południowo-wschodniej Azji. 
+      Marzy o tym, aby starość spędzić w najpiękniejszym zakątku świata.</p>
+
+      <ul class="social-icons">
+        <li><a href="https://www.facebook.com/worldwide.travelover"><i class="fab fa-facebook-square"></i></a></li>
+        <li><a href="https://twitter.com/worldtravelover"><i class="fab fa-twitter-square"></i></a></li>
+        <li><a href="https://www.instagram.com/worldwide_travelover"><i class="fab fa-instagram"></i></a></li>
+        <li><a href="https://pl.pinterest.com/worldwidetravelover/"><i class="fab fa-pinterest-square"></i></a></li>
+      </ul>
+
+      <a class="read-more-link" href="#"><b>CZYTAJ WIĘCEJ</b></a>
+    </div><!-- sidebar-section about-author -->
+
+    <div class="sidebar-section src-area">
+      <form action="post">
+        <%= form_tag(posts_path, :method => "get", id: "search-form") do %>
+          <%= text_field_tag :search, params[:search], id: "search", placeholder: "Szukaj", type: "search", class: "src-input" %>
+        <% end %>
+      </form>
+    </div><!-- sidebar-section src-area -->
+
+    <div class="sidebar-section newsletter-area">
+      <h5 class="title"><b>Zapisz się do newslettera</b></h5>
+        <% if cookies[:saved_subscriber] %>
+          <h5 class="title">Wygląda na to, że już się zapisałeś!</h5>
+        <% else %>
+          <%= simple_form_for(Subscriber.new) do |f| %>
+            <%= f.input :email, input_html: {class: "email-input"}, placeholder: 'Email', label: false %>
+            <%= f.input :recaptcha_token, as: :hidden, input_html: {id: :recaptcha_token_field} %>
+            <%= f.submit "ZAPISZ", class: "btn btn-2" %>
+          <% end %>
+        <% end %>
+    </div><!-- sidebar-section newsletter-area -->
+
+    <div class="sidebar-section advertisement-area">
+      <h4 class="title"><b class="light-color">Cytat</b></h4>
+        <div class="quote">
+          <div class="quote-text">
+            <i class="fas fa-quote-left quote-sign-start"></i>
+            <p>Raz w roku jedź do miejsca, w którym jeszcze nigdy nie byłeś.</p>
+            <i class="fas fa-quote-right quote-sign-end"></i>
+          </div>
+          <div class="quote-author"> ~ Dali Lama</div>
+        </div>
+    </div><!-- sidebar-section booking-area -->
+
+    <div class="sidebar-section advertisement-area">
+      <h4 class="title"><b class="light-color">Booking</b></h4>
+      <h6 class="btn btn-2">
+        <a href="https://www.booking.com/s/34_6/91040779" target="_blank">
+          Zgarnij 50zł
+        </a>
+      </h6>
+    </div><!-- sidebar-section booking-area -->
+
+    <div class="sidebar-section advertisement-area">
+      <h4 class="title"><b class="light-color">Odznaki</b></h4>
+      <a href='https://www.lonelyplanet.com/pathfinders?utm_source=pathfinder+community&utm_medium=referral&utm_campaign=pathfinders+badges+community'>
+        <img class="badge-img" src='https://s3.amazonaws.com/static-asset/landing-pages/pathfinders/badges/Community_800px_blue.png' alt='Lonely Planet Pathfinders badge image'/>
+      </a>
+    </div><!-- sidebar-section lpBadge-area -->
+
+    <div class="sidebar-section instagram-area">
+      <h4 class="title"><b class="light-color">Instagram</b></h4>
+      <a href="https://www.instagram.com/worldwide_travelover/"><b>@worldwide_travelover</b></a>
+      <!-- LightWidget WIDGET --><script src="https://cdn.lightwidget.com/widgets/lightwidget.js"></script>
+      <iframe src="https://cdn.lightwidget.com/widgets/a55b860938055435b796bb612db7e9ac.html" scrolling="no" allowtransparency="true" class="lightwidget-widget" style="width:100%;border:0;overflow:hidden;"></iframe>
+
+    </div><!-- sidebar-section instagram-area -->
+
+    <div class="sidebar-section instagram-area">
+      <h4 class="title"><b class="light-color">Facebook</b></h4>
+      <div class="fb-page" data-href="https://www.facebook.com/worldwide.travelover/" data-small-header="false" data-adapt-container-width="true" data-hide-cover="false" data-show-facepile="true"><blockquote cite="https://www.facebook.com/worldwide.travelover/" class="fb-xfbml-parse-ignore"><a href="https://www.facebook.com/worldwide.travelover/">Worldwide-Travelover</a></blockquote></div>
+    </div><!-- sidebar-section facebook-area -->
+  </div><!-- sidebar-area -->
+</div><!-- col-lg-4 -->

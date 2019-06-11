@@ -6,48 +6,37 @@
   <meta property="og:image" content="<%= @post.cover_url(:thumbnail, public: true) %>" />
 <% end %>
 
-<div class="container">
-  <div class="articles">
+<section class="blog-area">
+  <div class="container">
     <div class="row">
-      <div class="col-lg-9 col-12">
-        <article class="article-container">
-          <div class="article-card column">
-            <div>
-              <% if user_signed_in? %>
-                <div class="admin-options">
-                  <%= link_to "Edit", edit_post_path(@post), class: "btn btn-sm btn-outline-warning edit-option" %>
-                  <%= link_to "Delete", @post, method: :delete, data: { confirm: "Are you sure?" }, class: "btn btn-sm btn-outline-warning edit-option" %>
-                </div>
-                <div class="post-title center">
-                  <%= @post.title %>
-                </div>
-              <% else %>
-                <div class="post-title center">
-                  <%= @post.title %>
-                </div>
-              <% end %>
-              <div class="fancy-line">
-                <span class="article-time">
-                  <%= I18n.l(@post.published.to_date, format: :long) %>
-                </span>
-              </div>
+      <div class="col-lg-8 col-md-12">
+        <div class="blog-posts">
+          <% if user_signed_in? %>
+            <div class="admin-options">
+              <%= link_to "Edit", edit_post_path(@post), class: "btn btn-sm btn-outline-warning edit-option" %>
+              <%= link_to "Delete", @post, method: :delete, data: { confirm: "Are you sure?" }, class: "btn btn-sm btn-outline-warning edit-option" %>
             </div>
-            <div>
-              <div class="card-body"><%= markdown(@post.content) %></div>
-            </div>
-            <div>
-              <div id="shareIconsCount"></div>
-              <div class="disqus">
-                <%= render 'shared/disqus' %>
-              </div>
+          <% end %>
+          <div class="single-post">
+            <div class="image-wrapper"><img src="<%= @post.cover_url(:original) %>" alt="Blog Image"></div>
+            <h3 class="title"><b class="light-color"><%= @post.title %></b></h3>
+            <p class="date"><em><%= I18n.l(@post.published.to_date, format: :long) %></em></p>
+            <div class="single-post-body"><%= markdown(@post.content) %></div>
+          </div><!-- single-post -->
+
+          <div>
+            <div id="shareIconsCount"></div>
+            <div class="disqus">
+              <%= render 'shared/disqus' %>
             </div>
           </div>
-        </article>
-      </div>
-      <%= render 'shared/sidebar'%>
-    </div>
-  </div>
-</div>
+
+        </div><!-- blog-posts -->
+      </div><!-- col-lg-8 -->
+      <%= render 'shared/new_sidebar'%>
+    </div><!-- row -->
+  </div><!-- container -->
+</section><!-- section -->
 
 <script type="text/javascript">
   showShareIcons("<%= @post.title %>");

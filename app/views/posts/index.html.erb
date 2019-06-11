@@ -5,42 +5,34 @@
   <meta property="og:image" content="https://s3.eu-central-1.amazonaws.com/photos-worldwide/small-coco.jpg" />
 <% end %>
 
-<div class="category-header">
+<div>
   <% if @posts.blank? %>
     <h6 style="padding-left: 220px">Nie ma postów pasujących do tego zapytania <%= params[:search].upcase %>.</h6>
   <% end %>
 </div>
 
-<div class="container">
-  <div class="articles">
+<section class="section blog-area">
+  <div class="container">
     <div class="row">
-      <div class="col-lg-9 col-12">
+
+      <div class="col-lg-8 col-md-12">
         <% @posts.each do |post| %>
-          <article class="article-container">
-            <div class="article-card">
-              <div class="article-image">
-                <img class="img-thumbnail" src="<%= post.cover_url(:thumbnail) %>">
-              </div>
-              <div class="article-body">
-                <div class="post-title">
-                  <%= link_to "#{post.title}", post %>
-                </div>
-                <div class="center-date">
-                  <span class="article-time">
-                    <%= I18n.l(post.published.to_date, format: :long) %>
-                  </span>
-                </div>
-                <div class="card-body with-padding">
-                  <%= post.introduction %>
-                </div>
-                  <%= link_to "Czytaj więcej...", post, class: "read-more" %>
-              </div>
-            </div>
-          </article>
+          <div class="blog-posts">
+            <div class="single-post">
+              <div class="image-wrapper"><img src="<%= post.cover_url(:original) %>"></div>
+
+              <h3 class="title"><a href="#"><b class="light-color"><%= link_to "#{post.title}", post %></b></a></h3>
+              <p class="date"><em><%= I18n.l(post.published.to_date, format: :long) %></em></p>
+              <p><%= post.introduction %></p>
+              <b><%= link_to "Czytaj więcej...", post, class: "btn read-more-btn" %></b>
+            </div><!-- single-post -->
+          </div>
         <% end %>
         <%= will_paginate @posts, previous_label: '&laquo;', next_label: '&raquo;', renderer: WillPaginate::ActionView::BootstrapLinkRenderer %>
       </div>
-      <%= render 'shared/sidebar'%>
-    </div>
-  </div>
-</div>
+
+      <%= render 'shared/new_sidebar'%>
+    </div><!-- row -->
+  </div><!-- container -->
+</section><!-- section -->
+
