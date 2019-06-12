@@ -1,7 +1,7 @@
 <div class="col-lg-4 col-md-12">
   <div class="sidebar-area">
     <div class="sidebar-section about-author center-text">
-      <div class="author-image"><img style="width:200px; height: 200px;" src="https://s3.eu-central-1.amazonaws.com/photos-worldwide/avatar-blog.jpg" alt="Autohr Image"></div>
+      <div class="author-image"><img style="width:200px; height: 200px;" src="https://photos-worldwide.s3.eu-central-1.amazonaws.com/avatar-blog-smallSize.jpg" alt="Autohr Image"></div>
 
       <h4 class="author-name"><b class="light-color">Agnieszka Jacek</b></h4>
       <p>Z wykształcenia księgowa, na co dzień programista. Miłośniczka podróży. Fotograf amator. 
@@ -21,9 +21,9 @@
     </div><!-- sidebar-section about-author -->
 
     <div class="sidebar-section src-area">
-      <form action="post">
+      <form>
         <%= form_tag(posts_path, :method => "get", id: "search-form") do %>
-          <%= text_field_tag :search, params[:search], id: "search", placeholder: "Szukaj", type: "search", class: "src-input" %>
+          <%= text_field_tag :search, params[:search], id: "search", placeholder: "Szukaj postów...", type: "search", class: "src-input" %>
         <% end %>
       </form>
     </div><!-- sidebar-section src-area -->
@@ -55,18 +55,22 @@
 
     <div class="sidebar-section advertisement-area">
       <h4 class="title"><b class="light-color">Booking</b></h4>
-      <h6 class="btn btn-2">
-        <a href="https://www.booking.com/s/34_6/91040779" target="_blank">
-          Zgarnij 50zł
-        </a>
-      </h6>
+      <div class="center-btn-img">
+        <h6 class="btn btn-2">
+          <a href="https://www.booking.com/s/34_6/91040779" target="_blank">
+            Zgarnij 50zł
+          </a>
+        </h6>
+      </div>
     </div><!-- sidebar-section booking-area -->
 
     <div class="sidebar-section advertisement-area">
       <h4 class="title"><b class="light-color">Odznaki</b></h4>
-      <a href='https://www.lonelyplanet.com/pathfinders?utm_source=pathfinder+community&utm_medium=referral&utm_campaign=pathfinders+badges+community'>
-        <img class="badge-img" src='https://s3.amazonaws.com/static-asset/landing-pages/pathfinders/badges/Community_800px_blue.png' alt='Lonely Planet Pathfinders badge image'/>
-      </a>
+      <div class="center-btn-img">
+        <a href='https://www.lonelyplanet.com/pathfinders?utm_source=pathfinder+community&utm_medium=referral&utm_campaign=pathfinders+badges+community'>
+          <img class="badge-img" src='https://photos-worldwide.s3.eu-central-1.amazonaws.com/lpBadge.png' alt='Lonely Planet Pathfinders badge image'/>
+        </a>
+      </div>
     </div><!-- sidebar-section lpBadge-area -->
 
     <div class="sidebar-section instagram-area">

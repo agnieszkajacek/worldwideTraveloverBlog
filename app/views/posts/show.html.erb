@@ -18,7 +18,7 @@
             </div>
           <% end %>
           <div class="single-post">
-            <div class="image-wrapper"><img src="<%= @post.cover_url(:original) %>" alt="Blog Image"></div>
+            <div class="image-wrapper"><img src="<%= @post.cover_url(:medium) %>" alt="Blog Image"></div>
             <h3 class="title"><b class="light-color"><%= @post.title %></b></h3>
             <p class="date"><em><%= I18n.l(@post.published.to_date, format: :long) %></em></p>
             <div class="single-post-body"><%= markdown(@post.content) %></div>

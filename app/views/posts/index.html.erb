@@ -5,21 +5,22 @@
   <meta property="og:image" content="https://s3.eu-central-1.amazonaws.com/photos-worldwide/small-coco.jpg" />
 <% end %>
 
-<div>
-  <% if @posts.blank? %>
-    <h6 style="padding-left: 220px">Nie ma postów pasujących do tego zapytania <%= params[:search].upcase %>.</h6>
-  <% end %>
-</div>
-
 <section class="section blog-area">
   <div class="container">
     <div class="row">
+    
+      <div class="category-header">
+        <% if @posts.blank? %>
+          <h3 class="title"><b class="light-color">Nie ma postów pasujących do tego zapytania</b></h3>
+          <p class="category-name"><%= params[:search].upcase %></p>
+        <% end %>
+        </div>
 
       <div class="col-lg-8 col-md-12">
         <% @posts.each do |post| %>
           <div class="blog-posts">
             <div class="single-post">
-              <div class="image-wrapper"><img src="<%= post.cover_url(:original) %>"></div>
+              <div class="image-wrapper"><img src="<%= post.cover_url(:medium) %>"></div>
 
               <h3 class="title"><a href="#"><b class="light-color"><%= link_to "#{post.title}", post %></b></a></h3>
               <p class="date"><em><%= I18n.l(post.published.to_date, format: :long) %></em></p>
