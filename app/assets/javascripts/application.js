@@ -2,8 +2,17 @@
 //= require jquery_ujs
 //= require popper
 //= require bootstrap-sprockets
-//= require turbolinks
 //= require_tree .
+
+function initializeCropper(output, ratio) {
+  new Cropper(output, {
+    viewMode: 2,
+    initialAspectRatio: ratio,
+    aspectRatio: ratio,
+    zoomable: false,
+    data: $(output).data("crop")
+  });
+}
 
 function showShareIcons(title) {
   $("#shareIconsCount").jsSocials({
@@ -78,12 +87,13 @@ $(document).ready(function () {
 
   // Crop photo
   var output = document.getElementById('preview');
+  var outputRectangle = document.getElementById('preview-rectangle');
+
 
   $('#upload-file').on('change', function(event) {
     output.src = URL.createObjectURL(event.target.files[0]);
 
     output.addEventListener('crop', function(event) {
-      console.log('crop', event.detail);
       $('#photo_crop_x').val(event.detail.x.toFixed());
       $('#photo_crop_y').val(event.detail.y.toFixed());
       $('#photo_crop_width').val(event.detail.width.toFixed());
@@ -102,7 +112,13 @@ $(document).ready(function () {
 
   $('#upload-cover').on('change', function(event) {
     output.src = URL.createObjectURL(event.target.files[0]);
+    outputRectangle.src = URL.createObjectURL(event.target.files[0]);
 
+    initializeCropper(output, 1);
+    initializeCropper(outputRectangle, 750 / 500);
+  });
+  
+  if (output)
     output.addEventListener('crop', function(event) {
       $('#post_crop_x').val(event.detail.x.toFixed());
       $('#post_crop_y').val(event.detail.y.toFixed());
@@ -110,13 +126,21 @@ $(document).ready(function () {
       $('#post_crop_height').val(event.detail.height.toFixed());
     });
 
-    var cropper = new Cropper(output, {
-      viewMode: 2,
-      initialAspectRatio: 1,
-      aspectRatio: 1,
-      zoomable: false,
-      minCropBoxHeight: 500,
-      minCropBoxWidth: 500
+  if (outputRectangle)
+    outputRectangle.addEventListener('crop', function(event) {
+      $('#post_crop_rectangle_x').val(event.detail.x.toFixed());
+      $('#post_crop_rectangle_y').val(event.detail.y.toFixed());
+      $('#post_crop_rectangle_width').val(event.detail.width.toFixed());
+      $('#post_crop_rectangle_height').val(event.detail.height.toFixed());
     });
-  });
+
+  // Load cropper on edit page
+  if (document.querySelector('form.edit_post')) {
+    console.log('on edit page')
+    $(window).load(function () {
+      console.log('image loaded ,init cropper')
+      initializeCropper(output, 1);
+      initializeCropper(outputRectangle, 750 / 500);
+    });
+  }
 });

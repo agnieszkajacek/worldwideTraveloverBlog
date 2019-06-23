@@ -15,12 +15,18 @@
         <% @posts.each do |post| %>
           <div class="blog-posts">
             <div class="single-post">
-              <div class="image-wrapper"><img src="<%= post.cover_url(:medium) %>"></div>
+              <div class="image-wrapper"><img src="<%= post.cover_url(:rectangle) %>"></div>
 
-              <h3 class="title"><a href="#"><b class="light-color"><%= link_to "#{post.title}", post %></b></a></h3>
-              <p class="date"><em><%= I18n.l(post.published.to_date, format: :long) %></em></p>
+							<div class="icons">
+								<div class="left-area">
+									<a class="btn category-btn without-hover uppercase"><b><%= post.category.name %></b></a>
+								</div>
+							</div>
+
+              <h3 class="title"><b class="light-color"><%= link_to "#{post.title}", post %></b></h3>
+              <h6 class="date"><em><%= I18n.l(post.published.to_date, format: :long) %></em></h6>
               <p><%= post.introduction %></p>
-              <b><%= link_to "Czytaj więcej...", post, class: "btn read-more-btn" %></b>
+              <b><%= link_to "CZYTAJ WIĘCEJ...", post, class: "btn read-more-btn" %></b>
             </div><!-- single-post -->
           </div>
         <% end %>

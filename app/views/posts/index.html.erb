@@ -20,11 +20,11 @@
         <% @posts.each do |post| %>
           <div class="blog-posts">
             <div class="single-post">
-              <div class="image-wrapper"><img class="cover-img" src="<%= post.cover_url(:medium) %>"></div>
+              <div class="image-wrapper"><img src="<%= post.cover_url(:rectangle) %>"></div>
 
 							<div class="icons">
 								<div class="left-area">
-									<a class="btn category-btn" href="#"><b><%= post.category.name %></b></a>
+                  <%= link_to post.category.name, post.category, class: "btn category-btn bold uppercase" %>
 								</div>
 							</div>
 

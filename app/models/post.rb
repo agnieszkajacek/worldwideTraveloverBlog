@@ -1,6 +1,5 @@
 class Post < ApplicationRecord
   include ImageUploader[:cover]
-  attr_accessor :crop_x
   
   extend FriendlyId
   friendly_id :title, use: :slugged

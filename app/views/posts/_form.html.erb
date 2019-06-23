@@ -33,7 +33,18 @@
         <%= f.file_field :cover, label: false, id: "upload-cover" %>
       </div>
     </div>
-    <img id="preview" src=""/>
+    <div class="row">
+      <div class="col-lg-6">
+        <div class="preview-container">
+          <img id="preview" data-crop="<%= {x: @post.crop_x, y: @post.crop_y, width: @post.crop_width, height: @post.crop_height}.to_json %>" src="<%= @post.cover_url(:original, public: true) if @post.persisted? %>"/>
+        </div>
+      </div>
+      <div class="col-lg-6">
+        <div class="preview-container">
+          <img id="preview-rectangle" data-crop="<%= {x: @post.crop_rectangle_x, y: @post.crop_rectangle_y, width: @post.crop_rectangle_width, height: @post.crop_rectangle_height}.to_json %>" src="<%= @post.cover_url(:original, public: true) if @post.persisted? %>"/>
+        </div>
+      </div>
+    </div>
     <div class="form-group row">
       <div class="col-lg-6">
         <%= f.input :crop_x, input_html: {class: "form-control form-control-sm"} %>
@@ -48,6 +59,22 @@
       </div>
       <div class="col-lg-6">
         <%= f.input :crop_height, input_html: {class: "form-control form-control-sm"} %>
+      </div>
+    </div>
+    <div class="form-group row">
+      <div class="col-lg-6">
+        <%= f.input :crop_rectangle_x, input_html: {class: "form-control form-control-sm"} %>
+      </div>
+      <div class="col-lg-6">
+        <%= f.input :crop_rectangle_y, input_html: {class: "form-control form-control-sm"} %>
+      </div>
+    </div>
+    <div class="form-group row">
+      <div class="col-lg-6">
+        <%= f.input :crop_rectangle_width, input_html: {class: "form-control form-control-sm"} %>
+      </div>
+      <div class="col-lg-6">
+        <%= f.input :crop_rectangle_height, input_html: {class: "form-control form-control-sm"} %>
       </div>
     </div>
     <%= f.submit "Save", class: "btn btn-success btn-block" %>

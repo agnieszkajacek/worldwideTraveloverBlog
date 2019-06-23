@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_02_25_194927) do
+ActiveRecord::Schema.define(version: 2019_06_23_193334) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -69,6 +69,10 @@ ActiveRecord::Schema.define(version: 2019_02_25_194927) do
     t.integer "crop_y"
     t.integer "crop_width"
     t.integer "crop_height"
+    t.integer "crop_rectangle_x"
+    t.integer "crop_rectangle_y"
+    t.integer "crop_rectangle_width"
+    t.integer "crop_rectangle_height"
     t.index ["slug"], name: "index_posts_on_slug", unique: true
   end
 

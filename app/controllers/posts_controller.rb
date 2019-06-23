@@ -45,8 +45,13 @@ class PostsController < ApplicationController
 
   def update
     @subscribers = Subscriber.all
+    @post.assign_attributes(post_params)
 
-    if @post.update(post_params)
+    if post_params[:cover].nil?
+      @post.cover = @post.cover[:original]
+    end
+
+    if @post.save
       redirect_to @post, notice: "Update successful!"
     else
       render "edit"
@@ -72,7 +77,11 @@ class PostsController < ApplicationController
 
   private
   def post_params
-    params.require(:post).permit(:title, :content, :category_id, :cover, :published, :introduction, :crop_x, :crop_y, :crop_width, :crop_height)
+    params.require(:post).permit(
+      :title, :content, :category_id, :cover, :published, :introduction, 
+      :crop_x, :crop_y, :crop_width, :crop_height,
+      :crop_rectangle_x, :crop_rectangle_y, :crop_rectangle_width, :crop_rectangle_height
+    )
   end
 
   def find_post

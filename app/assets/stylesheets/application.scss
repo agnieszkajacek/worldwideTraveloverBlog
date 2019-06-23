@@ -92,8 +92,6 @@ a b.light-color:hover{ text-decoration: none; color: var(--orange); }
 
 b{ font-weight: 500; }
 
-img{ width: 100%;}
-
 li{ list-style: none; display: inline-block; }
 
 span{ display: inline-block; }
@@ -111,6 +109,14 @@ b.light-color{ color: var(--main-font-color); }
 	text-align: center;
 }
 
+.bold {
+  font-weight: bold;
+
+}
+.uppercase {
+  text-transform: uppercase;
+}
+
 p.alert {
   margin-bottom: 0;
 }
@@ -125,8 +131,10 @@ iframe {
   }
 }
 
-#preview {
-  max-width: 400px;
+.preview-container {
+  img {
+    max-width: 100%;
+  }
 }
 
 #shareIconsCount {
@@ -281,6 +289,7 @@ iframe {
 
 .single-post .icons .category-btn{ padding: 0 20px; height: 30px; line-height: 30px; }
 
+.single-post .icons .category-btn.without-hover { pointer-events:none; color: white; }
 .single-post .icons ul.social-icons{ color: #666; }
 
 .single-post .icons ul.social-icons > li > a{ padding-left: 15px; }
@@ -318,7 +327,10 @@ iframe {
 .single-post .read-more-btn:hover{ box-shadow: 1px 3px 15px rgba(0,0,0, .15); background: var(--orange); color: #fff; }
 	
 .single-post .image-wrapper { display: block; margin: auto;}
-.single-post .image-wrapper .cover-img {}
+.single-post .image-wrapper img { 
+  max-width: 100%; 
+}
+
 /* POST STYLE TWO */
 
 .post-style-2 .image-wrapper{ padding-right: 30px; }
@@ -411,6 +423,7 @@ iframe {
 .latest-post{ overflow: hidden; margin-bottom: 20px; }
 
 .latest-post .l-post-image{ width: 80px; float: left; }
+.latest-post .l-post-image img{ width: 100%;}
 
 .latest-post .post-info{ margin-left: 100px; }
 

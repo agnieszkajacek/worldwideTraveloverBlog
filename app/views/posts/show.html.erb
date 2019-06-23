@@ -18,10 +18,10 @@
             </div>
           <% end %>
           <div class="single-post">
-            <div class="image-wrapper"><img src="<%= @post.cover_url(:medium) %>" alt="Blog Image"></div>
+            <div class="image-wrapper"><img src="<%= @post.cover_url(:rectangle) %>" alt="Blog Image"></div>
             <div class="icons">
               <div class="left-area">
-                <a class="btn category-btn" href="#"><b><%= @post.category.name %></b></a>
+                <b><%= link_to @post.category.name, @post.category, class: "btn category-btn" %></b>
               </div>
             </div>
             <h3 class="title"><b class="light-color"><%= @post.title %></b></h3>

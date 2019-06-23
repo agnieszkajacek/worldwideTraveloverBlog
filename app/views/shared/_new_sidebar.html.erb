@@ -32,7 +32,7 @@
         <% Category.where(ancestry: nil).each do |category| %>
           <% if true %>
             <% category.children.each do |c| %>
-              <li><%= link_to c.name, c, class:"btn" %></li>
+              <li><%= link_to c.name, c, class:"btn uppercase" %></li>
             <% end %>
           <% end %>
         <% end %>
@@ -69,9 +69,9 @@
 
       <% latest_posts.each do |post| %>
         <div class="latest-post" href="#">
-          <div class="l-post-image"><img src="<%= post.cover_url(:thumbnail) %>"></div>
+          <div class="l-post-image"><img class="small-img" src="<%= post.cover_url(:thumbnail) %>"></div>
           <div class="post-info">
-            <a class="btn category-btn" href="#"><%= post.category.name %></a>
+            <%= link_to post.category.name, post.category, class: "btn category-btn uppercase" %>
             <h5><a href="#"><b class="light-color"><%= post.title %></b></a></h5>
             <h6 class="date"><em><%= I18n.l(post.published.to_date, format: :long) %></em></h6>
           </div>
