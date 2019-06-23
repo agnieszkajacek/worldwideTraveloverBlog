@@ -10,8 +10,7 @@
     <div class="row">
       <div class="col-lg-8 col-md-12">
         <div class="category-header">
-          <h3 class="title"><b class="light-color">Kategoria: </b></h3>
-          <p class="category-name"><%= @category.name %></p>
+          <h3 class="title"><b class="light-color"><%= @category.name %></b></h3>
         </div>
         <% @posts.each do |post| %>
           <div class="blog-posts">
@@ -27,7 +26,7 @@
         <% end %>
       </div>
 
-      <%= render 'shared/new_sidebar'%>
+      <%= render 'shared/new_sidebar' %>
     </div><!-- row -->
   </div><!-- container -->
 </section><!-- section -->

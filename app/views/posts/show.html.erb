@@ -19,8 +19,13 @@
           <% end %>
           <div class="single-post">
             <div class="image-wrapper"><img src="<%= @post.cover_url(:medium) %>" alt="Blog Image"></div>
+            <div class="icons">
+              <div class="left-area">
+                <a class="btn category-btn" href="#"><b><%= @post.category.name %></b></a>
+              </div>
+            </div>
             <h3 class="title"><b class="light-color"><%= @post.title %></b></h3>
-            <p class="date"><em><%= I18n.l(@post.published.to_date, format: :long) %></em></p>
+            <h6 class="date"><em><%= I18n.l(@post.published.to_date, format: :long) %></em></h6>
             <div class="single-post-body"><%= markdown(@post.content) %></div>
           </div><!-- single-post -->
 
