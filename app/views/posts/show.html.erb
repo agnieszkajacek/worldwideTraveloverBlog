@@ -21,7 +21,7 @@
             <div class="image-wrapper"><img src="<%= @post.cover_url(:rectangle) %>" alt="Blog Image"></div>
             <div class="icons">
               <div class="left-area">
-                <b><%= link_to @post.category.name, @post.category, class: "btn category-btn" %></b>
+                <b><%= link_to @post.category.name, @post.category, class: "btn category-btn bold uppercase" %></b>
               </div>
             </div>
             <h3 class="title"><b class="light-color"><%= @post.title %></b></h3>
