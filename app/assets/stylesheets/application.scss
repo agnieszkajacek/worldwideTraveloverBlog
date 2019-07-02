@@ -355,7 +355,7 @@ iframe {
 	padding-bottom: 40px;
 
 	.category-name { 
-		color: var(--orange);; 
+		color: var(--orange);
 		font-family: 'Maven Pro', sans-serif; 
 		font-size: 22px;
 		line-height: 26px;
@@ -457,6 +457,12 @@ div.grecaptcha-badge {
 
 .advertisement-img .discover-btn:hover{ border-color: var(--orange); }
 
+.sidebar-area img.responsive-booking-img {
+  // display: block;
+  // margin-left: auto;
+  // margin-right: auto;
+  max-width: 70%;
+}
 
 /* INSTAGRAM */
 	
