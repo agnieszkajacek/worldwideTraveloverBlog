@@ -8,7 +8,7 @@ class PostsController < ApplicationController
     if params[:search]
       @posts = @posts.search(params[:search])
     end
-    
+  
   end
 
   def show

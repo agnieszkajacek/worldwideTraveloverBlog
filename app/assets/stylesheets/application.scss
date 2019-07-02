@@ -366,6 +366,18 @@ iframe {
 /* ---------------------------------
 5. SIDEBAR STYLING
 --------------------------------- */
+/*recaptcha */
+
+div.grecaptcha-badge {
+  width: 0 !important;
+  height: 0 !important;
+  transition: unset !important;
+  position: unset !important;
+  bottom: unset !important;
+  right: unset !important;
+  box-shadow: unset !important;
+}
+/* */
 
 .sidebar-section{ margin-bottom: 50px; }
 

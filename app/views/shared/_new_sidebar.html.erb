@@ -41,15 +41,11 @@
 
     <div class="sidebar-section newsletter-area">
       <h5 class="title"><b>Zapisz się do newslettera</b></h5>
-        <% if cookies[:saved_subscriber] %>
-          <h5 class="title">Wygląda na to, że już się zapisałeś!</h5>
-        <% else %>
-          <%= simple_form_for(Subscriber.new) do |f| %>
-            <%= f.input :email, input_html: {class: "email-input"}, placeholder: 'Email', label: false %>
-            <%= f.input :recaptcha_token, as: :hidden, input_html: {id: :recaptcha_token_field} %>
-            <%= f.submit "ZAPISZ", class: "btn btn-2" %>
-          <% end %>
-        <% end %>
+      <%= simple_form_for(Subscriber.new) do |f| %>
+        <%= f.input :email, input_html: {class: "email-input"}, placeholder: 'Email', label: false %>
+        <%= f.input :recaptcha_token, as: :hidden, input_html: {id: :recaptcha_token_field} %>
+        <%= f.submit "ZAPISZ", class: "btn btn-2" %>
+      <% end %>
     </div><!-- sidebar-section newsletter-area -->
 
     <div class="sidebar-section advertisement-area">
