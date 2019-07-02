@@ -51,6 +51,10 @@
 
 html{ font-size: 100%; height: 100%;  overflow-x: hidden; touch-action: manipulation; }
 
+.modal-open {
+  overflow: visible !important;
+}
+
 body {
 	font-size: 15px; 
 	font-family: 'Roboto', sans-serif; 
