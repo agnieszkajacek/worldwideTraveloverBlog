@@ -28,8 +28,19 @@ class ImageUploader < Shrine
       .scale('500x500')
       .call(original)
 
+    if context[:record].is_a?(Post)
+      rectangle = ImageProcessing::MiniMagick
+        .quality(100)
+        .crop("#{context[:record].crop_rectangle_width}x#{context[:record].crop_rectangle_height}+#{context[:record].crop_rectangle_x}+#{context[:record].crop_rectangle_y}")
+        .scale('750x500')
+        .call(original)
+    end
+
     original.close
-    { original: io, thumbnail: thumbnail, medium: medium }
+    versions = { original: io, thumbnail: thumbnail, medium: medium }
+
+    versions[:rectangle] = rectangle if rectangle
+    versions
   end
 
   def generate_location(io, context = {})

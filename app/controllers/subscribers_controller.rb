@@ -40,7 +40,6 @@ class SubscribersController < ApplicationController
       secret: ENV["RECAPTCHA_PRIVATE_KEY"],
       response: subscriber_params[:recaptcha_token]
     }).parse
-
     response["success"] && response["score"] >= 0.5
   end
 
