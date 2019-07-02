@@ -40,8 +40,11 @@
       <script>
       grecaptcha.ready(function() {
           grecaptcha.execute('<%= ENV["RECAPTCHA_PUBLIC_KEY"] %>', {action: 'homepage'}).then(function(token) {
-            document.getElementById('recaptcha_token_field').value = token;
-
+            let recaptcha_token_field = document.getElementById('recaptcha_token_field');
+            
+            if(recaptcha_token_field) {
+              recaptcha_token_field.value = token;
+            }
           });
       });
       </script>
