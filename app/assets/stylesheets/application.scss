@@ -303,6 +303,7 @@ iframe {
 .single-post .title{ margin: 20px 0 0px; }
 
 .single-post .date{ color: #999; margin-bottom: 15px;}
+.single-post .desc {margin: 20px 0; }
 
 .single-post .single-post-body{
 	p {
@@ -525,9 +526,6 @@ div.grecaptcha-badge {
 		padding-right: 8px;
 	}
 }
-p.made {
-  font-family: 'Montserrat', sans-serif;
-}
 
 div.privacy-policy {
   display: flex;
@@ -562,6 +560,8 @@ div.privacy-policy {
 
   p.made {
     margin-top: 16px;
+    color: white;
+    font-family: 'Montserrat', sans-serif;
   }
   .footer-image {
     width: 30px;
