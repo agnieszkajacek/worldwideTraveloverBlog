@@ -115,6 +115,12 @@ p {
   color: var(--main-font-color);
 }
 
+ul li, ol li{
+  font-size: 1.2em;
+  font-family: "Maven Pro", sans-serif;
+  font-weight: 400;
+  color: var(--main-font-color); 
+}
 h1 {
   font-size: 4em;
   line-height: 1;
@@ -497,6 +503,16 @@ iframe {
       margin-right: auto;
       display: block;
     }
+
+    a {
+      color: var(--orange);
+      text-decoration: underline;
+    }
+
+    a:hover {
+      text-decoration: none;
+      color: #e59b45;
+    }
   }
 
   &.with-padding {
@@ -506,6 +522,24 @@ iframe {
     font-family: "Maven Pro", sans-serif;
     font-weight: bold;
     padding-bottom: 15px;
+    padding-top: 15px;
+  }
+
+  ul, ol {
+    padding-left: 35px;
+    margin-bottom: 16px;
+    
+    li {
+      display: list-item;
+      padding: 5px 5px;
+    }
+  }
+
+  ul li {
+    list-style-type: circle;
+  }
+  ol li {
+    list-style-type: decimal;
   }
 }
 
