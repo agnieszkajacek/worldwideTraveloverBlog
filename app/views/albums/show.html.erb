@@ -20,8 +20,11 @@
                 </div>
                 <div>
                   <% if user_signed_in? %>
-                    <button class="btn" data-clipboard-action="copy" data-clipboard-text="<%= render_source(partial: "photos/snippet", locals: {photo: photo}) %>">
-                      Copy <%= photo.tag %>
+                    <button class="btn" data-clipboard-action="copy" data-clipboard-text="<%= "{{show_lightbox:#{photo.id}}}" %>">
+                      Copy link for lightbox
+                    </button>
+                    <button class="btn" data-clipboard-action="copy" data-clipboard-text="<%= "{{download:#{photo.id}}}" %>">
+                      Copy download link
                     </button>
                     Public <%= photo.public %>
                   <% end %>
