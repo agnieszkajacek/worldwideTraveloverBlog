@@ -62,10 +62,6 @@ class PostsController < ApplicationController
     redirect_to root_path, notice: "Post destroyed"
   end
 
-  def find_categories
-    @category = Category.where.not(ancestry: nil)
-  end
-
   private
   def post_params
     params.require(:post).permit(
@@ -77,5 +73,9 @@ class PostsController < ApplicationController
 
   def find_post
     @post = Post.friendly.find(params[:id])
+  end
+
+  def find_categories
+    @category = Category.where.not(ancestry: nil)
   end
 end
