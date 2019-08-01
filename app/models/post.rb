@@ -6,7 +6,7 @@ class Post < ApplicationRecord
 
   belongs_to :category, optional: true
 
-  validates :title, :content, :category_id, presence: true
+  validates :title, :content, :introduction, :category_id, presence: true
 
   def self.search(search)
     where("title ILIKE :q", q: "%#{search}%") 
