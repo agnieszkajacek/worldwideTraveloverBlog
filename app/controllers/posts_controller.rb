@@ -16,14 +16,14 @@ class PostsController < ApplicationController
 
   def new
     @post = Post.new
-    find_category
+    find_categories
   end
 
   def create
     @post = Post.new(post_params)
     @subscribers = Subscriber.all
 
-    if @post.save!
+    if @post.save
       scheduled_time = Time.zone.now
       @subscribers.each do |subscriber|
         if subscriber.subscription
@@ -39,7 +39,7 @@ class PostsController < ApplicationController
   end
 
   def edit
-    find_category
+    find_categories
   end
 
   def update
@@ -62,16 +62,8 @@ class PostsController < ApplicationController
     redirect_to root_path, notice: "Post destroyed"
   end
 
-  def find_category
-    @category = []
-
-    Category.all.each do |category|
-      if category.has_children?
-        category.children.each do |c|
-          @category << c
-        end
-      end
-    end
+  def find_categories
+    @category = Category.where.not(ancestry: nil)
   end
 
   private
