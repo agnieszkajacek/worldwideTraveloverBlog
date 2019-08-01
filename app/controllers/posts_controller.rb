@@ -8,7 +8,6 @@ class PostsController < ApplicationController
     if params[:search]
       @posts = @posts.search(params[:search])
     end
-  
   end
 
   def show
@@ -59,8 +58,8 @@ class PostsController < ApplicationController
   end
 
   def destroy
-     @post.destroy
-     redirect_to root_path, notice: "Post destroyed"
+    @post.destroy
+    redirect_to root_path, notice: "Post destroyed"
   end
 
   def find_category
