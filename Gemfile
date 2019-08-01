@@ -61,6 +61,7 @@ group :development, :test do
   gem 'selenium-webdriver'
   gem 'pry'
   gem 'dotenv-rails'
+  gem 'rspec-rails', '~> 3.4', '>= 3.4.2'
 end
 
 group :development do
@@ -72,6 +73,10 @@ group :development do
   gem 'spring-watcher-listen', '~> 2.0.0'
 end
 
+group :test do 
+  gem 'factory_bot_rails', '~> 5.0.2'
+  gem 'rails-controller-testing', '~> 1.0.4'
+end
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
 gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 
