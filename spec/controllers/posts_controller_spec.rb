@@ -139,6 +139,50 @@ RSpec.describe PostsController do
     end
   end
 
+  describe 'PUT #update' do
+    login_user
+    let!(:category) { create(:category) }
+
+    context 'with valid attributes' do
+      it 'allows to set all the passed attributes and redirects to post' do
+        put :update, params: { 
+          post: {
+            title: "New title",
+            content: "New content here",
+            category_id: category.id,
+            cover: nil,
+            published: "2019-07-08",
+            introduction: "New intro to post",
+            crop_x: nil, crop_y: nil, crop_width: nil, crop_height: nil,
+            crop_rectangle_x: nil, crop_rectangle_y: nil, crop_rectangle_width: nil, crop_rectangle_height: nil
+          },
+          id: published_post.id
+        }
+
+        expect(published_post.reload).to have_attributes(title: 'New title',
+        content: "New content here", category_id: category.id, cover: nil, introduction: 'New intro to post', crop_x: nil, crop_y: nil, crop_width: nil, crop_height: nil, crop_rectangle_x: nil, crop_rectangle_y: nil, crop_rectangle_width: nil, crop_rectangle_height: nil)
+
+        expect(response).to redirect_to(published_post)
+
+      end
+    end
+
+    context ' with invalid attributes' do
+      it 'does not chanages @photos\'s atrributes and redirect to the :edit template' do
+        put :update, params: {
+          post: {
+            title: nil,
+            cover: ''
+          },
+          id: published_post.id
+        }
+
+        expect(published_post.reload.title).not_to eq(nil)
+        expect(response).to render_template('edit')
+      end
+    end
+  end
+
   describe 'DELETE #destroy' do
     login_user
 
@@ -155,5 +199,4 @@ RSpec.describe PostsController do
       expect(response).to redirect_to(root_path)
     end
   end
-
 end
