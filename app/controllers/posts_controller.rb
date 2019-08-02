@@ -43,7 +43,6 @@ class PostsController < ApplicationController
   end
 
   def update
-    @subscribers = Subscriber.all
     @post.assign_attributes(post_params)
 
     if post_params[:cover].nil?
