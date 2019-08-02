@@ -3,7 +3,7 @@ class PhotosController < ApplicationController
   before_action :authenticate_user!, only: [:new, :create, :edit, :update, :destroy]
 
   def index
-    find_category
+    find_categories
   end
 
   def show
@@ -12,7 +12,7 @@ class PhotosController < ApplicationController
 
   def new
     @photo = Photo.new
-    find_category
+    find_categories
   end
 
   def create
@@ -26,7 +26,7 @@ class PhotosController < ApplicationController
   end
 
   def edit
-    find_category
+    find_categories
   end
 
   def update
@@ -42,27 +42,17 @@ class PhotosController < ApplicationController
      redirect_to root_path, notice: "Photo destroyed"
   end
 
-  def find_category
-    @category = []
-
-    if (!user_signed_in?)
-      @cat = Category.where(show_in_gallery: true)
-    else
-      @cat = Category.all
-    end 
-
-    @cat.each do |category|
-      if category.has_children?
-        category.children.each do |c|
-          @category << c
-        end
-      end
-    end
-  end
-
   private
   def photo_params
     params.require(:photo).permit(:name, :description, :image, :category_id, :crop_x, :crop_y, :crop_width, :crop_height, :tag, :public)
+  end
+
+  def find_categories
+    if (user_signed_in?)
+      @category = Category.where.not(ancestry: nil)
+    else
+      @category = Category.where(show_in_gallery: true).where.not(ancestry: nil)
+    end
   end
 
   def find_photo
