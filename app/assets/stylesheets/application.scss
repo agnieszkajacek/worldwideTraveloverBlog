@@ -594,6 +594,12 @@ iframe {
     // max-height:500px;
   }
 }
+//remove max-height and max-width for old images which had ridigly defined values in html 
+single-post-body {
+  img {
+    max-width: none;
+    max-height: none
+  }
 
 /* ---------------------------------
 5. SIDEBAR STYLING
