@@ -597,8 +597,8 @@ iframe {
 //remove max-height and max-width for old images which had ridigly defined values in html 
 .single-post-body {
   img {
-    max-width: none;
-    max-height: none;
+    max-width: none !important;
+    max-height: none !important;
   }
 }
 
