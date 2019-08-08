@@ -1,13 +1,9 @@
 class PhotosController < ApplicationController
-  before_action :find_photo, only: [:show, :edit, :update, :destroy]
+  before_action :find_photo, only: [:edit, :update, :destroy]
   before_action :authenticate_user!, only: [:new, :create, :edit, :update, :destroy]
 
   def index
     find_categories
-  end
-
-  def show
-    find_photo
   end
 
   def new
