@@ -1,6 +1,6 @@
 class CategoriesController < ApplicationController
   before_action :find_category, only: [:show, :edit, :update, :destroy]
-  before_action :authenticate_user!, only: [:new, :create, :edit, :update, :destroy]
+  before_action :authenticate_user!, only: [:index, :new, :create, :edit, :update, :destroy]
 
   def index
     @categories = Category.all.order("created_at DESC")
@@ -18,8 +18,8 @@ class CategoriesController < ApplicationController
 
   def create
     @category = Category.new(category_params)
-    if @category.save!
-      redirect_to @category, notice: "The category was created!"
+    if @category.save
+      redirect_to categories_path, notice: "The category was created!"
     else
       render "new"
     end
