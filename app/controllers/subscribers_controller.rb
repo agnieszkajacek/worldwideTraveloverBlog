@@ -1,26 +1,20 @@
 class SubscribersController < ApplicationController
-  def new
-    @subscriber = Subscriber.new
-  end
   def create
-
-    active_subscriber = Subscriber.where("email = ? AND subscription = ?", params[:subscriber][:email], true)
-    unactive_subscriber = Subscriber.where("email = ? AND subscription = ?", params[:subscriber][:email], false)
+    existing_subscriber = Subscriber.find_by(email: params[:subscriber][:email])
 
     if !is_user_a_human?
       redirect_to root_path, notice: 'Wygląda na to, że jesteś botem :('
-    elsif active_subscriber.exists?
+    elsif  existing_subscriber && existing_subscriber.subscription
       redirect_to root_path, notice: 'Wygląda na to, że już ze mną jesteś na bieżąco :)'
-    elsif unactive_subscriber.exists?
-      subscriber = unactive_subscriber.first
-      subscriber.subscription = true
-      subscriber.save!
+    elsif existing_subscriber && !existing_subscriber.subscription
+      existing_subscriber.subscription = true
+      existing_subscriber.save
       redirect_to root_path, notice: 'Witamy ponownie! :)'
     else
       @subscriber = Subscriber.create(subscriber_params)
-      if @subscriber.save!
+      if @subscriber.save
         cookies[:saved_subscriber] = true
-        NotificationMailer.with(subscriber: @subscriber).welcome_email.deliver_now
+        NotificationMailer.welcome_email(@subscriber).deliver_now
         redirect_to root_path, notice: 'Hura! Udało Ci się zapisać do newslettera!'
       end
     end
@@ -28,9 +22,14 @@ class SubscribersController < ApplicationController
 
   def unsubscribe
     subscriber = Subscriber.find_by_unsubscribe_hash(params[:unsubscribe_hash])
-    subscriber.update_attribute(:subscription, false)
-    cookies.delete :saved_subscriber
-    redirect_to root_path, notice: 'Szkoda, że uciekasz :( Wróć tu kiedyś ponownie :)'
+
+    if subscriber.present?
+      subscriber.update_attribute(:subscription, false)
+      cookies.delete :saved_subscriber
+      redirect_to root_path, notice: 'Szkoda, że uciekasz :( Wróć tu kiedyś ponownie :)'
+    else
+      redirect_to root_path, notice: 'Błędny link do wypisania się z newslettera. Wypisz się krzystając z linka w mailu bądź skontaktuj się z nami.'
+    end
   end
 
   private
