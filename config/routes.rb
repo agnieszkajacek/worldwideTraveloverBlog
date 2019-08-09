@@ -29,7 +29,7 @@ Rails.application.routes.draw do
   end
   resources :categories
   resources :photos
-  resources :subscribers
+  resources :subscribers, only: [:create]
 
   get '/kontakt', to: 'pages#kontakt'
   get '/wspolpraca', to: 'pages#wspolpraca'
