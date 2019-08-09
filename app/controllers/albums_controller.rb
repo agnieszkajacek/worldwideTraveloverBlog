@@ -9,7 +9,7 @@ class AlbumsController < ApplicationController
       @photos = Photo.where(category_id: @category, public: true)
     end
     
-    @uniq_tags = @photos.map { |photo|  photo.tag}.uniq.reject(&:blank?)
+    @uniq_tags = @photos.map { |photo| photo.tag }.uniq.reject(&:blank?)
 
     @tags = @uniq_tags.map do |tag|
       {
@@ -21,6 +21,5 @@ class AlbumsController < ApplicationController
     if params[:tag].present?
       @photos = @photos.where(tag: params[:tag])
     end
-    
   end
 end
