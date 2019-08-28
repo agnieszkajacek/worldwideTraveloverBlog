@@ -9,6 +9,6 @@ RSpec.describe Users::SessionsController do
       expect(ENV).to receive(:[]).with('COOKIES').and_return('fakecookies')
       get :new
       expect(response.cookies['username']).to eq('fakecookies')
-        end
+    end
   end
 end

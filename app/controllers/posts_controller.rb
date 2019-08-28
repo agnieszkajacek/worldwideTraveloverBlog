@@ -26,9 +26,7 @@ class PostsController < ApplicationController
     if @post.save
       scheduled_time = Time.zone.now
       @subscribers.each do |subscriber|
-        if subscriber.subscription
-          NotificationMailer.post_email(subscriber, @post).deliver_later(wait_until: scheduled_time)
-        end
+        NotificationMailer.post_email(subscriber, @post).deliver_later(wait_until: scheduled_time) if subscriber.subscription
 
         scheduled_time += 15.minutes
       end

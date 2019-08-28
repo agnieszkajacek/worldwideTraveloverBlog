@@ -44,8 +44,6 @@ RSpec.describe SubscribersController do
 
     context 'when user is human' do
       it 'checks if subscriber is active' do
-        subscriber = create(:subscriber, email: 'test@test.com', subscription: true)
-
         post :create, params: {
           subscriber: {
             email: 'test@test.com',
@@ -117,8 +115,6 @@ RSpec.describe SubscribersController do
 
     context 'when unsubscribe_hash is not valid' do
       it 'redirects to root_path and shows flash[:notice]' do
-        subscriber = create(:subscriber, email: 'test@test.com', subscription: true)
-
         post :unsubscribe, params: { unsubscribe_hash: 'fakeHash' }
 
         expect(response.status).to eq(302)
