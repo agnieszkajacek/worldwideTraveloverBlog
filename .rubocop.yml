@@ -1,0 +1,46 @@
+AllCops:
+  TargetRubyVersion: 2.3
+  Exclude:
+    - 'config.ru'
+    - 'config/**/*'
+    - 'bin/**/*'
+    - 'db/**/*'
+    - 'vendor/**/*'
+    - 'app/helpers/application_helper.rb'
+
+Metrics/BlockLength:
+  Enabled: false
+
+Metrics/LineLength:
+  Enabled: false
+
+Style/ClassAndModuleChildren:
+  Enabled: false
+
+Metrics/MethodLength:
+  Enabled: false
+
+Naming/VariableNumber:
+  Enabled: false
+
+Metrics/PerceivedComplexity:
+  Enabled: false
+
+Metrics/CyclomaticComplexity:
+  Enabled: false
+
+Metrics/AbcSize:
+  Enabled: false
+
+Style/Documentation:
+  Enabled: false
+
+Naming/PredicateName:
+  Enabled: false
+
+Layout/IndentationWidth:
+  Enabled: false
+
+Style/IfUnlessModifier:
+  Enabled: false
+
