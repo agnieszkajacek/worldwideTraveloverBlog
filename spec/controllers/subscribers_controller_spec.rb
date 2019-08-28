@@ -44,6 +44,8 @@ RSpec.describe SubscribersController do
 
     context 'when user is human' do
       it 'checks if subscriber is active' do
+        create(:subscriber, email: 'test@test.com', subscription: true)
+
         post :create, params: {
           subscriber: {
             email: 'test@test.com',
