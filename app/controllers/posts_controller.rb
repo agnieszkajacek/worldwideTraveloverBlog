@@ -1,13 +1,13 @@
+# frozen_string_literal: true
+
 class PostsController < ApplicationController
-  before_action :find_post, only: [:show, :edit, :update, :destroy]
-  before_action :authenticate_user!, only: [:new, :create, :edit, :update, :destroy]
+  before_action :find_post, only: %i[show edit update destroy]
+  before_action :authenticate_user!, only: %i[new create edit update destroy]
 
   def index
-    @posts = Post.includes(:category).where("published <= ?", Date.today).order("published DESC").paginate(:page => params[:page], :per_page => 6)
+    @posts = Post.includes(:category).where('published <= ?', Date.today).order('published DESC').paginate(page: params[:page], per_page: 6)
 
-    if params[:search]
-      @posts = @posts.search(params[:search])
-    end
+    @posts = @posts.search(params[:search]) if params[:search]
   end
 
   def show
@@ -30,11 +30,11 @@ class PostsController < ApplicationController
           NotificationMailer.post_email(subscriber, @post).deliver_later(wait_until: scheduled_time)
         end
 
-        scheduled_time = scheduled_time + 15.minutes
+        scheduled_time += 15.minutes
       end
       redirect_to @post
     else
-      render "new"
+      render 'new'
     end
   end
 
@@ -45,26 +45,25 @@ class PostsController < ApplicationController
   def update
     @post.assign_attributes(post_params)
 
-    if post_params[:cover].nil?
-      @post.cover = @post.cover[:original]
-    end
+    @post.cover = @post.cover[:original] if post_params[:cover].nil?
 
     if @post.save
-      redirect_to @post, notice: "Update successful!"
+      redirect_to @post, notice: 'Update successful!'
     else
-      render "edit"
+      render 'edit'
     end
   end
 
   def destroy
     @post.destroy
-    redirect_to root_path, notice: "Post destroyed"
+    redirect_to root_path, notice: 'Post destroyed'
   end
 
   private
+
   def post_params
     params.require(:post).permit(
-      :title, :content, :category_id, :cover, :published, :introduction, 
+      :title, :content, :category_id, :cover, :published, :introduction,
       :crop_x, :crop_y, :crop_width, :crop_height,
       :crop_rectangle_x, :crop_rectangle_y, :crop_rectangle_width, :crop_rectangle_height
     )

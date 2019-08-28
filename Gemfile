@@ -1,7 +1,9 @@
+# frozen_string_literal: true
+
 source 'https://rubygems.org'
 
 git_source(:github) do |repo_name|
-  repo_name = "#{repo_name}/#{repo_name}" unless repo_name.include?("/")
+  repo_name = "#{repo_name}/#{repo_name}" unless repo_name.include?('/')
   "https://github.com/#{repo_name}.git"
 end
 
@@ -30,55 +32,56 @@ gem 'jbuilder', '~> 2.5'
 gem 'htmlentities', '~> 4.3.4'
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
-gem 'simple_form'
-gem 'bootstrap', '~> 4.1.1'
-gem 'jquery-rails'
-gem 'disqus_rails'
-gem 'popper_js', '~> 1.12.9'
-gem "font-awesome-rails"
-gem 'devise', '~> 4.4'
-gem 'redcarpet'
 gem 'ancestry'
-gem 'friendly_id', '~> 5.2.4'
-gem 'shrine', '~> 2.8'
-gem 'fastimage', '~> 2.1'
-gem "image_processing", "~> 1.4.0"
 gem 'aws-sdk', '~> 3'
-gem 'sendgrid-actionmailer'
-gem 'rake'
+gem 'bootstrap', '~> 4.1.1'
+gem 'devise', '~> 4.4'
+gem 'disqus_rails'
+gem 'fastimage', '~> 2.1'
+gem 'font-awesome-rails'
 gem 'font-awesome-sass'
+gem 'friendly_id', '~> 5.2.4'
+gem 'image_processing', '~> 1.4.0'
+gem 'jquery-rails'
+gem 'popper_js', '~> 1.12.9'
 gem 'rails-i18n', '~> 5.1.2'
+gem 'rake'
+gem 'redcarpet'
+gem 'rubocop', '~> 0.74.0', require: false
+gem 'sendgrid-actionmailer'
+gem 'shrine', '~> 2.8'
+gem 'sidekiq', '~> 5.0'
+gem 'simple_form'
+gem 'sitemap_generator', '~> 5.1'
 gem 'will_paginate', '~> 3.1.6'
 gem 'will_paginate-bootstrap4'
-gem 'sidekiq', '~> 5.0'
-gem 'sitemap_generator', '~> 5.1'
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
-  gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
+  gem 'byebug', platforms: %i[mri mingw x64_mingw]
   # Adds support for Capybara system testing and selenium driver
   gem 'capybara', '~> 2.13'
-  gem 'selenium-webdriver'
-  gem 'pry'
   gem 'dotenv-rails'
+  gem 'pry'
   gem 'rspec-rails', '~> 3.4', '>= 3.4.2'
+  gem 'selenium-webdriver'
 end
 
 group :development do
   # Access an IRB console on exception pages or by using <%= console %> anywhere in the code.
-  gem 'web-console', '>= 3.3.0'
   gem 'listen', '>= 3.0.5', '< 3.2'
+  gem 'web-console', '>= 3.3.0'
   # Spring speeds up development by keeping your application running in the background. Read more: https://github.com/rails/spring
   gem 'spring'
   gem 'spring-watcher-listen', '~> 2.0.0'
 end
 
-group :test do 
+group :test do
   gem 'factory_bot_rails', '~> 5.0.2'
   gem 'rails-controller-testing', '~> 1.0.4'
   gem 'webmock', '~> 2.1'
 end
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
-gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
+gem 'tzinfo-data', platforms: %i[mingw mswin x64_mingw jruby]
 
-gem "http", "~> 4.1"
+gem 'http', '~> 4.1'

@@ -1,31 +1,33 @@
+# frozen_string_literal: true
+
 require 'rails_helper'
 
 RSpec.describe CategoriesController do
   let!(:thailand_category) { create(:category) }
-  let!(:italy_category) { create(:category, name: "Italy", created_at: 2.days.from_now) }
+  let!(:italy_category) { create(:category, name: 'Italy', created_at: 2.days.from_now) }
 
   describe 'GET #index' do
     context 'when user is logged_in' do
       login_user
-      
+
       it 'returns an array of all categories' do
         get :index
         expect(assigns(:categories)).to match_array([thailand_category, italy_category])
       end
-  
-      it 'returns ordered categories' do 
+
+      it 'returns ordered categories' do
         get :index
         expect(assigns(:categories).count).to eq(2)
         expect(assigns(:categories).to_a).to eq([italy_category, thailand_category])
       end
-  
+
       it 'returns the :index view' do
         get :index
         expect(response.status).to eq(200)
         expect(response).to render_template('index')
       end
     end
-    
+
     context 'when user is not logged_in' do
       it 'redirects to user_session_path' do
         get :index
@@ -38,9 +40,9 @@ RSpec.describe CategoriesController do
   describe 'GET #show' do
     let!(:thailand_post) { create(:post, category_id: thailand_category.id) }
 
-    let!(:italy_post_bergamo) { create(:post, title: "Bergamo", category_id: italy_category.id, created_at: 5.days.ago) }
+    let!(:italy_post_bergamo) { create(:post, title: 'Bergamo', category_id: italy_category.id, created_at: 5.days.ago) }
 
-    let!(:italy_post_milano) { create(:post, title: "Milano", category_id: italy_category.id, created_at: 2.days.ago) }
+    let!(:italy_post_milano) { create(:post, title: 'Milano', category_id: italy_category.id, created_at: 2.days.ago) }
 
     it 'assigns the requested category to @category' do
       get :show, params: { id: thailand_category.id }
@@ -58,7 +60,7 @@ RSpec.describe CategoriesController do
     it 'returns ordered posts' do
       get :show, params: { id: italy_category.id }
 
-      expect(assigns(:posts).to_a).to eq([italy_post_milano, italy_post_bergamo])     
+      expect(assigns(:posts).to_a).to eq([italy_post_milano, italy_post_bergamo])
     end
 
     it 'renders the :index view' do
@@ -69,7 +71,7 @@ RSpec.describe CategoriesController do
     end
   end
 
-  describe 'GET #new' do 
+  describe 'GET #new' do
     context 'when user is logged in' do
       login_user
 
@@ -80,7 +82,7 @@ RSpec.describe CategoriesController do
       end
 
       it 'renders the :new template' do
-        get :new 
+        get :new
 
         expect(response).to render_template('new')
         expect(response.status).to eq(200)
@@ -107,10 +109,10 @@ RSpec.describe CategoriesController do
         expect(assigns(:category)).to eq(thailand_category)
       end
 
-      it "renders the :edit template" do
+      it 'renders the :edit template' do
         get :edit, params: { id: thailand_category.id }
 
-        expect(response).to render_template("edit")
+        expect(response).to render_template('edit')
         expect(response.status).to eq(200)
       end
     end
@@ -123,9 +125,9 @@ RSpec.describe CategoriesController do
         expect(response).to redirect_to(user_session_path)
       end
     end
-  end 
+  end
 
-  describe 'POST #create' do 
+  describe 'POST #create' do
     context 'when user is logged in' do
       login_user
 
@@ -133,11 +135,11 @@ RSpec.describe CategoriesController do
         let!(:valid_params) { attributes_for(:category, name: 'Poland') }
 
         it 'creates new category' do
-          expect {
-            post :create, params: { 
+          expect do
+            post :create, params: {
               category: valid_params
             }
-          }.to change(Category, :count).by(1)
+          end.to change(Category, :count).by(1)
         end
 
         it 'redirects to categories page' do
@@ -151,16 +153,15 @@ RSpec.describe CategoriesController do
         let!(:invalid_params) { attributes_for(:category, name: '') }
 
         it 'does not create new category' do
-          expect {
+          expect do
             post :create, params: { category: invalid_params }
-          }.not_to change(Category, :count)
+          end.not_to change(Category, :count)
         end
 
         it 're-renders the :new template' do
           post :create, params: { category: invalid_params }
           expect(response).to render_template('new')
         end
-
       end
     end
 
@@ -182,7 +183,7 @@ RSpec.describe CategoriesController do
         it 'updates attributes and redirects to category' do
           put :update, params: {
             category: {
-              name: "Kingdom of Thailand"
+              name: 'Kingdom of Thailand'
             },
             id: thailand_category.id
           }
@@ -196,7 +197,7 @@ RSpec.describe CategoriesController do
         it 'updates attributes and redirects to category' do
           put :update, params: {
             category: {
-              name: ""
+              name: ''
             },
             id: thailand_category.id
           }
@@ -219,15 +220,15 @@ RSpec.describe CategoriesController do
   describe 'DELETE #destroy' do
     context 'when user is logged_in' do
       login_user
-    
+
       it 'deletes the category and returns a 302 status code for redirect' do
-        expect {
+        expect do
           delete :destroy, params: { id: thailand_category.id }
-        }.to change(Category, :count).by(-1)
-    
+        end.to change(Category, :count).by(-1)
+
         expect(response.status).to eq(302)
       end
-          
+
       it 'redirects to posts#index' do
         delete :destroy, params: { id: thailand_category.id }
 
@@ -238,7 +239,7 @@ RSpec.describe CategoriesController do
     context 'when user is not logged_in' do
       it 'redirects to user_session_path' do
         delete :destroy, params: { id: thailand_category.id }
-      
+
         expect(response.status).to eq(302)
         expect(response).to redirect_to(user_session_path)
       end

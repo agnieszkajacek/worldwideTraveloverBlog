@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class Uploads
   class << self
     def jpeg?(blob)
@@ -22,6 +24,7 @@ class Uploads
 
     def optimize_hash(blob)
       return optimize_jpeg if jpeg? blob
+
       optimize
     end
 

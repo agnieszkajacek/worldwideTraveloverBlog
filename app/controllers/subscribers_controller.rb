@@ -1,10 +1,12 @@
+# frozen_string_literal: true
+
 class SubscribersController < ApplicationController
   def create
     existing_subscriber = Subscriber.find_by(email: params[:subscriber][:email])
 
     if !is_user_a_human?
       redirect_to root_path, notice: 'Wygląda na to, że jesteś botem :('
-    elsif  existing_subscriber && existing_subscriber.subscription
+    elsif  existing_subscriber&.subscription
       redirect_to root_path, notice: 'Wygląda na to, że już ze mną jesteś na bieżąco :)'
     elsif existing_subscriber && !existing_subscriber.subscription
       existing_subscriber.subscription = true
@@ -35,11 +37,11 @@ class SubscribersController < ApplicationController
   private
 
   def is_user_a_human?
-    response = HTTP.post("https://www.google.com/recaptcha/api/siteverify", params: {
-      secret: ENV["RECAPTCHA_PRIVATE_KEY"],
-      response: subscriber_params[:recaptcha_token]
-    }).parse
-    response["success"] && response["score"] >= 0.5
+    response = HTTP.post('https://www.google.com/recaptcha/api/siteverify', params: {
+                           secret: ENV['RECAPTCHA_PRIVATE_KEY'],
+                           response: subscriber_params[:recaptcha_token]
+                         }).parse
+    response['success'] && response['score'] >= 0.5
   end
 
   def subscriber_params

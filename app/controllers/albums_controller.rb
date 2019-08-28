@@ -1,15 +1,17 @@
+# frozen_string_literal: true
+
 class AlbumsController < ApplicationController
-  before_action :authenticate_user!, only: [:new, :create, :edit, :update, :destroy]
-  
+  before_action :authenticate_user!, only: %i[new create edit update destroy]
+
   def show
     @category = Category.friendly.find(params[:id])
     @photos = Photo.where(category_id: @category)
 
-    if (!user_signed_in?)
+    unless user_signed_in?
       @photos = Photo.where(category_id: @category, public: true)
     end
-    
-    @uniq_tags = @photos.map { |photo| photo.tag }.uniq.reject(&:blank?)
+
+    @uniq_tags = @photos.map(&:tag).uniq.reject(&:blank?)
 
     @tags = @uniq_tags.map do |tag|
       {
@@ -18,8 +20,6 @@ class AlbumsController < ApplicationController
       }
     end
 
-    if params[:tag].present?
-      @photos = @photos.where(tag: params[:tag])
-    end
+    @photos = @photos.where(tag: params[:tag]) if params[:tag].present?
   end
 end

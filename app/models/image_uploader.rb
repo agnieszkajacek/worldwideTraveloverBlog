@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 require 'image_processing/mini_magick'
 
 class ImageUploader < Shrine
@@ -16,24 +18,24 @@ class ImageUploader < Shrine
   process(:store) do |io, context|
     original = io.download
 
-   thumbnail = ImageProcessing::MiniMagick
-      .quality(100)
-      .crop("#{context[:record].crop_width}x#{context[:record].crop_height}+#{context[:record].crop_x}+#{context[:record].crop_y}")
-      .scale('250x250')
-      .call(original)
+    thumbnail = ImageProcessing::MiniMagick
+                .quality(100)
+                .crop("#{context[:record].crop_width}x#{context[:record].crop_height}+#{context[:record].crop_x}+#{context[:record].crop_y}")
+                .scale('250x250')
+                .call(original)
 
     medium = ImageProcessing::MiniMagick
-      .quality(100)
-      .crop("#{context[:record].crop_width}x#{context[:record].crop_height}+#{context[:record].crop_x}+#{context[:record].crop_y}")
-      .scale('500x500')
-      .call(original)
+             .quality(100)
+             .crop("#{context[:record].crop_width}x#{context[:record].crop_height}+#{context[:record].crop_x}+#{context[:record].crop_y}")
+             .scale('500x500')
+             .call(original)
 
     if context[:record].is_a?(Post)
       rectangle = ImageProcessing::MiniMagick
-        .quality(100)
-        .crop("#{context[:record].crop_rectangle_width}x#{context[:record].crop_rectangle_height}+#{context[:record].crop_rectangle_x}+#{context[:record].crop_rectangle_y}")
-        .scale('750x500')
-        .call(original)
+                  .quality(100)
+                  .crop("#{context[:record].crop_rectangle_width}x#{context[:record].crop_rectangle_height}+#{context[:record].crop_rectangle_x}+#{context[:record].crop_rectangle_y}")
+                  .scale('750x500')
+                  .call(original)
     end
 
     original.close
@@ -43,20 +45,18 @@ class ImageUploader < Shrine
     versions
   end
 
-  def generate_location(io, context = {})
+  def generate_location(_io, context = {})
     type  = context[:record].class.name.downcase if context[:record]
-    style = context[:version] == :original ? "originals" : "thumbs" if context[:version]
-    
-    if (context[:record].is_a?(Photo) || context[:record].is_a?(Post) ) && context[:record].category_id
+    style = context[:version] == :original ? 'originals' : 'thumbs' if context[:version]
+
+    if (context[:record].is_a?(Photo) || context[:record].is_a?(Post)) && context[:record].category_id
       category_name = context[:record].category.name
     end
-    
-    if context[:record].is_a?(Category)
-      category_name = context[:record].name
-    end
-    
-    name = context[:metadata]["filename"]
-    
-    [type, style, category_name, name].compact.join("/")
+
+    category_name = context[:record].name if context[:record].is_a?(Category)
+
+    name = context[:metadata]['filename']
+
+    [type, style, category_name, name].compact.join('/')
   end
 end

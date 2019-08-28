@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 require 'rails_helper'
 
 RSpec.describe PhotosController do
@@ -12,13 +14,13 @@ RSpec.describe PhotosController do
       photo_obj.index
     end
 
-    it "has a 200 status code" do
+    it 'has a 200 status code' do
       get :index
       expect(response.status).to eq(200)
     end
   end
 
-  describe 'GET #new' do 
+  describe 'GET #new' do
     context 'when user is logged_in' do
       login_user
 
@@ -26,7 +28,7 @@ RSpec.describe PhotosController do
         get :new
         expect(assigns(:photo)).to be_a_new(Photo)
       end
-  
+
       it 'should run the #find_categories' do
         photo_obj = described_class.new
         expect(photo_obj).to receive(:find_categories)
@@ -44,20 +46,20 @@ RSpec.describe PhotosController do
     end
   end
 
-  describe 'GET #edit' do 
+  describe 'GET #edit' do
     context 'when user is logged_in' do
       login_user
-      
+
       it 'should run the #find_categories' do
         photo_obj = described_class.new
         expect(photo_obj).to receive(:find_categories)
         photo_obj.edit
       end
 
-      it "renders the :edit template" do
+      it 'renders the :edit template' do
         get :edit, params: { id: photo.id }
 
-        expect(response).to render_template("edit")
+        expect(response).to render_template('edit')
         expect(response.status).to eq(200)
       end
     end
@@ -69,7 +71,7 @@ RSpec.describe PhotosController do
         expect(response.status).to eq(302)
         expect(response).to redirect_to(user_session_path)
       end
-    end   
+    end
   end
 
   describe 'POST #create' do
@@ -78,27 +80,27 @@ RSpec.describe PhotosController do
 
       context 'with valid attributes' do
         it 'saves new photo to the database' do
-          expect {
+          expect do
             post :create, params: { photo: new_photo }
-          }.to change(Photo, :count).by(1)
+          end.to change(Photo, :count).by(1)
         end
-  
+
         it 'redirects to the photos page' do
           post :create, params: { photo: new_photo }
           expect(response).to redirect_to(photos_path)
           expect(response.status).to eq(302)
         end
       end
-  
+
       context 'with ininvalid attributes' do
         let!(:new_photo) { attributes_for(:post, category_id: nil) }
-        
+
         it 'does not save the new post in the database' do
-          expect {
+          expect do
             post :create, params: { photo: new_photo }
-          }.not_to change(Photo, :count)
+          end.not_to change(Photo, :count)
         end
-  
+
         it 're-renders the :new template' do
           post :create, params: { photo: new_photo }
           expect(response).to render_template('new')
@@ -123,21 +125,21 @@ RSpec.describe PhotosController do
         it 'chanages @photos\'s atrributes' do
           put :update, params: {
             photo: {
-              name: "New name for photo"
+              name: 'New name for photo'
             },
             id: photo.id
           }
-  
-          expect(photo.reload.name).to eq("New name for photo")
+
+          expect(photo.reload.name).to eq('New name for photo')
         end
-  
+
         it 'redirects to the photos page' do
           put :update, params: { photo: FactoryBot.attributes_for(:photo), id: photo.id }
           expect(response).to redirect_to(photos_path)
           expect(response.status).to eq(302)
         end
       end
-  
+
       context ' with invalid attributes' do
         it 'does not chanages @photos\'s atrributes' do
           put :update, params: {
@@ -146,10 +148,10 @@ RSpec.describe PhotosController do
             },
             id: photo.id
           }
-  
+
           expect(photo.reload.name).not_to eq(nil)
         end
-  
+
         it 'redirects to the :edit template' do
           put :update, params: {
             photo: {
@@ -157,13 +159,13 @@ RSpec.describe PhotosController do
             },
             id: photo.id
           }
-  
+
           expect(response).to render_template('edit')
         end
       end
     end
 
-    context 'when user is not logged_in' do 
+    context 'when user is not logged_in' do
       it 'redirects to user_session_path' do
         post :update, params: { photo: attributes_for(:photo), id: photo.id }
 
@@ -178,13 +180,13 @@ RSpec.describe PhotosController do
       login_user
 
       it 'deletes the photo and returns a 302 status code for redirect' do
-        expect {
+        expect do
           delete :destroy, params: { id: photo.id }
-        }.to change(Photo, :count).by(-1)
-  
+        end.to change(Photo, :count).by(-1)
+
         expect(response.status).to eq(302)
       end
-        
+
       it 'redirects to posts#index' do
         delete :destroy, params: { id: photo.id }
         expect(response).to redirect_to(root_path)
@@ -194,7 +196,7 @@ RSpec.describe PhotosController do
     context 'when user is not logged_in' do
       it 'redirects to user_session_path' do
         delete :destroy, params: { id: photo.id }
-      
+
         expect(response.status).to eq(302)
         expect(response).to redirect_to(user_session_path)
       end

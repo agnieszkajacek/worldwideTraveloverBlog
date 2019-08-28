@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 require 'rails_helper'
 
 RSpec.describe AlbumsController do
@@ -6,8 +8,8 @@ RSpec.describe AlbumsController do
     let!(:second_category) { create(:category, name: 'Italy') }
 
     let!(:first_photo) { create(:photo, category_id: first_category.id, tag: 'thailand', public: true) }
-    let!(:second_photo) { create(:photo, name: "Bergamo", category_id: second_category.id, tag: 'italy', created_at: 5.days.ago, public: true) }
-    let!(:last_photo) { create(:photo, name: "Milano", category_id: second_category.id, tag: 'italy', created_at: 2.days.ago, public: false) }
+    let!(:second_photo) { create(:photo, name: 'Bergamo', category_id: second_category.id, tag: 'italy', created_at: 5.days.ago, public: true) }
+    let!(:last_photo) { create(:photo, name: 'Milano', category_id: second_category.id, tag: 'italy', created_at: 2.days.ago, public: false) }
 
     context 'when user is not logged_in' do
       it 'assigns requested category to @category' do
@@ -32,7 +34,7 @@ RSpec.describe AlbumsController do
       it 'returns a hash array with tag_name and number' do
         get :show, params: { id: second_category.id }
 
-        expect(assigns(:tags)).to eq([{tag_name: 'italy', number: 1}])
+        expect(assigns(:tags)).to eq([{ tag_name: 'italy', number: 1 }])
       end
 
       it 'returns photos with specific tag' do
@@ -44,7 +46,7 @@ RSpec.describe AlbumsController do
 
       it 'renders the :show template' do
         get :show, params: { id: second_category.id }
-        
+
         expect(response).to render_template('show')
         expect(response.status).to eq(200)
       end
