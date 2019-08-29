@@ -5,7 +5,7 @@ require 'rails_helper'
 RSpec.describe PhotosController do
   let!(:category) { create(:category) }
   let!(:photo) { create(:photo) }
-  let!(:new_photo) { attributes_for(:photo, category_id: category) }
+  let!(:new_photo) { attributes_for(:photo, category_id: category.id) }
 
   describe 'GET #index' do
     it 'should run the find_categories method' do
@@ -93,7 +93,7 @@ RSpec.describe PhotosController do
       end
 
       context 'with ininvalid attributes' do
-        let!(:new_photo) { attributes_for(:post, category_id: nil) }
+        let!(:new_photo) { attributes_for(:photo, category_id: nil) }
 
         it 'does not save the new post in the database' do
           expect do
@@ -110,7 +110,7 @@ RSpec.describe PhotosController do
 
     context 'when user is not logged in' do
       it 'redirects to user_session_path' do
-        post :create, params: { post: attributes_for(:post) }
+        post :create, params: { post: attributes_for(:photo) }
 
         expect(response.status).to eq(302)
         expect(response).to redirect_to(user_session_path)
