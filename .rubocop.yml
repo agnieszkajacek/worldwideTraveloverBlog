@@ -44,3 +44,6 @@ Layout/IndentationWidth:
 Style/IfUnlessModifier:
   Enabled: false
 
+Style/FrozenStringLiteralComment:
+  Exclude:
+    - 'db/**/*'
