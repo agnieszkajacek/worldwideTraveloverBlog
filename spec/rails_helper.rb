@@ -27,6 +27,14 @@ require_relative 'support/login_support'
 
 # Checks for pending migrations and applies them before tests are run.
 # If you are not using ActiveRecord, you can remove these lines.
+
+Shoulda::Matchers.configure do |config|
+  config.integrate do |with|
+    with.test_framework :rspec
+    with.library :rails
+  end
+end
+
 begin
   ActiveRecord::Migration.maintain_test_schema!
 rescue ActiveRecord::PendingMigrationError => e
@@ -64,4 +72,16 @@ RSpec.configure do |config|
   # config.filter_gems_from_backtrace("gem name")
   config.include Devise::Test::ControllerHelpers, type: :controller
   config.extend LoginSupport, type: :controller
+
+  # database cleaning
+  config.before(:suite) do
+    DatabaseCleaner.strategy = :transaction
+    DatabaseCleaner.clean_with(:truncation)
+  end
+
+  config.around(:each) do |example|
+    DatabaseCleaner.cleaning do
+      example.run
+    end
+  end
 end
