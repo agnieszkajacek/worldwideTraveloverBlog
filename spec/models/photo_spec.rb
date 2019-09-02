@@ -2,7 +2,7 @@
 
 require 'rails_helper'
 
-RSpec.describe Post, type: :model do
+RSpec.describe Photo, type: :model do
   let!(:category) { create(:category) }
 
   context 'validations' do
@@ -28,6 +28,6 @@ RSpec.describe Post, type: :model do
   end
 
   context 'associations' do
-    it { should belong_to(:category).optional }
+    it { should belong_to(:category) }
   end
 end
