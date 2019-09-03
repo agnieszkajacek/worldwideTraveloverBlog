@@ -14,3 +14,10 @@ pl:
         other: wyświetlam <b>wszystkie&nbsp;%{count}</b> %{model}
     page_gap: "&hellip;"
     previous_label: "&#8592; Poprzednia"
+  activerecord:
+    errors:
+      models: 
+        subscriber:
+          attributes:
+            email:
+              invalid: 'nie wygląda na poprawny'

@@ -100,7 +100,7 @@ RSpec.describe PostsController do
 
       context 'with valid attributes' do
         let!(:category) { create(:category) }
-        let!(:new_post) { attributes_for(:post, category_id: category) }
+        let!(:new_post) { attributes_for(:post, category_id: category.id) }
 
         it 'saves the new post in the database' do
           expect do

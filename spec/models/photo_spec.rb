@@ -5,29 +5,35 @@ require 'rails_helper'
 RSpec.describe Photo, type: :model do
   let!(:category) { create(:category) }
 
-  context 'validations' do
-    it 'is valid with name and category_id' do
-      photo = Photo.create(name: 'test', category_id: category.id)
+  before(:each) do
+    @photo = build(
+      :photo,
+      name: 'Photo name',
+      category_id: category.id
+    )
+  end
 
-      expect(photo).to be_valid
+  describe 'validations' do
+    it 'is valid with valid attributes' do
+      expect(@photo).to be_valid
     end
 
     it 'is invalid without name' do
-      photo = Photo.create(name: nil, category_id: category.id)
+      @photo.name = nil
 
-      expect(photo).not_to be_valid
-      expect(photo.errors.details[:name]).to include(error: :blank)
+      expect(@photo).not_to be_valid
+      expect(@photo.errors.details[:name]).to include(error: :blank)
     end
 
     it 'is invalid without category_id' do
-      photo = Photo.create(name: nil, category_id: nil)
+      @photo.category_id = nil
 
-      expect(photo).not_to be_valid
-      expect(photo.errors.details[:category_id]).to include(error: :blank)
+      expect(@photo).not_to be_valid
+      expect(@photo.errors.details[:category_id]).to include(error: :blank)
     end
   end
 
-  context 'associations' do
+  describe 'associations' do
     it { should belong_to(:category) }
   end
 end

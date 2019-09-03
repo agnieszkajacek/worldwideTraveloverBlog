@@ -6,7 +6,6 @@ class PostsController < ApplicationController
 
   def index
     @posts = Post.includes(:category).where('published <= ?', Date.today).order('published DESC').paginate(page: params[:page], per_page: 6)
-
     @posts = @posts.search(params[:search]) if params[:search]
   end
 

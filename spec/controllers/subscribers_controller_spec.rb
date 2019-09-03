@@ -36,7 +36,7 @@ RSpec.describe SubscribersController do
           }
         end.not_to change(Subscriber, :count)
 
-        expect(flash[:notice]).to eq('Wygląda na to, że jesteś botem :(')
+        expect(flash[:alert]).to eq('Wygląda na to, że jesteś botem :(')
         expect(response.status).to eq(302)
         expect(response).to redirect_to(root_path)
       end
@@ -54,7 +54,7 @@ RSpec.describe SubscribersController do
           }
         }
 
-        expect(flash[:notice]).to eq('Wygląda na to, że już ze mną jesteś na bieżąco :)')
+        expect(flash[:alert]).to eq('Wygląda na to, że już ze mną jesteś na bieżąco :)')
         expect(response.status).to eq(302)
         expect(response).to redirect_to(root_path)
       end
@@ -116,11 +116,11 @@ RSpec.describe SubscribersController do
     end
 
     context 'when unsubscribe_hash is not valid' do
-      it 'redirects to root_path and shows flash[:notice]' do
+      it 'redirects to root_path and shows flash[:alert]' do
         post :unsubscribe, params: { unsubscribe_hash: 'fakeHash' }
 
         expect(response.status).to eq(302)
-        expect(flash[:notice]).to eq('Błędny link do wypisania się z newslettera. Wypisz się krzystając z linka w mailu bądź skontaktuj się z nami.')
+        expect(flash[:alert]).to eq('Błędny link do wypisania się z newslettera. Wypisz się krzystając z linka w mailu bądź skontaktuj się z nami.')
       end
     end
   end
