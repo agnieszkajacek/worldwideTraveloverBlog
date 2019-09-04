@@ -12,7 +12,7 @@
       <div class="category-header">
         <% if @posts.blank? %>
           <h3 class="title"><b class="light-color">Nie ma postów pasujących do tego zapytania</b></h3>
-          <p class="category-name"><%= params[:search].upcase %></p>
+          <p class="category-name"><%= params[:search].to_s.upcase %></p>
         <% end %>
         </div>
 
