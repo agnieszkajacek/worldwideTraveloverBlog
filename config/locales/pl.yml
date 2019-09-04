@@ -1,4 +1,7 @@
 pl:
+  errors:
+    format: '%{message}'
+  # Paginate
   will_paginate:
     next_label: Następna &#8594;
     page_entries_info:
@@ -14,10 +17,65 @@ pl:
         other: wyświetlam <b>wszystkie&nbsp;%{count}</b> %{model}
     page_gap: "&hellip;"
     previous_label: "&#8592; Poprzednia"
+  
+  # ActiveRecord
   activerecord:
     errors:
       models: 
         subscriber:
           attributes:
             email:
-              invalid: 'nie wygląda na poprawny'
+              invalid: 'Email nie wygląda na poprawny'
+        user:
+          attributes:
+            email:
+              blank: 'Email nie może być pusty'
+            password:
+              blank: 'Hasło nie może być puste'
+
+  # Device
+  devise:
+    login: 'Zaloguj'
+    remember_me: 'Zapamiętaj mnie'
+    login_title: 'Logowanie'
+    forgot_password_title: 'Zapomniałeś hasła?'
+    change_password_title: 'Zmień hasło'
+    failure:
+      already_authenticated: 'Jesteś już zalogowany!'
+      user:
+        not_found_in_database: 'Nie znaleziono użytkownika w bazie'
+    sessions:
+      user:
+        signed_out: 'Wylogowano poprawnie'
+    links:
+      didnt_receive_confirmation_instructions: 'Nie otrzymałeś instrukcji aktywacji konta?'
+      didnt_receive_unlock_instructions: 'Nie otrzymałeś instrukcji odblokowania konta?'
+      forgot_your_password: 'Zapomniałeś hasła?'
+      log_in: 'Zaloguj się'
+      sign_in_with_provider: 'Zaloguj się przez %{provider}'
+      sign_up: 'Zarejestruj się'
+    passwords:
+      user:
+        send_instructions: 'Wysłano instrukcje resetowania hasła'
+        updated: 'Hasło zaktualizowano'
+  # Helpers:
+  helpers:
+    # translate buttons
+    submit:
+      user:
+        create: 'Zaloguj'
+        send_reset_password: 'Wyslij mi instrukcje resetowania hasła'
+        change_my_password: 'Zmień moje hasło'
+  # SimpleForm
+  simple_form:
+    error_notification:
+      user: "Przejrzyj poniższe problemy:"
+    labels:
+      user:
+        email: 'Email'
+        password: 'Hasło'
+        password_confirmation: 'Potwierdź swoje nowe hasło'
+        remember_me: 'Zapamiętaj mnie'
+    hints:
+      user:
+        password: 'Minimum 6 znaków'
