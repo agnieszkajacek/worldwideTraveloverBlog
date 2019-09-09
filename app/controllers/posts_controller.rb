@@ -31,6 +31,7 @@ class PostsController < ApplicationController
       end
       redirect_to @post
     else
+      find_categories
       render 'new'
     end
   end
@@ -71,6 +72,6 @@ class PostsController < ApplicationController
   end
 
   def find_categories
-    @category = Category.where.not(ancestry: nil)
+    @categories = Category.where.not(ancestry: nil)
   end
 end
