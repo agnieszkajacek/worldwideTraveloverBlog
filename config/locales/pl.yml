@@ -29,9 +29,20 @@ pl:
         user:
           attributes:
             email:
+              not_found: 'Podany email nie istnieje w bazie'
               blank: 'Email nie może być pusty'
             password:
               blank: 'Hasło nie może być puste'
+        post:
+          attributes:
+            category_id: 
+              blank: 'Wybierz kategorię'
+            title: 
+              blank: 'Uzupełnij tytuł'
+            introduction:
+              blank: 'Wpisz wstęp'
+            content:
+              blank: 'Uzupełnij treść posta'
 
   # Device
   devise:
@@ -43,10 +54,12 @@ pl:
     failure:
       already_authenticated: 'Jesteś już zalogowany!'
       user:
+        invalid: 'Błędne hasło lub email'
         not_found_in_database: 'Nie znaleziono użytkownika w bazie'
     sessions:
       user:
         signed_out: 'Wylogowano poprawnie'
+        signed_in: 'Pomyślnie zalogowano'
     links:
       didnt_receive_confirmation_instructions: 'Nie otrzymałeś instrukcji aktywacji konta?'
       didnt_receive_unlock_instructions: 'Nie otrzymałeś instrukcji odblokowania konta?'
@@ -64,8 +77,11 @@ pl:
     submit:
       user:
         create: 'Zaloguj'
-        send_reset_password: 'Wyslij mi instrukcje resetowania hasła'
+        send_reset_password: 'Wyślij mi instrukcje resetowania hasła'
         change_my_password: 'Zmień moje hasło'
+      post:
+        create: 'Utwórz'
+
   # SimpleForm
   simple_form:
     error_notification:
@@ -76,6 +92,19 @@ pl:
         password: 'Hasło'
         password_confirmation: 'Potwierdź swoje nowe hasło'
         remember_me: 'Zapamiętaj mnie'
+      post:
+        category_id: 'Kategoria'
+        title: 'Tytuł'
+        published: 'Data publikacji'
+        introduction: 'Wprowadzenie'
+        content: 'Treść posta'
+        cover: 'Okładka posta'
+
     hints:
       user:
         password: 'Minimum 6 znaków'
+  
+  # NavBar
+  navbar:
+    log_out: 'Wyloguj się'
+    log_in: 'Zaloguj się'
