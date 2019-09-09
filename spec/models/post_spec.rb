@@ -24,29 +24,28 @@ RSpec.describe Post do
       @post.title = nil
 
       expect(@post).not_to be_valid
-      expect(@post.errors.messages[:title]).to include('nie może być puste')
+      expect(@post.errors.messages[:title]).to include('Uzupełnij tytuł')
     end
 
     it 'is invalid without content' do
       @post.content = nil
 
       expect(@post).not_to be_valid
-      expect(@post.errors.messages[:content]).to include('nie może być puste')
+      expect(@post.errors.messages[:content]).to include('Uzupełnij treść posta')
     end
 
     it 'is invalid without introduction' do
       @post.introduction = nil
 
       expect(@post).not_to be_valid
-      expect(@post.errors.messages[:introduction]).to include('nie może być puste')
+      expect(@post.errors.messages[:introduction]).to include('Wpisz wstęp')
     end
 
     it 'is invalid without category' do
       @post.category_id = nil
 
       expect(@post).not_to be_valid
-      expect(@post.errors.messages[:category]).to include('musi istnieć')
-      expect(@post.errors.messages[:category_id]).to include('nie może być puste')
+      expect(@post.errors.messages[:category_id]).to include('Wybierz kategorię')
     end
   end
 
