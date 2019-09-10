@@ -13,8 +13,8 @@
         <div class="blog-posts">
           <% if user_signed_in? %>
             <div class="admin-options">
-              <%= link_to "Edit", edit_post_path(@post), class: "btn btn-sm btn-outline-warning edit-option" %>
-              <%= link_to "Delete", @post, method: :delete, data: { confirm: "Are you sure?" }, class: "btn btn-sm btn-outline-warning edit-option" %>
+              <%= link_to t('helpers.post.edit'), edit_post_path(@post), class: "btn btn-sm btn-outline-warning edit-option" %>
+              <%= link_to t('helpers.post.destroy'), @post, method: :delete, data: { confirm: "Are you sure?" }, class: "btn btn-sm btn-outline-warning edit-option" %>
             </div>
           <% end %>
           <div class="single-post">
@@ -32,7 +32,7 @@
           <div>
             <div id="shareIconsCount"></div>
             <div class="disqus">
-              <%= render 'shared/disqus' %>
+              <%= render 'shared/disqus' if Rails.env.production? %>
             </div>
           </div>
 

@@ -78,7 +78,9 @@
 
     <%= render "shared/footer"%>
 
-    <script id="dsq-count-scr" src="//worldwide-travelover-new.disqus.com/count.js" async></script>
+    <% if Rails.env.production? %>
+      <script id="dsq-count-scr" src="//worldwide-travelover-new.disqus.com/count.js" async></script>
+    <% end %>
   </body>
 
 </html>
