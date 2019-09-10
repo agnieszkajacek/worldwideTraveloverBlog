@@ -3,9 +3,9 @@
 require 'rails_helper'
 
 RSpec.describe PostsController do
-  let!(:published_post) { create(:post, title: 'City break', slug: 'city-break', published: 2.days.ago) }
-  let!(:published_post_1) { create(:post, published: 5.days.ago) }
-  let!(:unpublished_post) { create(:post, published: 2.days.from_now) }
+  let!(:published_post) { create(:post, title: 'City break', slug: 'city-break', published: 2.days.ago, cover: nil) }
+  let!(:published_post_1) { create(:post, title: 'Awesome trip', published: 5.days.ago, cover: nil) }
+  let!(:unpublished_post) { create(:post, published: 2.days.from_now, cover: nil) }
 
   describe 'GET #index' do
     it 'returns an array of only published posts' do
@@ -31,8 +31,8 @@ RSpec.describe PostsController do
     end
 
     it 'allows searching posts by title' do
-      get :index, params: { search: 'City break' }
-      expect(assigns(:posts)).to eq([published_post])
+      get :index, params: { search: 'Awesome trip' }
+      expect(assigns(:posts)).to eq([published_post_1])
     end
 
     it 'renders the :index view' do
@@ -100,7 +100,7 @@ RSpec.describe PostsController do
 
       context 'with valid attributes' do
         let!(:category) { create(:category) }
-        let!(:new_post) { attributes_for(:post, category_id: category.id) }
+        let!(:new_post) { attributes_for(:post, category_id: category.id, cover: nil) }
 
         it 'saves the new post in the database' do
           expect do
@@ -134,7 +134,7 @@ RSpec.describe PostsController do
 
       context 'with invalid attributes' do
         let!(:category) { create(:category) }
-        let!(:new_post) { attributes_for(:post, category_id: nil) }
+        let!(:new_post) { attributes_for(:post, category_id: nil, cover: nil) }
 
         it 'does not save the new post in the database' do
           expect do
@@ -171,8 +171,8 @@ RSpec.describe PostsController do
               title: 'New title',
               content: 'New content here',
               category_id: category.id,
-              cover: nil,
               published: '2019-07-08',
+              cover: nil,
               introduction: 'New intro to post',
               crop_x: nil, crop_y: nil, crop_width: nil, crop_height: nil,
               crop_rectangle_x: nil, crop_rectangle_y: nil, crop_rectangle_width: nil, crop_rectangle_height: nil
