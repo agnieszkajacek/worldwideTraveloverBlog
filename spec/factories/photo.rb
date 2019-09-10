@@ -2,8 +2,8 @@
 
 FactoryBot.define do
   factory :photo do
-    name { 'Photo name' }
-    description { 'Some description here' }
+    name { 'Test pic' }
+    image { Rails.root.join('spec/files/test_pic.jpg').open }
     category
   end
 end
