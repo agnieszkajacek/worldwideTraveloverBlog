@@ -1,4 +1,9 @@
 pl:
+  notice:
+    updated: 'Zaktualizowano'
+    destroyed: 'Usunięto'
+  confirm:
+    are_you_sure: 'Jesteś pewien?'
   errors:
     format: '%{message}'
   # Paginate
@@ -44,7 +49,7 @@ pl:
             content:
               blank: 'Uzupełnij treść posta'
 
-  # Device
+  # Devise
   devise:
     login: 'Zaloguj'
     remember_me: 'Zapamiętaj mnie'
@@ -71,9 +76,13 @@ pl:
       user:
         send_instructions: 'Wysłano instrukcje resetowania hasła'
         updated: 'Hasło zaktualizowano'
+
   # Helpers:
   helpers:
-    # translate buttons
+    post:
+      destroy: 'Usuń'
+      edit: 'Edytuj'
+    # translate submit buttons
     submit:
       user:
         create: 'Zaloguj'
@@ -81,6 +90,7 @@ pl:
         change_my_password: 'Zmień moje hasło'
       post:
         create: 'Utwórz'
+        update: 'Zaktualizuj'
 
   # SimpleForm
   simple_form:

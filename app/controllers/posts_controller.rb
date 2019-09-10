@@ -46,7 +46,7 @@ class PostsController < ApplicationController
     @post.cover = @post.cover[:original] if post_params[:cover].nil?
 
     if @post.save
-      redirect_to @post, notice: 'Update successful!'
+      redirect_to @post, notice: t('notice.updated')
     else
       render 'edit'
     end
@@ -54,7 +54,7 @@ class PostsController < ApplicationController
 
   def destroy
     @post.destroy
-    redirect_to root_path, notice: 'Post destroyed'
+    redirect_to root_path, notice: t('notice.destroyed')
   end
 
   private
