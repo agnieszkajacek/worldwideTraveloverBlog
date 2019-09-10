@@ -82,6 +82,7 @@ group :test do
   gem 'factory_bot_rails', '~> 5.0.2'
   gem 'rails-controller-testing', '~> 1.0.4'
   gem 'shoulda-matchers'
+  gem 'shrine-memory'
   gem 'webmock', '~> 2.1'
 end
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem

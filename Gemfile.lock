@@ -1001,6 +1001,8 @@ GEM
     shrine (2.17.1)
       content_disposition (~> 1.0)
       down (~> 4.1)
+    shrine-memory (0.3.1)
+      shrine (~> 2.2)
     sidekiq (5.2.7)
       connection_pool (~> 2.2, >= 2.2.2)
       rack (>= 1.5.0)
@@ -1101,6 +1103,7 @@ DEPENDENCIES
   sendgrid-actionmailer
   shoulda-matchers
   shrine (~> 2.8)
+  shrine-memory
   sidekiq (~> 5.0)
   simple_form
   sitemap_generator (~> 5.1)
