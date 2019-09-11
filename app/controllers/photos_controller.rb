@@ -47,11 +47,11 @@ class PhotosController < ApplicationController
   end
 
   def find_categories
-    @category = if user_signed_in?
-                  Category.where.not(ancestry: nil)
-                else
-                  Category.where(show_in_gallery: true).where.not(ancestry: nil)
-                end
+    @categories = if user_signed_in?
+                    Category.where.not(ancestry: nil)
+                  else
+                    Category.where(show_in_gallery: true).where.not(ancestry: nil)
+                  end
   end
 
   def find_photo

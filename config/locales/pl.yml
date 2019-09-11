@@ -2,6 +2,7 @@ pl:
   notice:
     updated: 'Zaktualizowano'
     destroyed: 'Usunięto'
+    created: 'Utworzono'
   confirm:
     are_you_sure: 'Jesteś pewien?'
   errors:
@@ -48,6 +49,10 @@ pl:
               blank: 'Wpisz wstęp'
             content:
               blank: 'Uzupełnij treść posta'
+        category:
+          attributes:
+            name: 
+              blank: 'To pole nie może być puste'
 
   # Devise
   devise:
@@ -91,6 +96,12 @@ pl:
       post:
         create: 'Utwórz'
         update: 'Zaktualizuj'
+      category:
+        create: 'Utwórz kategorię'
+        update: 'Zaktualizuj'
+      photo:
+        create: 'Utwórz zdjęcie'
+        update: 'Zaktualizuj zdjęcie'
 
   # SimpleForm
   simple_form:
@@ -109,6 +120,18 @@ pl:
         introduction: 'Wprowadzenie'
         content: 'Treść posta'
         cover: 'Okładka posta'
+      category:
+        name: 'Podkategoria'
+        parent_id: 'Główna kategoria'
+        cover: 'Okładka'
+        show_in_gallery: 'Pokaż w galerii'
+      photo:
+        name: 'Nazwa'
+        description: 'Opis'
+        category_id: 'Categoria'
+        image: 'Zdjęcie'
+        public: 'Publiczne?'
+
 
     hints:
       user:

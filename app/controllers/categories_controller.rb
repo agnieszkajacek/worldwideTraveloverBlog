@@ -21,8 +21,9 @@ class CategoriesController < ApplicationController
   def create
     @category = Category.new(category_params)
     if @category.save
-      redirect_to categories_path, notice: 'The category was created!'
+      redirect_to categories_path, notice: t('notice.created')
     else
+      parent_category
       render 'new'
     end
   end
@@ -33,7 +34,7 @@ class CategoriesController < ApplicationController
 
   def update
     if @category.update(category_params)
-      redirect_to @category, notice: 'Update successful!'
+      redirect_to @category, notice: t('notice.updated')
     else
       render 'edit'
     end
@@ -41,7 +42,7 @@ class CategoriesController < ApplicationController
 
   def destroy
     @category.destroy
-    redirect_to root_path, notice: 'Category destroyed'
+    redirect_to root_path, notice: t('notice.destroyed')
   end
 
   private

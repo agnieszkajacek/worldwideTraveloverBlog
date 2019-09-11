@@ -1,30 +1,26 @@
 <div class="container frame">
   <%= simple_form_for @category do |f| %>
     <div class="form-group row">
-      <label class="col-lg-1 col-form-label col-form-label-sm">Name</label>
       <div class="col-lg-8">
-        <%= f.input :name, input_html: {class: "form-control form-control-sm"}, label: false %>
+        <%= f.input :name, input_html: {class: "form-control form-control-sm"} %>
       </div>
     </div>
     <div class="form-group row">
-      <label class="col-lg-1 col-form-label col-form-label-sm">Category</label>
       <div class="col-lg-8">
-        <%= f.input :parent_id, collection: @parent_category, required: false, input_html: {class: "form-control form-control-sm"}, label: false %>
+        <%= f.input :parent_id, collection: @parent_category, required: false, input_html: {class: "form-control form-control-sm"} %>
       </div>
     </div>
     <div class="form-group row">
-      <label class="col-lg-1 col-form-label col-form-label-sm">Cover</label>
       <div class="col-lg-8">
-        <%= f.file_field :cover, label: false %>
+        <%= f.file_field :cover %>
       </div>
     </div>
     <div class="form-group row">
-      <label class="col-lg-1 col-form-label col-form-label-sm">Show in Gallery</label>
       <div class="col-lg-8">
-        <%= f.input :show_in_gallery, as: :boolean, label: false %>
+        <%= f.input :show_in_gallery, as: :boolean %>
       </div>
     </div>
 
-    <%= f.submit "Save", class: "btn btn-block btn-success" %>
+    <%= f.button :submit, class: "btn btn-block btn-success" %>
   <% end %>
 </div>
