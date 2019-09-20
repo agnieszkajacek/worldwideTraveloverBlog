@@ -590,17 +590,17 @@ iframe {
 
 .single-post {
   img.inline-image {
-    // max-width:80%;
-    // max-height:500px;
+    max-width:80%;
+    max-height:500px;
   }
 }
 //remove max-height and max-width for old images which had ridigly defined values in html 
-.single-post-body {
-  img {
-    max-width: none !important;
-    max-height: none !important;
-  }
-}
+// .single-post-body {
+//   img {
+//     max-width: none !important;
+//     max-height: none !important;
+//   }
+// }
 
 /* ---------------------------------
 5. SIDEBAR STYLING
