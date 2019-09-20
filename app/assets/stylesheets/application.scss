@@ -596,8 +596,8 @@ iframe {
 }
 .single-post-body {
   img {
-    max-width: none 100%;
-    max-height: none 500px;
+    max-width: none 100% !important;
+    max-height: none 500px !important;
   }
 }
 
