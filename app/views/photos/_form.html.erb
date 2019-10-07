@@ -1,28 +1,24 @@
 <div class="container frame">
   <%= simple_form_for @photo, html: {multipart: true} do |f| %>
     <div class="form-group row">
-      <label class="col-lg-1 col-form-label col-form-label-sm">Name</label>
       <div class="col-lg-8">
-        <%= f.input :name, label: false, input_html: {class: "form-control form-control-sm"} %>
+        <%= f.input :name, input_html: {class: "form-control form-control-sm"} %>
       </div>
     </div>
     <div class="form-group row">
-      <label class="col-lg-1 col-form-label col-form-label-sm">Description</label>
       <div class="col-lg-8">
-        <%= f.input :description, label: false, input_html: {class: "form-control form-control-sm"} %>
+        <%= f.input :description, input_html: {class: "form-control form-control-sm"} %>
       </div>
     </div>
     <div class="form-group row">
-      <label class="col-lg-1 col-form-label col-form-label-sm">Category</label>
       <div class="col-lg-8">
-        <%= f.input :category_id, collection: @category, input_html: {class: "form-control form-control-sm"}, label: false %>
+        <%= f.input :category_id, collection: @categories, input_html: {class: "form-control form-control-sm"} %>
       </div>
     </div>
 
     <div class="form-group row">
-      <label class="col-lg-1 col-form-label col-form-label-sm">Image</label>
       <div class="col-lg-8">
-        <%= f.file_field :image, label: false, id: "upload-file"  %>
+        <%= f.file_field :image, id: "upload-file"  %>
       </div>
     </div>
     <img id="preview" src=""/>
@@ -43,17 +39,15 @@
       </div>
     </div>
     <div class="form-group row">
-      <label class="col-lg-1 col-form-label col-form-label-sm">Tag</label>
       <div class="col-lg-8">
-        <%= f.input :tag, label: false, input_html: {class: "form-control form-control-sm"} %>
+        <%= f.input :tag, input_html: {class: "form-control form-control-sm"} %>
       </div>
     </div>
     <div class="form-group row">
-      <label class="col-lg-1 col-form-label col-form-label-sm">Public</label>
       <div class="col-lg-8">
-        <%= f.input :public, as: :boolean, label: false %>
+        <%= f.input :public, as: :boolean %>
       </div>
     </div>
-    <%= f.submit "Save", class: "btn btn-success btn-block" %>
+    <%= f.button :submit, class: "btn btn-success btn-block" %>
   <% end %>
 </div>

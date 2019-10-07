@@ -1,14 +1,12 @@
+# frozen_string_literal: true
+
 class PostsController < ApplicationController
-  before_action :find_post, only: [:show, :edit, :update, :destroy]
-  before_action :authenticate_user!, only: [:new, :create, :edit, :update, :destroy]
+  before_action :find_post, only: %i[show edit update destroy]
+  before_action :authenticate_user!, only: %i[new create edit update destroy]
 
   def index
-    @posts = Post.includes(:category).where("published <= ?", Date.today).order("published DESC").paginate(:page => params[:page], :per_page => 6)
-
-    if params[:search]
-      @posts = @posts.search(params[:search])
-    end
-  
+    @posts = Post.includes(:category).where('published <= ?', Date.today).order('published DESC').paginate(page: params[:page], per_page: 6)
+    @posts = @posts.search(params[:search]) if params[:search]
   end
 
   def show
@@ -17,68 +15,53 @@ class PostsController < ApplicationController
 
   def new
     @post = Post.new
-    find_category
+    find_categories
   end
 
   def create
     @post = Post.new(post_params)
     @subscribers = Subscriber.all
 
-    if @post.save!
+    if @post.save
       scheduled_time = Time.zone.now
       @subscribers.each do |subscriber|
-        if subscriber.subscription
-          NotificationMailer.post_email(subscriber, @post).deliver_later(wait_until: scheduled_time)
-        end
+        NotificationMailer.post_email(subscriber, @post).deliver_later(wait_until: scheduled_time) if subscriber.subscription
 
-        scheduled_time = scheduled_time + 15.minutes
+        scheduled_time += 15.minutes
       end
       redirect_to @post
     else
-      render "new"
+      find_categories
+      render 'new'
     end
   end
 
   def edit
-    find_category
+    find_categories
   end
 
   def update
-    @subscribers = Subscriber.all
     @post.assign_attributes(post_params)
 
-    if post_params[:cover].nil?
-      @post.cover = @post.cover[:original]
-    end
+    @post.cover = @post.cover[:original] if post_params[:cover].nil?
 
     if @post.save
-      redirect_to @post, notice: "Update successful!"
+      redirect_to @post, notice: t('notice.updated')
     else
-      render "edit"
+      render 'edit'
     end
   end
 
   def destroy
-     @post.destroy
-     redirect_to root_path, notice: "Post destroyed"
-  end
-
-  def find_category
-    @category = []
-
-    Category.all.each do |category|
-      if category.has_children?
-        category.children.each do |c|
-          @category << c
-        end
-      end
-    end
+    @post.destroy
+    redirect_to root_path, notice: t('notice.destroyed')
   end
 
   private
+
   def post_params
     params.require(:post).permit(
-      :title, :content, :category_id, :cover, :published, :introduction, 
+      :title, :content, :category_id, :cover, :published, :introduction,
       :crop_x, :crop_y, :crop_width, :crop_height,
       :crop_rectangle_x, :crop_rectangle_y, :crop_rectangle_width, :crop_rectangle_height
     )
@@ -86,5 +69,9 @@ class PostsController < ApplicationController
 
   def find_post
     @post = Post.friendly.find(params[:id])
+  end
+
+  def find_categories
+    @categories = Category.where.not(ancestry: nil)
   end
 end

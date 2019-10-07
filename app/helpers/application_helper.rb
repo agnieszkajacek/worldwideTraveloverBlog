@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 module ApplicationHelper
   def markdown(text)
     markdown = Redcarpet::Markdown.new(
@@ -10,7 +12,7 @@ module ApplicationHelper
       underline: true,
       highlight: true
     )
-    return markdown.render(text).html_safe
+    markdown.render(text).html_safe
   end
 
   def replace_photos(text)
@@ -27,18 +29,18 @@ module ApplicationHelper
             end
           end
         end
-      else 
-        ""
+      else
+        ''
       end
     end.html_safe
   end
 
-  def render_source args={}
+  def render_source(args = {})
     @html_encoder ||= HTMLEntities.new
-    raw(@html_encoder.encode(render args))
+    raw(@html_encoder.encode(render(args)))
   end
 
   def active_class(link_path)
-    current_page?(link_path) ? "nav-link active" : "nav-link"
+    current_page?(link_path) ? 'nav-link active' : 'nav-link'
   end
 end

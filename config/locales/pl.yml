@@ -1,4 +1,13 @@
 pl:
+  notice:
+    updated: 'Zaktualizowano'
+    destroyed: 'Usunięto'
+    created: 'Utworzono'
+  confirm:
+    are_you_sure: 'Jesteś pewien?'
+  errors:
+    format: '%{message}'
+  # Paginate
   will_paginate:
     next_label: Następna &#8594;
     page_entries_info:
@@ -14,3 +23,121 @@ pl:
         other: wyświetlam <b>wszystkie&nbsp;%{count}</b> %{model}
     page_gap: "&hellip;"
     previous_label: "&#8592; Poprzednia"
+  
+  # ActiveRecord
+  activerecord:
+    errors:
+      models: 
+        subscriber:
+          attributes:
+            email:
+              invalid: 'Email nie wygląda na poprawny'
+        user:
+          attributes:
+            email:
+              not_found: 'Podany email nie istnieje w bazie'
+              blank: 'Email nie może być pusty'
+            password:
+              blank: 'Hasło nie może być puste'
+        post:
+          attributes:
+            category_id: 
+              blank: 'Wybierz kategorię'
+            title: 
+              blank: 'Uzupełnij tytuł'
+            introduction:
+              blank: 'Wpisz wstęp'
+            content:
+              blank: 'Uzupełnij treść posta'
+        category:
+          attributes:
+            name: 
+              blank: 'To pole nie może być puste'
+
+  # Devise
+  devise:
+    login: 'Zaloguj'
+    remember_me: 'Zapamiętaj mnie'
+    login_title: 'Logowanie'
+    forgot_password_title: 'Zapomniałeś hasła?'
+    change_password_title: 'Zmień hasło'
+    failure:
+      already_authenticated: 'Jesteś już zalogowany!'
+      user:
+        invalid: 'Błędne hasło lub email'
+        not_found_in_database: 'Nie znaleziono użytkownika w bazie'
+    sessions:
+      user:
+        signed_out: 'Wylogowano poprawnie'
+        signed_in: 'Pomyślnie zalogowano'
+    links:
+      didnt_receive_confirmation_instructions: 'Nie otrzymałeś instrukcji aktywacji konta?'
+      didnt_receive_unlock_instructions: 'Nie otrzymałeś instrukcji odblokowania konta?'
+      forgot_your_password: 'Zapomniałeś hasła?'
+      log_in: 'Zaloguj się'
+      sign_in_with_provider: 'Zaloguj się przez %{provider}'
+      sign_up: 'Zarejestruj się'
+    passwords:
+      user:
+        send_instructions: 'Wysłano instrukcje resetowania hasła'
+        updated: 'Hasło zaktualizowano'
+
+  # Helpers:
+  helpers:
+    post:
+      destroy: 'Usuń'
+      edit: 'Edytuj'
+    # translate submit buttons
+    submit:
+      user:
+        create: 'Zaloguj'
+        send_reset_password: 'Wyślij mi instrukcje resetowania hasła'
+        change_my_password: 'Zmień moje hasło'
+      post:
+        create: 'Utwórz'
+        update: 'Zaktualizuj'
+      category:
+        create: 'Utwórz kategorię'
+        update: 'Zaktualizuj'
+      photo:
+        create: 'Utwórz zdjęcie'
+        update: 'Zaktualizuj zdjęcie'
+
+  # SimpleForm
+  simple_form:
+    error_notification:
+      user: "Przejrzyj poniższe problemy:"
+    labels:
+      user:
+        email: 'Email'
+        password: 'Hasło'
+        password_confirmation: 'Potwierdź swoje nowe hasło'
+        remember_me: 'Zapamiętaj mnie'
+      post:
+        category_id: 'Kategoria'
+        title: 'Tytuł'
+        published: 'Data publikacji'
+        introduction: 'Wprowadzenie'
+        content: 'Treść posta'
+        cover: 'Okładka posta'
+      category:
+        name: 'Podkategoria'
+        parent_id: 'Główna kategoria'
+        cover: 'Okładka'
+        show_in_gallery: 'Pokaż w galerii'
+      photo:
+        name: 'Nazwa'
+        description: 'Opis'
+        category_id: 'Categoria'
+        image: 'Zdjęcie'
+        public: 'Publiczne?'
+
+
+    hints:
+      user:
+        password: 'Minimum 6 znaków'
+  
+  # NavBar
+  navbar:
+    log_out: 'Wyloguj się'
+    log_in: 'Zaloguj się'

@@ -9,9 +9,9 @@
   </header>
 
   <% if user_signed_in? %>
-    <a><%= link_to "Log out", destroy_user_session_path, method: :delete, class: "btn btn-outline-info" %></a>
+    <a><%= link_to t('navbar.log_out'), destroy_user_session_path, method: :delete, class: "btn btn-outline-info" %></a>
   <% elsif cookies[:username] == ENV["COOKIES"] %>
-    <a><%= link_to "Log in", new_user_session_path, class: "btn btn-outline-info" %></a>
+    <a><%= link_to t('navbar.log_in'), new_user_session_path, class: "btn btn-outline-info" %></a>
   <% end %>
 
   <% if user_signed_in? %>

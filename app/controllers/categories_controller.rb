@@ -1,14 +1,16 @@
+# frozen_string_literal: true
+
 class CategoriesController < ApplicationController
-  before_action :find_category, only: [:show, :edit, :update, :destroy]
-  before_action :authenticate_user!, only: [:new, :create, :edit, :update, :destroy]
+  before_action :find_category, only: %i[show edit update destroy]
+  before_action :authenticate_user!, only: %i[index new create edit update destroy]
 
   def index
-    @categories = Category.all.order("created_at DESC")
+    @categories = Category.all.order('created_at DESC')
   end
 
   def show
     @category = Category.friendly.find(params[:id])
-    @posts = Post.where(category_id: @category).order("created_at DESC")
+    @posts = Post.where(category_id: @category).order('created_at DESC')
   end
 
   def new
@@ -18,10 +20,11 @@ class CategoriesController < ApplicationController
 
   def create
     @category = Category.new(category_params)
-    if @category.save!
-      redirect_to @category, notice: "The category was created!"
+    if @category.save
+      redirect_to categories_path, notice: t('notice.created')
     else
-      render "new"
+      parent_category
+      render 'new'
     end
   end
 
@@ -31,18 +34,19 @@ class CategoriesController < ApplicationController
 
   def update
     if @category.update(category_params)
-      redirect_to @category, notice: "Update successful!"
+      redirect_to @category, notice: t('notice.updated')
     else
-      render "edit"
+      render 'edit'
     end
   end
 
   def destroy
-     @category.destroy
-     redirect_to root_path, notice: "Category destroyed"
+    @category.destroy
+    redirect_to root_path, notice: t('notice.destroyed')
   end
 
   private
+
   def category_params
     params.require(:category).permit(:name, :parent_id, :cover, :show_in_gallery)
   end
@@ -50,6 +54,7 @@ class CategoriesController < ApplicationController
   def find_category
     @category = Category.friendly.find(params[:id])
   end
+
   def parent_category
     @parent_category = Category.where(ancestry: nil)
   end

@@ -1,36 +1,31 @@
 <div class="container frame">
   <%= simple_form_for @post do |f| %>
     <div class="form-group row">
-      <label class="col-lg-1 col-form-label col-form-label-sm">Category</label>
-      <div class="col-lg-8">
-        <%= f.input :category_id, collection: @category, input_html: {class: "form-control form-control-sm"}, label: false %>
+      <div class="col-lg-12">
+        <%= f.input :category_id, collection: @categories, input_html: {class: "form-control form-control-sm"} %>
       </div>
     </div>
     <div class="form-group row">
-      <label class="col-lg-1 col-form-label col-form-label-sm">Title</label>
-      <div class="col-lg-8">
-        <%= f.input :title, input_html: {class: "form-control form-control-sm"}, label: false %>
+      <div class="col-lg-12">
+        <%= f.input :title, input_html: {class: "form-control form-control-sm"} %>
       </div>
     </div>
     <div class="form-group row">
-      <label class="col-lg-1 col-form-label col-form-label-sm">Published date</label>
-      <div class="col-lg-8">
-        <%= f.input :published, input_html: {class: "form-control form-control-sm"}, label: false %>
+      <div class="col-lg-12">
+        <%= f.input :published, input_html: {class: "form-control form-control-sm"} %>
       </div>
     </div>
     <div class="form-group row">
-      <label class="col-lg-1 col-form-label col-form-label-sm">Introduction</label>
-      <div class="col-lg-8">
-        <%= f.input :introduction, input_html: {class: "form-control form-control-sm"}, label: false %>
+      <div class="col-lg-12">
+        <%= f.input :introduction, input_html: {class: "form-control form-control-sm"} %>
       </div>
     </div>
     <div class="form-group">
-      <%= f.input :content, input_html: {id: "editor", class: "form-control form-control-lg big-textarea"}, label: false, as: :text %>
+      <%= f.input :content, input_html: {id: "editor", class: "form-control form-control-lg big-textarea"}, as: :text %>
     </div>
     <div class="form-group row">
-      <label class="col-lg-1 col-form-label col-form-label-sm">Cover</label>
-      <div class="col-lg-8">
-        <%= f.file_field :cover, label: false, id: "upload-cover" %>
+      <div class="col-lg-12">
+        <%= f.file_field :cover, id: "upload-cover" %>
       </div>
     </div>
     <div class="row">
@@ -77,7 +72,7 @@
         <%= f.input :crop_rectangle_height, input_html: {class: "form-control form-control-sm"} %>
       </div>
     </div>
-    <%= f.submit "Save", class: "btn btn-success btn-block" %>
+    <%= f.button :submit, class: "btn btn-success btn-block" %>
   <% end %>
 </div>
 
