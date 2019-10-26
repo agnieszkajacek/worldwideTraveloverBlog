@@ -4,8 +4,11 @@
 //= require bootstrap-sprockets
 //= require_tree .
 
+let squareCropper = null;
+let rectangleCropper = null;
+
 function initializeCropper(output, ratio) {
-  new Cropper(output, {
+  return new Cropper(output, {
     viewMode: 2,
     initialAspectRatio: ratio,
     aspectRatio: ratio,
@@ -91,7 +94,6 @@ $(document).ready(function () {
 
 
   $('#upload-file').on('change', function(event) {
-    output.src = URL.createObjectURL(event.target.files[0]);
 
     output.addEventListener('crop', function(event) {
       $('#photo_crop_x').val(event.detail.x.toFixed());
@@ -100,22 +102,40 @@ $(document).ready(function () {
       $('#photo_crop_height').val(event.detail.height.toFixed());
     });
 
-    var cropper = new Cropper(output, {
-      viewMode: 2,
-      initialAspectRatio: 1,
-      aspectRatio: 1,
-      zoomable: false,
-      minCropBoxHeight: 500,
-      minCropBoxWidth: 500
+
+    output.addEventListener('load', function (e) {
+      if (squareCropper)
+        squareCropper.destroy();
+        squareCropper = new Cropper(output, {
+          viewMode: 2,
+          initialAspectRatio: 1,
+          aspectRatio: 1,
+          zoomable: false,
+          minCropBoxHeight: 500,
+          minCropBoxWidth: 500
+        });
     });
+
+    output.src = URL.createObjectURL(event.target.files[0]);
   });
 
   $('#upload-cover').on('change', function(event) {
+    var output = document.getElementById('preview');
+    var outputRectangle = document.getElementById('preview-rectangle');
+
+    output.addEventListener('load', function (e) {
+      if (squareCropper)
+        squareCropper.destroy();
+      squareCropper = initializeCropper(output, 1);
+    });
+    outputRectangle.addEventListener('load', function () {
+      if (rectangleCropper)
+        rectangleCropper.destroy();
+      rectangleCropper = initializeCropper(outputRectangle, 750 / 500);
+    });
+
     output.src = URL.createObjectURL(event.target.files[0]);
     outputRectangle.src = URL.createObjectURL(event.target.files[0]);
-
-    initializeCropper(output, 1);
-    initializeCropper(outputRectangle, 750 / 500);
   });
   
   if (output)
@@ -134,13 +154,22 @@ $(document).ready(function () {
       $('#post_crop_rectangle_height').val(event.detail.height.toFixed());
     });
 
-  // Load cropper on edit page
-  if (document.querySelector('form.edit_post')) {
-    console.log('on edit page')
+  // Load cropper on edit_post page
+  if (document.querySelector('.simple_form.edit_post')) {
+    console.log('on edit post page')
     $(window).load(function () {
       console.log('image loaded ,init cropper')
-      initializeCropper(output, 1);
-      initializeCropper(outputRectangle, 750 / 500);
+      squareCropper = initializeCropper(output, 1);
+      rectangleCropper = initializeCropper(outputRectangle, 750 / 500);
+    });
+  }
+
+  // Load cropper on edit_photo page
+  if (document.querySelector('.simple_form.edit_photo')) {
+    console.log('on edit photo page')
+    $(window).load(function () {
+      console.log('image loaded ,init cropper')
+      squareCropper = initializeCropper(output, 1);
     });
   }
 });
