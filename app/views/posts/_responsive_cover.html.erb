@@ -1,0 +1,8 @@
+<picture>
+  <source type="image/webp" srcset="<%= rectangle_srcset(post, "webp") %>">
+  <img 
+    loading="lazy" 
+    src="<%= post.cover_url(:rectangle_750_jpg) %>"
+    srcset="<%= rectangle_srcset(post, "jpg") %>"
+  />
+</picture>

@@ -19,10 +19,7 @@
           <% end %>
           <div class="single-post">
             <div class="image-wrapper">
-              <picture>
-                <source type="image/webp" srcset="<%= @post.cover_url(:rectangle_webp) %>">
-                <img loading="lazy" src="<%= @post.cover_url(:rectangle) %>">
-              </picture>
+              <%= render partial: 'posts/responsive_cover', locals: { post: @post }%>
             </div>
             <div class="icons">
               <div class="left-area">

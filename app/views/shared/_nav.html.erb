@@ -8,9 +8,10 @@
     </div>
   </header>
 
+  <% is_local = request.remote_ip == "::1" || request.remote_ip = "127.0.0.1" %>
   <% if user_signed_in? %>
     <a><%= link_to t('navbar.log_out'), destroy_user_session_path, method: :delete, class: "btn btn-outline-info" %></a>
-  <% elsif cookies[:username] == ENV["COOKIES"] %>
+  <% elsif cookies[:username] == ENV["COOKIES"] || is_local  %>
     <a><%= link_to t('navbar.log_in'), new_user_session_path, class: "btn btn-outline-info" %></a>
   <% end %>
 

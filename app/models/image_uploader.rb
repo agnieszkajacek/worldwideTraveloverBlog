@@ -11,7 +11,20 @@ class ImageUploader < Shrine
   plugin :pretty_location
   plugin :default_url_options, store: { host: ENV["CDN_HOST"] }
   plugin :store_dimensions
-  
+
+  RECTANGLE_SIZES = [
+    [750, 500],
+    [490, 327],
+    [375, 250]
+  ]
+
+  MEDIUM_SIZES = [
+    [500, 500],
+    [375, 375],
+    [250, 250]
+  ]
+  RECTANGLE_FORMATS = ["webp", "jpg"]
+
   Attacher.validate do
     validate_max_size 13.megabytes, message: 'is too large (max is 13 MB)'
     validate_mime_type_inclusion %w[image/jpg image/jpeg image/png image/gif]
@@ -27,33 +40,35 @@ class ImageUploader < Shrine
                 .convert('jpg')
                 .call(original)
 
-    medium = ImageProcessing::MiniMagick
+    versions = { original: io, thumbnail: thumbnail }
+
+    RECTANGLE_FORMATS.each do |format|
+      MEDIUM_SIZES.each do |width, height|
+        versions["medium_#{width}_#{format}"] = ImageProcessing::MiniMagick
              .quality(75)
              .crop("#{context[:record].crop_width}x#{context[:record].crop_height}+#{context[:record].crop_x}+#{context[:record].crop_y}")
-             .scale('500x500')
-             .convert('jpg')
+             .scale("#{width}x#{height}")
+             .convert(format)
              .call(original)
+      end
+    end
+
 
     if context[:record].is_a?(Post)
-      rectangle = ImageProcessing::MiniMagick
-                  .quality(85)
-                  .crop("#{context[:record].crop_rectangle_width}x#{context[:record].crop_rectangle_height}+#{context[:record].crop_rectangle_x}+#{context[:record].crop_rectangle_y}")
-                  .scale('750x500')
-                  .convert('jpg')
-                  .call(original)
-      rectangle_webp = ImageProcessing::MiniMagick
-                  .quality(85)
-                  .crop("#{context[:record].crop_rectangle_width}x#{context[:record].crop_rectangle_height}+#{context[:record].crop_rectangle_x}+#{context[:record].crop_rectangle_y}")
-                  .scale('750x500')
-                  .convert('webp')
-                  .call(original)
+        RECTANGLE_FORMATS.each do |format|
+          RECTANGLE_SIZES.each do |width, height|
+            versions["rectangle_#{width}_#{format}"] = ImageProcessing::MiniMagick
+              .quality(85)
+              .crop("#{context[:record].crop_rectangle_width}x#{context[:record].crop_rectangle_height}+#{context[:record].crop_rectangle_x}+#{context[:record].crop_rectangle_y}")
+              .scale("#{width}x#{height}")
+              .convert(format)
+              .call(original)
+          end
+        end
     end
 
     original.close
-    versions = { original: io, thumbnail: thumbnail, medium: medium }
 
-    versions[:rectangle] = rectangle if rectangle
-    versions[:rectangle_webp] = rectangle_webp if rectangle_webp
     versions
   end
 
