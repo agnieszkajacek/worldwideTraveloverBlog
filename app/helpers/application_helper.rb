@@ -67,11 +67,11 @@ module ApplicationHelper
   end
   
   def medium_sizes
-    ImageUploader::MEDIUM_SIZES.reverse.each_with_index.map  do |(width, height), index| 
+    ImageUploader::MEDIUM_SIZES.reverse.each_with_index.map  do |(width, _), index|
       if index == ImageUploader::MEDIUM_SIZES.length - 1
         "#{width}px" 
       else
-        "(max-width: #{width}px) #{width - 20}px"
+        "(max-width: #{width}px)"
       end
     end.join(", ")
   end
