@@ -74,7 +74,7 @@
         <div class="latest-post">
           <div class="l-post-image">
             <a href="<%= post_path(post) %>">
-              <img class="small-img" src="<%= post.cover_url(:thumbnail) %>">
+              <img loading="lazy" width="80" height="80" src="<%= post.cover_url(:thumbnail) %>">
             </a>
           </div>
           <div class="post-info">

@@ -25,7 +25,7 @@ module ApplicationHelper
         tag.div(class: 'text-center image-style') do
           tag.div(class: 'image') do
             link_to photo.image_url(:original, response_content_disposition: 'attachment'), data: data, download: true do
-              tag.img(class: 'inline-image', src: photo.image_url(:medium, public: true))
+              tag.img(class: 'inline-image', loading: "lazy", width: "500", height: "500", src: photo.image_url(:medium, public: true))
             end
           end
         end

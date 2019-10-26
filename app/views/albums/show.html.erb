@@ -15,7 +15,7 @@
               <div class="text-align">
                 <div class="image">
                   <a href="<%= photo.image_url(:original, public: true) %>" data-gallery="gallery-name" data-toggle="lightbox" data-footer="<%= photo.description %>">
-                    <img src="<%= photo.image_url(:thumbnail, public: true) %>" class="img-fluid">
+                    <img loading="lazy" width="250" height="250" src="<%= photo.image_url(:thumbnail, public: true) %>">
                   </a>
                 </div>
                 <div>
