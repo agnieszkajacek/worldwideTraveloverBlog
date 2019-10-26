@@ -40,12 +40,19 @@ class ImageUploader < Shrine
                   .scale('750x500')
                   .convert('jpg')
                   .call(original)
+      rectangle_webp = ImageProcessing::MiniMagick
+                  .quality(85)
+                  .crop("#{context[:record].crop_rectangle_width}x#{context[:record].crop_rectangle_height}+#{context[:record].crop_rectangle_x}+#{context[:record].crop_rectangle_y}")
+                  .scale('750x500')
+                  .convert('webp')
+                  .call(original)
     end
 
     original.close
     versions = { original: io, thumbnail: thumbnail, medium: medium }
 
     versions[:rectangle] = rectangle if rectangle
+    versions[:rectangle_webp] = rectangle_webp if rectangle_webp
     versions
   end
 
