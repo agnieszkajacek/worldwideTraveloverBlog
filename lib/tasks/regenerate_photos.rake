@@ -10,7 +10,7 @@ namespace :photos do
 
     photos = Photo.all
     photos.each do |photo|
-      next unless photo.image
+      next if photo.image.nil? || !photo.valid?
 
       photo.image = photo.image[:original]
       photo.save!
