@@ -1,3 +1,10 @@
+<% if user_signed_in? %>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.0/clipboard.min.js"></script>
+  <script>
+    new ClipboardJS('.btn');
+  </script>  
+<% end %>
+
 <section class="section blog-area">
   <div class="container-fluid">
     <div id="pagewrap">
@@ -5,7 +12,7 @@
         <div class="active-tag">
           <p class="tag-title">Tag: </p>
           <p class="tag-name"><%= params[:tag] %></p>
-          <a href="<%= show_albums_path(@category)%>"><i class="far fa-times-circle"></i></a>
+          <a href="<%= show_albums_path(@category)%>"><i class="fas fa-times-circle"></i></a>
         </div>
       <% end %>
       <div class="row">
