@@ -7,22 +7,18 @@
       </div>
     </div>
   </header>
-  <% is_local = request.remote_ip == "::1" || request.remote_ip = "127.0.0.1" %>
+
   <% if user_signed_in? %>
     <a><%= link_to t('navbar.log_out'), destroy_user_session_path, method: :delete, class: "btn btn-outline-info" %></a>
-  <% elsif cookies[:username] == ENV["COOKIES"] || is_local  %>
-    <a><%= link_to t('navbar.log_in'), new_user_session_path, class: "btn btn-outline-info" %></a>
-  <% end %>  
-</div>
-<div class="container-fluid">
-  <% if user_signed_in? %>
     <%= link_to "Nowy post", new_post_url, class: "btn btn-outline-info" %>
     <%= link_to "Nowe zdjęcie", new_photo_url, class: "btn btn-outline-info" %>
     <%= link_to "Nowa kategoria", new_category_url, class: "btn btn-outline-info" %>
-  <% else %>
+  <% elsif cookies[:username] == ENV["COOKIES"] %>
+    <a><%= link_to t('navbar.log_in'), new_user_session_path, class: "btn btn-outline-info" %></a>
+  <% end %>  
+</div>
 
-  <% end %>
-
+<div class="container-fluid">
   <nav data-toggle="sticky-onscroll" class="row navbar navbar-expand-lg navbar-dark menu-category">
     <div class="container">
       <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
