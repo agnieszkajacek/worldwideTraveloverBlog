@@ -9,21 +9,21 @@ class ImageUploader < Shrine
   plugin :determine_mime_type
   plugin :validation_helpers
   plugin :pretty_location
-  plugin :default_url_options, store: { host: ENV["CDN_HOST"] }
+  plugin :default_url_options, store: { host: ENV['CDN_HOST'] }
   plugin :store_dimensions
 
   RECTANGLE_SIZES = [
     [750, 500],
     [490, 327],
     [375, 250]
-  ]
+  ].freeze
 
   MEDIUM_SIZES = [
     [500, 500],
     [375, 375],
     [250, 250]
-  ]
-  RECTANGLE_FORMATS = ["webp", "jpg"]
+  ].freeze
+  RECTANGLE_FORMATS = %w[webp jpg].freeze
 
   Attacher.validate do
     validate_max_size 13.megabytes, message: 'is too large (max is 13 MB)'
@@ -45,24 +45,23 @@ class ImageUploader < Shrine
     RECTANGLE_FORMATS.each do |format|
       MEDIUM_SIZES.each do |width, height|
         versions["medium_#{width}_#{format}"] = ImageProcessing::MiniMagick
-             .quality(75)
-             .crop("#{context[:record].crop_width}x#{context[:record].crop_height}+#{context[:record].crop_x}+#{context[:record].crop_y}")
-             .scale("#{width}x#{height}")
-             .convert(format)
-             .call(original)
+                                                .quality(75)
+                                                .crop("#{context[:record].crop_width}x#{context[:record].crop_height}+#{context[:record].crop_x}+#{context[:record].crop_y}")
+                                                .scale("#{width}x#{height}")
+                                                .convert(format)
+                                                .call(original)
       end
     end
-
 
     if context[:record].is_a?(Post)
         RECTANGLE_FORMATS.each do |format|
           RECTANGLE_SIZES.each do |width, height|
             versions["rectangle_#{width}_#{format}"] = ImageProcessing::MiniMagick
-              .quality(85)
-              .crop("#{context[:record].crop_rectangle_width}x#{context[:record].crop_rectangle_height}+#{context[:record].crop_rectangle_x}+#{context[:record].crop_rectangle_y}")
-              .scale("#{width}x#{height}")
-              .convert(format)
-              .call(original)
+                                                       .quality(85)
+                                                       .crop("#{context[:record].crop_rectangle_width}x#{context[:record].crop_rectangle_height}+#{context[:record].crop_rectangle_x}+#{context[:record].crop_rectangle_y}")
+                                                       .scale("#{width}x#{height}")
+                                                       .convert(format)
+                                                       .call(original)
           end
         end
     end

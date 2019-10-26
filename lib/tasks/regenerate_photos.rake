@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 namespace :photos do
   task regenerate: :environment do
     posts = Post.where('published <= ?', Date.today)
