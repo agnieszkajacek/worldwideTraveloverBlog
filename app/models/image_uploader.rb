@@ -10,7 +10,8 @@ class ImageUploader < Shrine
   plugin :validation_helpers
   plugin :pretty_location
   plugin :default_url_options, store: { host: ENV["CDN_HOST"] }
-
+  plugin :store_dimensions
+  
   Attacher.validate do
     validate_max_size 13.megabytes, message: 'is too large (max is 13 MB)'
     validate_mime_type_inclusion %w[image/jpg image/jpeg image/png image/gif]

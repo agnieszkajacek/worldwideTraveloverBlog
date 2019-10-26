@@ -18,7 +18,12 @@
             </div>
           <% end %>
           <div class="single-post">
-            <div class="image-wrapper"><img loading="lazy" src="<%= @post.cover_url(:rectangle) %>" alt="Blog Image"></div>
+            <div class="image-wrapper">
+              <picture>
+                <source type="image/webp" srcset="<%= @post.cover_url(:rectangle_webp) %>">
+                <img loading="lazy" src="<%= @post.cover_url(:rectangle) %>">
+              </picture>
+            </div>
             <div class="icons">
               <div class="left-area">
                 <b><%= link_to @post.category.name, @post.category, class: "btn category-btn bold uppercase" %></b>
