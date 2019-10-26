@@ -18,7 +18,7 @@
             </div>
           <% end %>
           <div class="single-post">
-            <div class="image-wrapper"><img loading="lazy" width="750" height="500" src="<%= @post.cover_url(:rectangle) %>" alt="Blog Image"></div>
+            <div class="image-wrapper"><img loading="lazy" src="<%= @post.cover_url(:rectangle) %>" alt="Blog Image"></div>
             <div class="icons">
               <div class="left-area">
                 <b><%= link_to @post.category.name, @post.category, class: "btn category-btn bold uppercase" %></b>
