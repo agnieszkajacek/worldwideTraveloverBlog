@@ -4,8 +4,8 @@
 //= require bootstrap-sprockets
 //= require_tree .
 
-let squareCropper = null;
-let rectangleCropper = null;
+var squareCropper = null;
+var rectangleCropper = null;
 
 function initializeCropper(output, ratio) {
   return new Cropper(output, {
