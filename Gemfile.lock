@@ -42,8 +42,8 @@ GEM
       i18n (>= 0.7, < 2)
       minitest (~> 5.1)
       tzinfo (~> 1.1)
-    addressable (2.6.0)
-      public_suffix (>= 2.0.2, < 4.0)
+    addressable (2.7.0)
+      public_suffix (>= 2.0.2, < 5.0)
     ancestry (3.0.6)
       activerecord (>= 3.2.0)
     archive-zip (0.11.0)
@@ -894,7 +894,7 @@ GEM
     pry (0.12.2)
       coderay (~> 1.1.0)
       method_source (~> 0.9.0)
-    public_suffix (3.1.0)
+    public_suffix (4.0.1)
     puma (3.12.1)
     rack (2.0.7)
     rack-protection (2.0.5)
@@ -998,7 +998,7 @@ GEM
       sinatra (>= 1.4.7, < 3)
     shoulda-matchers (4.1.2)
       activesupport (>= 4.2.0)
-    shrine (2.17.1)
+    shrine (2.19.3)
       content_disposition (~> 1.0)
       down (~> 4.1)
     shrine-memory (0.3.1)
@@ -1102,7 +1102,7 @@ DEPENDENCIES
   selenium-webdriver (~> 3.142, >= 3.142.4)
   sendgrid-actionmailer
   shoulda-matchers
-  shrine (~> 2.8)
+  shrine (~> 2.19.3)
   shrine-memory
   sidekiq (~> 5.0)
   simple_form

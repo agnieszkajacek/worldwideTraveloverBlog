@@ -49,7 +49,7 @@ gem 'rake'
 gem 'redcarpet'
 gem 'rubocop', '~> 0.74.0', require: false
 gem 'sendgrid-actionmailer'
-gem 'shrine', '~> 2.8'
+gem 'shrine', '~> 2.19.3'
 gem 'sidekiq', '~> 5.0'
 gem 'simple_form'
 gem 'sitemap_generator', '~> 5.1'
