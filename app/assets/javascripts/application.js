@@ -144,6 +144,11 @@ $(document).ready(function () {
       $('#post_crop_y').val(event.detail.y.toFixed());
       $('#post_crop_width').val(event.detail.width.toFixed());
       $('#post_crop_height').val(event.detail.height.toFixed());
+
+      $('#photo_crop_x').val(event.detail.x.toFixed());
+      $('#photo_crop_y').val(event.detail.y.toFixed());
+      $('#photo_crop_width').val(event.detail.width.toFixed());
+      $('#photo_crop_height').val(event.detail.height.toFixed());
     });
 
   if (outputRectangle)
