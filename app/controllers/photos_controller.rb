@@ -28,7 +28,10 @@ class PhotosController < ApplicationController
   end
 
   def update
-    if @photo.update(photo_params)
+    @photo.update(photo_params)
+    @photo.image = @photo.image[:original] if photo_params[:image].nil?
+
+    if @photo.save
       redirect_to photos_path, notice: 'Update successful!'
     else
       render 'edit'
