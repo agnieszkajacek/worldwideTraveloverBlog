@@ -3,7 +3,7 @@
   <meta property="og:type" content="article" />
   <meta property="og:published_time" content="<%= I18n.l(@post.published.to_date, format: :long) %>" />
   <meta property="og:description" content="<%= @post.introduction %>" />
-  <meta property="og:image" content="<%= @post.cover_url(:thumbnail, public: true) %>" />
+  <meta property="og:image" content="<%= post.cover_url(:rectangle_750_jpg) %>" />
 <% end %>
 
 <section class="blog-area">
@@ -19,7 +19,7 @@
           <% end %>
           <div class="single-post">
             <div class="image-wrapper">
-              <%= render partial: 'posts/responsive_cover', locals: { post: @post }%>
+              <%= render partial: 'posts/responsive_cover', locals: { post: @post } %>
             </div>
             <div class="icons">
               <div class="left-area">
