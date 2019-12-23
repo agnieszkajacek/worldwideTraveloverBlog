@@ -72,6 +72,7 @@ class PostsController < ApplicationController
   end
 
   def find_categories
-    @categories = Category.where.not(ancestry: nil)
+    # @categories = Category.where.not(ancestry: nil)
+    @categories = Category.all
   end
 end
