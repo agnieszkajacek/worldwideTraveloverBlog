@@ -51,7 +51,7 @@ class PhotosController < ApplicationController
 
   def find_categories
     @categories = if user_signed_in?
-                    Category.where.not(ancestry: nil)
+                    Category.all
                   else
                     Category.where(show_in_gallery: true).where.not(ancestry: nil)
                   end

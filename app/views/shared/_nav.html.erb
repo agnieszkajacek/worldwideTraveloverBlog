@@ -32,16 +32,23 @@
         <ul class="navbar-nav">
           <% Category.where(ancestry: nil).each do |category| %>
             <% if true %>
-              <li class="nav-item dropdown">
-                <a class="nav-link <%= category.children.any? {|c| current_page?(category_url(c))} ? 'active' : '' %>" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                  <%= category.name %>
-                </a>
-                <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                  <% category.children.each do |c| %>
-                    <%= link_to c.name, c, class:"dropdown-item" %>
-                  <% end %>
-                </div>
-              </li>
+              <% if category.children.count > 0 %>
+                <li class="nav-item dropdown">
+                  <a class="nav-link <%= category.children.any? {|c| current_page?(category_url(c))} ? 'active' : '' %>" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    <%= category.name %>
+                  </a>
+
+                  <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                    <% category.children.each do |c| %>
+                      <%= link_to c.name, c, class:"dropdown-item" %>
+                    <% end %>
+                  </div>
+                </li>
+              <% else %>
+                <li class="nav-item">
+                  <%= link_to category.name, category, class: active_class(category) %>
+                </li>
+              <% end %>
             <% end %>
           <% end %>
           <li class="nav-item">
