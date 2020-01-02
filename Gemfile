@@ -50,11 +50,11 @@ gem 'redcarpet'
 gem 'rubocop', '~> 0.74.0', require: false
 gem 'sendgrid-actionmailer'
 gem 'shrine', '~> 2.19.3'
-gem 'sidekiq', '~> 5.0'
 gem 'simple_form'
 gem 'sitemap_generator', '~> 5.1'
 gem 'will_paginate', '~> 3.1.6'
 gem 'will_paginate-bootstrap4'
+gem 'sucker_punch', '~> 2.0'
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
