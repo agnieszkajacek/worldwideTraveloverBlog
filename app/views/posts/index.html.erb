@@ -14,7 +14,7 @@
           <h3 class="title"><b class="light-color">Nie ma postów pasujących do tego zapytania</b></h3>
           <p class="category-name"><%= params[:search].to_s.upcase %></p>
         <% end %>
-        </div>
+      </div>
 
       <div class="col-lg-8 col-md-12">
         <% @posts.each do |post| %>
@@ -39,7 +39,6 @@
         <% end %>
       
         <%== pagy_bootstrap_nav(@pagy) %>
-        <%== pagy_bootstrap_nav_js(@pagy) %>
       </div>
 
       <%= render 'shared/new_sidebar' %>

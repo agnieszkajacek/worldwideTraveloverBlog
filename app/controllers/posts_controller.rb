@@ -5,14 +5,10 @@ class PostsController < ApplicationController
   before_action :authenticate_user!, only: %i[new create edit update destroy]
 
   def index
-    @pagy, @posts = pagy(
-      Post.includes(:category).where('published <= ?', Date.today).order('published DESC'), 
-      page: params[:page], 
-      items: 3
-    )
-
-    # @posts = @posts.search(params[:search]) if params[:search]
-    @posts = @posts.search_for(params[:search]) if params[:search]
+    scope = Post.includes(:category).where('published <= ?', Date.today).order('published DESC')
+    scope = scope.search_for(params[:search]) if params[:search]
+    
+    @pagy, @posts = pagy(scope, page: params[:page], items: 6)
   end
 
   def show
