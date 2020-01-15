@@ -5,8 +5,14 @@ class PostsController < ApplicationController
   before_action :authenticate_user!, only: %i[new create edit update destroy]
 
   def index
-    @posts = Post.includes(:category).where('published <= ?', Date.today).order('published DESC').paginate(page: params[:page], per_page: 6)
-    @posts = @posts.search(params[:search]) if params[:search]
+    @pagy, @posts = pagy(
+      Post.includes(:category).where('published <= ?', Date.today).order('published DESC'), 
+      page: params[:page], 
+      items: 3
+    )
+
+    # @posts = @posts.search(params[:search]) if params[:search]
+    @posts = @posts.search_for(params[:search]) if params[:search]
   end
 
   def show
@@ -25,7 +31,6 @@ class PostsController < ApplicationController
     if @post.save
       scheduled_time = Time.zone.now
       @subscribers.each do |subscriber|
-        # byebug
         NotificationMailer.post_email(subscriber, @post).deliver_later if subscriber.subscription
 
         scheduled_time += 1.minutes

@@ -37,7 +37,9 @@
             </div><!-- single-post -->
           </div>
         <% end %>
-        <%= will_paginate @posts, previous_label: '&laquo;', next_label: '&raquo;', renderer: WillPaginate::ActionView::BootstrapLinkRenderer %>
+      
+        <%== pagy_bootstrap_nav(@pagy) %>
+        <%== pagy_bootstrap_nav_js(@pagy) %>
       </div>
 
       <%= render 'shared/new_sidebar' %>

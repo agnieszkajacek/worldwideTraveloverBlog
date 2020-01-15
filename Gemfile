@@ -52,9 +52,12 @@ gem 'sendgrid-actionmailer'
 gem 'shrine', '~> 2.19.3'
 gem 'simple_form'
 gem 'sitemap_generator', '~> 5.1'
-gem 'will_paginate', '~> 3.1.6'
-gem 'will_paginate-bootstrap4'
 gem 'sucker_punch', '~> 2.0'
+gem 'traceroute', '~> 0.8.0'
+gem 'lol_dba', '~> 2.1', '>= 2.1.8'
+gem 'pghero'
+gem 'pagy', '~> 3.7', '>= 3.7.2'
+gem 'pg_search', '~> 2.3', '>= 2.3.2'
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
@@ -75,6 +78,7 @@ group :development do
   # Spring speeds up development by keeping your application running in the background. Read more: https://github.com/rails/spring
   gem 'spring'
   gem 'spring-watcher-listen', '~> 2.0.0'
+  gem 'bullet', '~> 6.1'
 end
 
 group :test do

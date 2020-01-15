@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_06_23_193334) do
+ActiveRecord::Schema.define(version: 2020_01_15_110812) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -52,6 +52,7 @@ ActiveRecord::Schema.define(version: 2019_06_23_193334) do
     t.integer "crop_height"
     t.string "tag"
     t.boolean "public", default: true
+    t.index ["category_id"], name: "index_photos_on_category_id"
   end
 
   create_table "posts", force: :cascade do |t|
@@ -73,6 +74,7 @@ ActiveRecord::Schema.define(version: 2019_06_23_193334) do
     t.integer "crop_rectangle_y"
     t.integer "crop_rectangle_width"
     t.integer "crop_rectangle_height"
+    t.index ["category_id"], name: "index_posts_on_category_id"
     t.index ["slug"], name: "index_posts_on_slug", unique: true
   end
 

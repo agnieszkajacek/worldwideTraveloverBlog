@@ -10,7 +10,9 @@ class CategoriesController < ApplicationController
 
   def show
     @category = Category.friendly.find(params[:id])
-    @posts = Post.where(category_id: @category).order('created_at DESC')
+    # @posts = Post.where(category_id: @category).order('created_at DESC')
+    @posts = Post.includes(:category).where(category_id: @category).order('created_at DESC')
+
   end
 
   def new

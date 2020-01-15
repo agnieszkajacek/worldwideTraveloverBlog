@@ -34,4 +34,8 @@ Rails.application.routes.draw do
   get '/polityka_prywatnosci', to: 'pages#polityka_prywatnosci'
 
   get 'subscribers/unsubscribe/:unsubscribe_hash', to: 'subscribers#unsubscribe', as: 'unsubscribe'
+
+  authenticate :user, lambda {|user| user.role == 'admin' } do
+    mount PgHero::Engine, at: "pgdashboard"
+  end
 end
