@@ -7,7 +7,7 @@ class PostsController < ApplicationController
   def index
     scope = Post.includes(:category).where('published <= ?', Date.today).order('published DESC')
     scope = scope.search_for(params[:search]) if params[:search]
-    
+
     @pagy, @posts = pagy(scope, page: params[:page], items: 6)
   end
 

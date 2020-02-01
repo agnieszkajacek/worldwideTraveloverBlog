@@ -121,11 +121,12 @@ RSpec.describe PhotosController do
   describe 'PUT #update' do
     context 'when user is logged_in' do
       login_user
-      context ' with valid attributes' do
+      context 'with valid attributes' do
         it 'chanages @photos\'s atrributes' do
           put :update, params: {
             photo: {
-              name: 'New name for photo'
+              name: 'New name for photo',
+              image: ''
             },
             id: photo.id
           }
@@ -134,17 +135,18 @@ RSpec.describe PhotosController do
         end
 
         it 'redirects to the photos page' do
-          put :update, params: { photo: FactoryBot.attributes_for(:photo), id: photo.id }
+          put :update, params: { photo: FactoryBot.attributes_for(:photo, image: ''), id: photo.id }
           expect(response).to redirect_to(photos_path)
           expect(response.status).to eq(302)
         end
       end
 
-      context ' with invalid attributes' do
+      context 'with invalid attributes' do
         it 'does not chanages @photos\'s atrributes' do
           put :update, params: {
             photo: {
-              name: nil
+              name: nil,
+              image: ''
             },
             id: photo.id
           }
@@ -155,7 +157,8 @@ RSpec.describe PhotosController do
         it 'redirects to the :edit template' do
           put :update, params: {
             photo: {
-              name: nil
+              name: nil,
+              image: ''
             },
             id: photo.id
           }

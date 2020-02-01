@@ -21,6 +21,7 @@
             <p><a class="read-more-link" href="mailto:worldwide-travelover@gmail.com">worldwide-travelover@gmail.com</a></p>
           </div>
         </div>
+        <%= render partial: 'contact/form', locals: {contact: Contact.new} %>
       </div><!-- col-lg-8 -->
       <%= render 'shared/new_sidebar'%>
       

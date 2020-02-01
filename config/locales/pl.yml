@@ -3,6 +3,9 @@ pl:
     updated: 'Zaktualizowano'
     destroyed: 'Usunięto'
     created: 'Utworzono'
+    ok_message: 'Otrzymaliśmy Twoją wiadomość i wkrótce się z Tobą skontaktujemy'
+  alert:
+    failed_message: 'Coś poszło nie tak. Spróbuj ponownie.'
   confirm:
     are_you_sure: 'Jesteś pewien?'
   errors:
@@ -92,6 +95,8 @@ pl:
       photo:
         create: 'Utwórz zdjęcie'
         update: 'Zaktualizuj zdjęcie'
+      contact:
+        create: 'Wyślij wiadomość'
 
   # SimpleForm
   simple_form:
@@ -121,6 +126,9 @@ pl:
         category_id: 'Categoria'
         image: 'Zdjęcie'
         public: 'Publiczne?'
+      contact:
+        name: 'Imię'
+        body: 'Treść'
 
 
     hints:
