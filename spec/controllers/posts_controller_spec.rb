@@ -114,11 +114,11 @@ RSpec.describe PostsController do
           end
 
           fake_mail = double
-          expect(fake_mail).to receive(:deliver_later).with(wait_until: be_within(1.second).of(Time.zone.now))
+          expect(fake_mail).to receive(:deliver_later)
           expect(NotificationMailer).to receive(:post_email).with(subscribers[0], kind_of(Post)).once.and_return(fake_mail)
 
           fake_mail_2 = double
-          expect(fake_mail_2).to receive(:deliver_later).with(wait_until: be_within(1.second).of(Time.zone.now + 15.minutes))
+          expect(fake_mail_2).to receive(:deliver_later)
 
           expect(NotificationMailer).to receive(:post_email).with(subscribers[1], kind_of(Post)).once.and_return(fake_mail_2)
 

@@ -1,8 +1,8 @@
 # frozen_string_literal: true
 
 class NotificationMailer < ApplicationMailer
-  default from: 'worldwide.travelover@worldwide-travelover.com',
-          reply_to: 'worldwide.travelover@gmail.com'
+  default from: ENV['WT_DEFAULT_EMAIL'],
+          reply_to: ENV['WT_EMAIL']
 
   def welcome_email(subscriber)
     @subscriber = subscriber

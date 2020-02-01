@@ -33,6 +33,9 @@ Rails.application.routes.draw do
   get '/wspolpraca', to: 'pages#wspolpraca'
   get '/polityka_prywatnosci', to: 'pages#polityka_prywatnosci'
 
+  get '/contact/new', to: 'contact#new'
+  post '/contact', to: 'contact#create'
+
   get 'subscribers/unsubscribe/:unsubscribe_hash', to: 'subscribers#unsubscribe', as: 'unsubscribe'
 
   authenticate :user, lambda {|user| user.role == 'admin' } do

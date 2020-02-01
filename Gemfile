@@ -43,6 +43,10 @@ gem 'font-awesome-sass'
 gem 'friendly_id', '~> 5.2.4'
 gem 'image_processing', '~> 1.4.0'
 gem 'jquery-rails'
+gem 'lol_dba', '~> 2.1', '>= 2.1.8'
+gem 'pagy', '~> 3.7', '>= 3.7.2'
+gem 'pg_search', '~> 2.3', '>= 2.3.2'
+gem 'pghero'
 gem 'popper_js', '~> 1.12.9'
 gem 'rails-i18n', '~> 5.1.2'
 gem 'rake'
@@ -54,10 +58,6 @@ gem 'simple_form'
 gem 'sitemap_generator', '~> 5.1'
 gem 'sucker_punch', '~> 2.0'
 gem 'traceroute', '~> 0.8.0'
-gem 'lol_dba', '~> 2.1', '>= 2.1.8'
-gem 'pghero'
-gem 'pagy', '~> 3.7', '>= 3.7.2'
-gem 'pg_search', '~> 2.3', '>= 2.3.2'
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
@@ -76,9 +76,9 @@ group :development do
   gem 'listen', '>= 3.0.5', '< 3.2'
   gem 'web-console', '>= 3.3.0'
   # Spring speeds up development by keeping your application running in the background. Read more: https://github.com/rails/spring
+  gem 'bullet', '~> 6.1'
   gem 'spring'
   gem 'spring-watcher-listen', '~> 2.0.0'
-  gem 'bullet', '~> 6.1'
 end
 
 group :test do
