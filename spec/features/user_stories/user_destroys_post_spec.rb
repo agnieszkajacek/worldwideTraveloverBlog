@@ -24,7 +24,7 @@ RSpec.feature 'User destroys post', type: :feature do
 
     click_link 'Usuń'
 
-    page.driver.browser.switch_to.alert.accept
+    page.driver.browser.switch_to.alert.accept rescue Selenium::WebDriver::Error::NoAlertOpenError
 
     expect(page).to have_content 'Usunięto'
 

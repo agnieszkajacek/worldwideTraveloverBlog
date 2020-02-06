@@ -5,7 +5,7 @@ require 'rails_helper'
 RSpec.feature 'User creates post', type: :feature do
   background do
     @category = create(:category)
-    @child_category = create(:category, ancestry: @category.id.to_s)
+    @child_category = create(:category, name: 'Wielka Brytania', ancestry: @category.id.to_s)
 
     user = create(:user, email: 'test@test.com', password: 'fakepassword')
     sign_in_as(user)
@@ -27,6 +27,7 @@ RSpec.feature 'User creates post', type: :feature do
     click_button 'Utwórz'
 
     post = Post.last
+
     expect(page.current_path).to eq "/posts/#{post.slug}"
   end
 

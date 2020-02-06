@@ -56,7 +56,7 @@ RSpec.describe Post do
   describe '#search' do
     it 'returns the search result' do
       @post.save!
-      expect(Post.search('City break')).to eq([@post])
+      expect(Post.search_for('City break')).to eq([@post])
     end
   end
 end

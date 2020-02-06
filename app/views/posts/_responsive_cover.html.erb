@@ -1,10 +1,12 @@
-<%= link_to post do  %>
-  <picture>
-    <source type="image/webp" srcset="<%= rectangle_srcset(post, "webp") %>">
-    <img 
-      loading="lazy" 
-      src="<%= post.cover_url(:rectangle_750_jpg) %>"
-      srcset="<%= rectangle_srcset(post, "jpg") %>"
-    />
-  </picture>
+<% if post.cover.present? %>
+  <%= link_to post do  %>
+    <picture>
+      <source type="image/webp" srcset="<%= rectangle_srcset(post, "webp") %>">
+      <img 
+        loading="lazy" 
+        src="<%= post.cover_url(:rectangle_750_jpg) %>"
+        srcset="<%= rectangle_srcset(post, "jpg") %>"
+      />
+    </picture>
+  <% end %>
 <% end %>

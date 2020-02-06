@@ -33,7 +33,7 @@ gem 'htmlentities', '~> 4.3.4'
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
 gem 'ancestry'
-gem 'aws-sdk', '~> 3'
+gem 'aws-sdk-s3', '~> 1.60.1'
 gem 'bootstrap', '~> 4.1.1'
 gem 'devise', '~> 4.4'
 gem 'disqus_rails'
@@ -87,7 +87,7 @@ group :test do
   gem 'rails-controller-testing', '~> 1.0.4'
   gem 'shoulda-matchers'
   gem 'shrine-memory'
-  gem 'webmock', '~> 2.1'
+  gem 'webmock', '~> 3.8.1'
 end
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
 gem 'tzinfo-data', platforms: %i[mingw mswin x64_mingw jruby]
